@@ -9,9 +9,13 @@ template = "post.html"
 
 ---
 
-## List
+## Cryptography
 - [🔐 Cryptopals](@/posts/Self_Study/Cryptopals.md) 
 - [🔐 Mersenne Twister](@/posts/Self_Study/Mersenne_Twister.md) 
 - [🔐 ZKP](@/posts/Self_Study/ZKP.md) 
-- [🔢 Mathematics](@/posts/Self_Study/Mathematics.md) 
+
+## Blockchain
 - [⛓️  BlockChain](@/posts/Self_Study/Blockchain.md) 
+
+## Mathematics
+- [🔢 Mathematics](@/posts/Self_Study/Mathematics.md) 

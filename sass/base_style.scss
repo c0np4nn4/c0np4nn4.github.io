@@ -87,6 +87,12 @@ hr {
   }
 }
 
+hr {
+  height: 0.2rem; 
+  border-style: dashed; 
+  color: #1f2323
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -100,7 +106,7 @@ hr {
   padding-top: 2rem;
   padding-bottom: 2rem;
 
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Noto Serif KR', sans-serif;
 }
 
 .footer {

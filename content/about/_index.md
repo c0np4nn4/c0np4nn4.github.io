@@ -8,7 +8,7 @@ render = true
 # Whoami
 - A student at *Pusan National University* ([`PNU`](https://cse.pusan.ac.kr/cseEng/index.do)) majoring in **Computer Science & Engineering**.
 
-- Personally, I am very interesting about **BlockChain System**, **Cryptology**, and **CyberSecurity**.
+- Interests: **BlockChain System**, **Cryptology**, and **CyberSecurity**.
 
 # Tools that I use everyday...
 - [`Obsidian`](https://obsidian.md/)

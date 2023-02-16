@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ get_url(path="categories.css")}}" />
+{% endblock stylesheet %}
+
+{% block navbar %}
+  <div class="nav_bar">
+    <div class="title">
+      <a href="{{get_url(path='')}}">
+        <img class="nav_bar_icon" src="../coffee.jpg" alt="coffee" />
+      </a>
+    </div>
+    <div class="btn">
+      <a href="{{get_url(path='@/about/_index.md')}}">About Me</a>
+      <a href="{{get_url(path='@/posts/_index.md')}}">Posts</a>
+      <a href="{{get_url(path='@/archive/_index.md')}}">Archive</a>
+    </div>
+  </div>
+{% endblock navbar %}
+
+{% block content %}
+<div class="category_container">
+
+  {% set lecture = section.subsections %}
+
+  <div class="category">
+    <div class="title">
+      <a href="{{get_url(path='@/posts/Lectures/_index.md')}}">
+        Lectures
+      </a>
+    </div>
+    <hr style="margin-left: auto; margin-right: auto; width: 80%; height: 0.2rem; border-style: dashed; color: #1f2323" />
+
+    <div class="title">
+      <a href="{{get_url(path='@/posts/Self_Study/_index.md')}}">
+        Self-Study
+      </a>
+    </div>
+    <hr style="margin-left: auto; margin-right: auto; width: 80%; height: 0.2rem; border-style: dashed; color: #1f2323" />
+
+    <div class="title">
+      <a href="{{get_url(path='@/posts/Articles/_index.md')}}">
+        Articles
+      </a>
+    </div>
+    <hr style="margin-left: auto; margin-right: auto; width: 80%; height: 0.2rem; border-style: dashed; color: #1f2323" />
+
+  </div>
+
+  <div class="category">
+    <div class="title">
+      Reviews
+    </div>
+    <hr style="margin-left: auto; margin-right: auto; width: 80%; height: 0.2rem; border-style: dashed; color: #1f2323" />
+  </div>
+
+</div>
+{% endblock content %}

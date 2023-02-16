@@ -1,0 +1,11 @@
+base_url = "https://c0np4nn4.github.io"
+compile_sass = true
+generate_feed = true
+build_search_index = true
+
+[markdown]
+highlight_code = true
+render_emoji = true
+
+[extra]
+katex_enable = true

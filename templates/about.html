@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ get_url(path="markdown.css")}}" />
+{% endblock stylesheet %}
+
+{% block navbar %}
+  <div class="nav_bar">
+    <div class="title">
+      <a href="{{get_url(path='')}}">
+        <img class="nav_bar_icon" src="../coffee.jpg" alt="coffee" />
+      </a>
+    </div>
+    <div class="btn">
+      <a href="{{get_url(path='@/about/_index.md')}}">About Me</a>
+      <a href="{{get_url(path='@/posts/_index.md')}}">Posts</a>
+      <a href="{{get_url(path='@/archive/_index.md')}}">Archive</a>
+    </div>
+  </div>
+{% endblock navbar %}
+
+{% block content %}
+  
+  <h1 class="title">
+    {{ section.title }}
+  </h1>
+  {{ section.content | safe }}
+{% endblock content %}

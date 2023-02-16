@@ -1,0 +1,112 @@
+@import "./codeblocks.scss";
+
+html {
+  font-size: 10px;
+  min-height: 100%;
+}
+
+body {
+  width: 120rem;
+  margin: 0 auto 30px auto;
+}
+
+hr {
+  color: gainsboro;
+  width: 100%;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav_bar {
+  box-shadow: 
+    0px 0px 1px 2px white; 
+
+  filter: 
+    drop-shadow(0 0 8px rgba(39, 73, 109, 0.7));
+
+  background-color: white;
+
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  // border: 2px solid blue;
+  // border-radius: 1rem;
+  width: 152rem;
+  height: 6rem;
+  line-height: 6rem;
+
+  justify-content: space-between;
+
+  padding-left: 12rem;
+  padding-right: 4rem;
+
+  font-family: 'Cinzel', serif;
+
+  .title {
+    width: 10rem;
+
+    text-decoration: none;
+
+    a {
+      color: tomato;
+      font-size: 1.8rem;
+      text-decoration: none;
+    }
+  }
+
+  .btn {
+    display:flex;
+    flex-direction: row;
+    border-radius: 1rem;
+
+    text-align: center;
+    font-size: 1.8rem;
+
+    a {
+      color: black;
+      text-decoration: none;
+      width: 16rem;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+
+  .nav_bar_icon {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  width: 160rem;
+  border: 0.25rem solid #1f2323;
+  border-radius: 0.6rem;
+
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.footer {
+  text-align: center;
+  font-size: 1.6rem;
+  font-family: 'Martel Sans', sans-serif;
+
+  margin-top: 1.8rem;
+}

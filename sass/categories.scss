@@ -1,0 +1,49 @@
+// override
+.content {
+  align-items: center;
+}
+
+.category_container {
+
+  width: 160rem;
+  height: 80rem;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: auto;
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 78rem;
+    height: 78rem;
+
+    text-align: center;
+
+
+
+    .title {
+      font-size: 5rem;
+      font-family: 'Cinzel', serif;
+
+      margin-top: 10rem;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      &:hover {
+        cursor: pointer;
+        filter: 
+          drop-shadow(0 0 3px rgba(39, 73, 109, 0.7));
+      }
+    }
+
+  }
+}
+

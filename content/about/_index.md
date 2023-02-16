@@ -10,10 +10,6 @@ render = true
 
 - Personally, I am very interesting about **BlockChain System**, **Cryptology**, and **CyberSecurity**.
 
-- ...and a big fan of the band `Polyphia`
-
-{{ youtube(id="EVSqUl-FtCI", autoplay=true, class="youtube") }}
-
 # Tools that I use everyday...
 - [`Obsidian`](https://obsidian.md/)
   - Based on the [`ZettelKasten`](https://zettelkasten.de/posts/overview/) method, I'm using it for taking notes what I have learned, thought about, etc.

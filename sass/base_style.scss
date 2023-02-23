@@ -6,8 +6,10 @@ html {
 }
 
 body {
-  width: 120rem;
-  margin: 0 auto 30px auto;
+  background-color: #feffed;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 hr {
@@ -20,6 +22,7 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .nav_bar {
@@ -107,6 +110,8 @@ hr {
   padding-bottom: 2rem;
 
   font-family: 'Noto Serif KR', sans-serif;
+
+  height: 100%;
 }
 
 .footer {

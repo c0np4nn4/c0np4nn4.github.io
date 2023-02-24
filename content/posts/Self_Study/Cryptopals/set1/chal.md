@@ -15,6 +15,8 @@ date = 2023-01-09
 
 - [[github](https://github.com/c0np4nn4/cryptopals/blob/main/cryptopals/challenges/src/set1/ch1.rs)]
 
+---
+
 ### Challenge 2 [[#](https://cryptopals.com/sets/1/challenges/2)]
 
 - 같은 길이의 두 hex string에 대한 `XOR` 연산을 구현하는 문제입니다.
@@ -22,6 +24,8 @@ date = 2023-01-09
 - hex string 을 `Vec<u8>`로 변환하는 식으로 구현했습니다.
 
 - [[github](https://github.com/c0np4nn4/cryptopals/blob/main/cryptopals/challenges/src/set1/ch2.rs)]
+
+---
 
 ### Challenge 3 [[#](https://cryptopals.com/sets/1/challenges/3)]
 
@@ -33,13 +37,33 @@ date = 2023-01-09
 
 - 문제에서는 `scoring` 을 통해, $256$개의 복호화된 결과물 중 정답을 찾는 방법을 제시합니다.
 
-- 저는 [[Wiki](https://en.wikipedia.org/wiki/Frequency_analysis)]에서 설명하는 `빈도 분석`을 토대로, 
-`single_char_key_attack`라는 이름의 함수를 만들어 문제를 해결했습니다.
+- [[Wiki](https://en.wikipedia.org/wiki/Frequency_analysis)]에서 설명하는 `빈도 분석`을 토대로, 
+`single_char_key_attack`라는 이름의 [함수](https://github.com/c0np4nn4/cryptopals/blob/main/cryptopals/utils/src/attack/mod.rs#L83-L143)를 만들어 문제를 해결했습니다.
 
 - [[github](https://github.com/c0np4nn4/cryptopals/blob/main/cryptopals/challenges/src/set1/ch3.rs)]
 
+---
 
 ### Challenge 4 [[#](https://cryptopals.com/sets/1/challenges/4)]
+
+#### Description
+
+- **<u>Detect single-character XOR</u>**
+
+- 문제 파일로써, 길이가 60 인 암호문들로 구성된 파일이 주어집니다.
+
+- `Challenge 3` 에서 사용한 방법을 응용하여 아래와 같이 해결했습니다.
+
+#### Solution
+
+- 우선 각각의 암호문들에 대해 `single_char_key_attack` 을 행합니다.
+
+- 공격의 결과값인 `Score` 중 최대값을 갖는 평문을 찾습니다.
+
+- [[github](https://github.com/c0np4nn4/cryptopals/blob/main/cryptopals/challenges/src/set1/ch4.rs)]
+
+---
+
 ### Challenge 5 [[#](https://cryptopals.com/sets/1/challenges/5)]
 ### Challenge 6 [[#](https://cryptopals.com/sets/1/challenges/6)]
 ### Challenge 7 [[#](https://cryptopals.com/sets/1/challenges/7)]

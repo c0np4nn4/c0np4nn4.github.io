@@ -8,8 +8,9 @@ html {
 body {
   background-color: #feffed;
   margin: 0;
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
+  width: 100%;
 }
 
 hr {
@@ -22,7 +23,6 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .nav_bar {
@@ -42,7 +42,7 @@ hr {
 
   // border: 2px solid blue;
   // border-radius: 1rem;
-  width: 152rem;
+  width: 80rem;
   height: 6rem;
   line-height: 6rem;
 
@@ -100,7 +100,7 @@ hr {
   display: flex;
   flex-direction: column;
 
-  width: 160rem;
+  width: 80rem;
   border: 0.25rem solid #1f2323;
   border-radius: 0.6rem;
 

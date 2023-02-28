@@ -12,9 +12,9 @@ toc = true
 
 # BASE64
 
-- <mark>BASE64</mark> 는 *binary-to-text encoding scheme* 의 일종으로, 이름에서와 같이 <mark>6-bit</mark> ($2^6 = 64$) 값을 다룬다.
+- <mark>BASE64</mark> 는 *binary-to-text encoding scheme* 의 일종으로, 이름에서와 같이 <mark>6-bit</mark> ($2^6 = 64$) 값을 다룹니다.
 
-- [[wiki](https://en.wikipedia.org/wiki/Base64)] 에 따르면, 아래와 같은 표를 이용해 <mark>6-bit</mark> 값을 <mark>text</mark>로 인코딩한다.
+- [[wiki](https://en.wikipedia.org/wiki/Base64)] 에 따르면, 아래와 같은 표를 이용해 <mark>6-bit</mark> 값을 <mark>text</mark>로 인코딩한다고 합니다.
 
 <center>
 
@@ -42,49 +42,49 @@ toc = true
 
 ## Example
 
-- 이해를 돕기 위해, <kbd>0x123456</kbd>을 base64 encoding 하는 과정을 살펴보자.
+- 이해를 돕기 위해, <kbd>0x123456</kbd>을 base64 encoding 하는 과정을 살펴보겠습니다.
 
-- <kbd>0x123456</kbd>은 binary로 변환하면 <kbd>0b000100100011010001010110</kbd> 이다. 
+- <kbd>0x123456</kbd>은 binary로 변환하면 <kbd>0b000100100011010001010110</kbd> 입니다. 
 
-- 가독성을 위해 <mark>6-bit</mark>씩 끊어서 나열하면 다음과 같다.
+- 가독성을 위해 <mark>6-bit</mark>씩 끊어서 나열하면 다음과 같습니다.
     - <kbd>0b000100_100011_010001_010110</kbd>
     - <kbd>000100</kbd>, <kbd>100011</kbd>, <kbd>010001</kbd>, <kbd>010110</kbd>
 
-- 각각을 위 표와 대응되는 글자로 변환하면 아래와 같다.
+- 각각을 위 표와 대응되는 글자로 변환하면 아래와 같습니다.
     - <mark>E</mark>, <mark>j</mark>, <mark>R</mark>, <mark>W</mark>
 
-- 따라서, base64_encode(<kbd>0x123456</kbd>) = <mark>EjRW</mark> 이다.
+- 따라서, base64_encode(<kbd>0x123456</kbd>) = <mark>EjRW</mark> 입니다.
 
 ---
 
 ## Padding
 
-- 만약 <mark>6-bit</mark> 단위로 끊어지지 않는다면 적절한 ***padding*** 을 추가해야 한다.
+- 만약 <mark>6-bit</mark> 단위로 끊어지지 않는다면 적절한 ***padding*** 을 추가해야 합니다.
 
-- ASCII 는 <mark>8-bit</mark> 단위이기 때문에, 이러한 ***padding*** 을 적절히 추가할 필요가 있다.
+- ASCII 는 <mark>8-bit</mark> 단위이기 때문에, 이러한 ***padding*** 을 적절히 추가할 필요가 있습니다.
 
-- 이해를 위해 <mark>ABC</mark> 라는 ASCII 문자열을 base64 encoding 하는 과정을 살펴보자.
+- 이해를 위해 <mark>ABC</mark> 라는 ASCII 문자열을 base64 encoding 하는 과정을 살펴보겠습니다.
 
 ### 1. No Padding
 
-> - <mark>ABC</mark> 를 hex 값으로 변환하면 <kbd>0x414243</kbd> 이다.
+> - <mark>ABC</mark> 를 hex 값으로 변환하면 <kbd>0x414243</kbd> 입니다.
 >
-> - <kbd>0x414243</kbd>을 binary로 표현하면 <kbd>0b010000_010100_001001_000011</kbd>이다.
+> - <kbd>0x414243</kbd>을 binary로 표현하면 <kbd>0b010000_010100_001001_000011</kbd>입니다.
 >
-> - binary 값이 <mark>6-bit</mark> 단위로 나눠지므로, base64 encoding 하면 <mark>QUJD</mark>이다. 
+> - binary 값이 <mark>6-bit</mark> 단위로 나눠지므로, base64 encoding 하면 <mark>QUJD</mark>입니다. 
 
 ### 2. Padding
 
-> - <mark>AB</mark> 를 hex 값으로 변환하면 <kbd>0x4142</kbd> 이다.
+> - <mark>AB</mark> 를 hex 값으로 변환하면 <kbd>0x4142</kbd> 입니다.
 > 
-> - <kbd>0x4142</kbd>를 binary로 표현하면 <kbd>0b010000_010100_0010</kbd> 이다.
+> - <kbd>0x4142</kbd>를 binary로 표현하면 <kbd>0b010000_010100_0010</kbd> 입니다.
 > 
-> - binary 값이 <mark>6-bit</mark> 단위로 깔끔히 나눠지지 않는 것을 알 수 있다.
+> - binary 값이 <mark>6-bit</mark> 단위로 깔끔히 나눠지지 않는 것을 알 수 있습니다.
 >
-> - 이 때는, 맨 끝의 binary에 <mark>0</mark>을 붙여 <mark>6-bit</mark> 단위로 만들고, ***padding*** 을 의미하는 <mark>=</mark> 를 붙여 해결한다.
+> - 이 때는, 맨 끝의 binary에 <mark>0</mark>을 붙여 <mark>6-bit</mark> 단위로 만들고, ***padding*** 을 의미하는 <mark>=</mark> 를 붙여 해결하면 됩니다.
 > 
 >     - <kbd>0b010000_010100_0010</kbd>
 > 
 >     - <kbd>0b010000_010100_001000_(padding)</kbd>
 >
-> - base64 encoding 하면, <mark>QUI=</mark> 이다.
+> - base64 encoding 하면, <mark>QUI=</mark> 입니다.

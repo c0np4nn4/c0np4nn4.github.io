@@ -29,4 +29,6 @@ keywords = "백준, 알고리즘"
 
 # Notes
 
+> - 현재 바킹독님의 `실전 알고리즘 강의`를 주로 따라가며 학습하고 있습니다.
+
 - [Sort](@/algorithm/Sort.md)

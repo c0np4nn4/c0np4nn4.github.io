@@ -25,9 +25,11 @@ thumbnail = "chess-queen.jpg"
 # Solution
 
 - [[Challenge 1 ~ 6](@/cryptopals/ch1to6.md)]
+- [[Challenge 7](@/cryptopals/ch7.md)]: <mark>AES</mark>, ECB
 
 ---
 
 # Notes
 
 - [Base64](@/cryptopals/Base64.md)
+- [AES](@/cryptopals/AES.md)

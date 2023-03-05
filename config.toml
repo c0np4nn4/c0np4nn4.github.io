@@ -43,7 +43,7 @@ title_separator = "|"  # Separator between title and title_addition, set as |, -
 # To always set the page title exactly eg "Abridge" then comment out the below line (not recommend, bad for SEO)
 title_addition = "default title value" # a default value for title addition
 recent = true # TOC / index
-recent_items = 4
+recent_items = 6
 author = "c0np4nn4" # Put Your Name here
 
 title_size_index = "s70" # size: s95, s90, s85, s80, s75, s70, false(full size)
@@ -187,7 +187,7 @@ katex_bundle = "katexbundle.min.js"
 # meta/seo/analytic tags
 ##########################
 keywords = "Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" # used for the primary site index
-twitter = "your-user-name" # used for twitter related
+# twitter = "your-user-name" # used for twitter related
 #google = "Your Google Site verification code."
 #bing = "Your Bing Site verification code."
 seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter

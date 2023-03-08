@@ -16,6 +16,6 @@ keywords = "Ethernaut, Metamask, Ethereum, Web3, Security, Solidity"
 # Description
 - 블록체인에 관련한 내용들을 정리한 포스트입니다.
 
-# Ethernaut
-
+# Ethereum
 - [[Ethernaut](@/blockchain/ethernaut/index.md)]
+- [[Cryptozombie](@/blockchain/cryptozombie/index.md)]

@@ -22,13 +22,13 @@ keywords = "Ethernaut, Metamask, Solidity, Ethereum"
 - Browser Extension 으로도 제공되는 <kbd>MetaMask</kbd>를 추가하고, 간단히 지갑을 생성하면 아래와 같은 화면을 확인할 수 있습니다.
 
 <center>
-{{ img(src="/ethernaut/img/metamask_on_browser.png" alt="Metamask" w=300 h=200) }}
+{{ img(src="/blockchain/ethernaut/img/metamask_on_browser.png" alt="Metamask" w=300 h=200) }}
 </center>
 
 - 여우 모양의 아이콘이 <mark>MetaMask</mark> 입니다.
 
 <center>
-{{ img(src="/ethernaut/img/switch_to_testnet.png" alt="Testnet" w=300 h=200) }}
+{{ img(src="/blockchain/ethernaut/img/switch_to_testnet.png" alt="Testnet" w=300 h=200) }}
 </center>
 
 - 아이콘을 클릭한 후, <kbd>Goeril</kbd> 이란 이름의 **Testnet** 으로 네트워크를 변경합니다.
@@ -39,7 +39,7 @@ keywords = "Ethernaut, Metamask, Solidity, Ethereum"
 - <kbd>F12</kbd> 를 눌러서 `개발자도구` 창을 보면 아래와 같은 메세지를 확인할 수 있습니다.
 
 <center>
-{{ img(src="/ethernaut/img/hello_ethernaut.png" alt="hello_message" w=400 h=200) }}
+{{ img(src="/blockchain/ethernaut/img/hello_ethernaut.png" alt="hello_message" w=400 h=200) }}
 </center>
 
 - 메세지들 중 <mark>Player's Address</mark> 를 나타내는 값이 있을텐데, 문제를 푸는 동안 이를 아는 것이 중요하다고 합니다.
@@ -57,7 +57,7 @@ keywords = "Ethernaut, Metamask, Solidity, Ethereum"
 - Console에 <mark>ethernaut</mark> 을 입력하면 각 문제의 <kbd>Smart Contract</kbd> 정보를 확인할 수 있습니다.
 
 <center>
-{{ img(src="/ethernaut/img/ethernaut_contract.png" alt="contract" w=300 h=200) }}
+{{ img(src="/blockchain/ethernaut/img/ethernaut_contract.png" alt="contract" w=300 h=200) }}
 </center>
 
 # 5. Interact with ABI
@@ -108,5 +108,5 @@ await contract.info()
 - 문제를 풀고 Submit 하면 아래와 같은 문구를 확인할 수 있습니다.
 
 <center>
-{{ img(src="/ethernaut/img/hello_ethernaut_done.png" alt="Metamask" w=600 h=200) }}
+{{ img(src="/blockchain/ethernaut/img/hello_ethernaut_done.png" alt="Metamask" w=600 h=200) }}
 </center>

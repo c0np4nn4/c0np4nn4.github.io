@@ -14,4 +14,5 @@ keywords = "Computer Science, Computer Engineering, Univeristy, Study, Study Not
 +++
 ## Memo
 
-- [[2023_03_07](@/Lectures/cb26044/2023_03_07.md)]
+- [[07 MAR 2023](@/Lectures/cb26044/2023_03_07.md)]
+- [[09 MAR 2023](@/Lectures/cb26044/2023_03_09.md)]

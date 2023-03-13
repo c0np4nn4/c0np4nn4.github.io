@@ -57,7 +57,7 @@ for (int i = 0; i < n; i++) {
 - 서로 다른 두 리스트 $A, B$ 를 병합(merge)하여 새로운 리스트 $C$로 만드는 개념을 활용합니다.
 
 <center>
-{{ img(src="/algorithm/img/merge_sort.png" alt="Merge Sort Image" w=600 h=400) }}
+<img src="/algorithm/img/merge_sort.png" alt="Merge Sort Image" w=600 h=400) />
 </center>
 
 - 위와 같은 병합에서의 시간 복잡도는 각 리스트의 모든 원소를 돌아야 하므로, 각각의 크기가 $A, B$ 일 때 $O(A + B)$ 가 됩니다.
@@ -74,19 +74,19 @@ for (int i = 0; i < n; i++) {
 - 아래와 같은 리스트가 있다고 해보겠습니다.
 
 <center>
-{{ img(src="/algorithm/img/sample_list.png" alt="Merge Sort Image" w=600 h=400) }}
+<img src="/algorithm/img/sample_list.png" alt="Merge Sort Image" w=600 h=400) />
 </center>
 
 - "*하나의 리스트를 둘로 나눈다*" 의 재귀적 결과는 아래와 같습니다.
 
 <center>
-{{ img(src="/algorithm/img/list_split.png" alt="Merge Sort Image" w=600 h=400) }}
+<img src="/algorithm/img/list_split.png" alt="Merge Sort Image" w=600 h=400) />
 </center>
 
 - "*나눈 리스트를 정렬한다.*" 와 "*두 개의 리스트를 하나로 합친다.*" 의 결과는 아래와 같습니다.
 
 <center>
-{{ img(src="/algorithm/img/overview.png" alt="Merge Sort Image" w=600 h=400) }}
+<img src="/algorithm/img/overview.png" alt="Merge Sort Image" w=600 h=400) />
 </center>
 
 
@@ -95,7 +95,7 @@ for (int i = 0; i < n; i++) {
 - 시간복잡도 관점에서 알고리즘의 성능을 살펴보겠습니다.
 
 <center>
-{{ img(src="/algorithm/img/overview_split.png" alt="Merge Sort Image" w=600 h=400) }}
+<img src="/algorithm/img/overview_split.png" alt="Merge Sort Image" w=600 h=400) />
 </center>
 
 - 각 줄의 리스트에 대해 $1, 2, \dots, 2^k$ 번 <mark>split</mark> 하는 동작을 수행합니다.
@@ -103,7 +103,7 @@ for (int i = 0; i < n; i++) {
 - 따라서, $1 + 2 + \dots + 2^k = 2N - 1 = O(N)$ 입니다.
 
 <center>
-{{ img(src="/algorithm/img/overview_merge.png" alt="Merge Sort Image" w=600 h=400) }}
+<img src="/algorithm/img/overview_merge.png" alt="Merge Sort Image" w=600 h=400) />
 </center>
 
 - 앞서 $A, B$ 인 두 리스트를 병합할 때의 시간복잡도는 $O(A+B)$ 임을 보았습니다.

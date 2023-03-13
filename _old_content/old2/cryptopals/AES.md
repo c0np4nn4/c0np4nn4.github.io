@@ -30,7 +30,7 @@ keywords = "Cryptography, Cryptopals, Rust, AES"
 - <mark>State</mark> 는 아래 그림과 같이 Matrix 형태로 연산에 이용됩니다. 
 
 <center>
-{{ img(src="/cryptopals/img/AES_state.png" alt="Merge Sort Image" w=600 h=400) }}
+<img src="/cryptopals/img/AES_state.png" alt="Merge Sort Image" />
 </center>
 
 - 즉, <kbd>128</kbd>-bit 의 Block을 <kbd>16</kbd>-byte 의 State로 하여 암/복호화를 진행합니다.
@@ -45,7 +45,7 @@ keywords = "Cryptography, Cryptopals, Rust, AES"
 - <mark>Key</mark> 의 크기에 따라, 전체 Round 의 수가 달라집니다.
 
 <center>
-{{ img(src="/cryptopals/img/AES_overview.png" alt="Merge Sort Image" w=800 h=600) }}
+<img src="/cryptopals/img/AES_overview.png" alt="Merge Sort Image" w=800 h=600) />
 </center>
 
 ### Key Expansion
@@ -70,13 +70,13 @@ keywords = "Cryptography, Cryptopals, Rust, AES"
     - <u>일정한 규칙</u>으로써 아래 그림과 같은 Table 을 이용할 수 있습니다.
 
       <center>
-      {{ img(src="/cryptopals/img/AES_SboxTable.png" alt="Merge Sort Image" w=600 h=400) }}
+      <img src="/cryptopals/img/AES_SboxTable.png" alt="Merge Sort Image" w=600 h=400) />
       </center>
 
     - 즉, Byte 의 값이 <mark>f4</mark> 라면, 행과 열의 교차점에 있는 <mark>bf</mark> 로 값을 바꾸는 방식입니다.
 
       <center>
-      {{ img(src="/cryptopals/img/AES_ByteSub.png" alt="Merge Sort Image" w=600  h=400) }}
+      <img src="/cryptopals/img/AES_ByteSub.png" alt="Merge Sort Image" w=600  h=400) />
       </center>
 
   ---
@@ -86,7 +86,7 @@ keywords = "Cryptography, Cryptopals, Rust, AES"
     - 아래 그림처럼 각 행을 1, 2, 3 만큼 Left shift 해주는 작업입니다.
 
       <center>
-      {{ img(src="/cryptopals/img/AES_ShiftRow.png" alt="Merge Sort Image" w=400 h=200) }}
+      <img src="/cryptopals/img/AES_ShiftRow.png" alt="Merge Sort Image" w=400 h=200) />
       </center>
 
   ---

@@ -2,11 +2,17 @@ base_url = "https://c0np4nn4.github.io"
 
 theme = "emily_zola_theme"
 
+# The default language; used in feeds.
+default_language = "en"
+
+compile_sass = true
+
 taxonomies = [
     # You can enable/disable RSS
     {name = "categories", feed = true},
     {name = "tags", feed = true},
 ]
+
 
 
 [markdown]
@@ -43,10 +49,10 @@ emily_favicon = "/images/favicon.png"
 emily_iconsize = 70
 
 # number of posts in index.html.
-emily_indexposts = 5
+emily_indexposts = 7
 
 # switch to dark-theme
-emily_dark_mode = true
+emily_dark_mode = false
 
 # show theme-toggler
-emily_theme_toggler = true
+emily_theme_toggler = false

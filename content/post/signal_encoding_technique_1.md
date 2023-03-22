@@ -4,7 +4,7 @@ description = "Signal Encoding Technique (1)"
 date = 2023-03-20
 
 [taxonomies]
-categories = ["Class"]
+categories = ["Lect"]
 tags = ["Data communication", "Network", "CB24149"]
 
 [extra]

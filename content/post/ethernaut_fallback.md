@@ -13,7 +13,11 @@ math=true
 
 ---
 
+
 # 문제 설명
+
+[[문제 링크](https://ethernaut.openzeppelin.com/level/1)]
+
 <details>
 <summary>전체 코드</summary>
 
@@ -130,7 +134,7 @@ receive() external payable {
 ---
 
 # 문제 풀이
-- 아래 순서대로 Dev Tool의 Console 에서 입력하면 된다.
+- 아래 순서대로 Dev Tool의 Console 에서 입력하면 됩니다.
 
 ```js
 // `0.0005 eth` 담아서 contribute 하기

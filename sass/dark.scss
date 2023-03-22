@@ -197,10 +197,13 @@ pre {
 :not(pre) > code {
     background-color: $tender-blue;
     color: $backgroundcolor;
+    border-radius: 0.3rem;
 
-    padding: 3px;
+    padding: 0.1rem 0.3rem;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
+
+    margin: 0rem 0.2rem;
 }
 
 blockquote {
@@ -233,3 +236,13 @@ button {
     border-color: $tender-blue;
 }
 
+mark {
+  color: #1f1f1f;
+  background-color: gainsboro;
+  border-radius: 0.5rem;
+  padding: 0.1rem 0.3rem;
+
+  font-weight: bold;
+
+  margin: 0rem 0.2rem;
+}

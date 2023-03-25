@@ -1,11 +1,11 @@
 +++
 title = "about this site and author"
-date = 2020-01-01
+date = 2023-03-23
 template = "post-page.html"
 +++
 
 ### about this site
-a simple blog
+a blog
 
 ### about author
-PNU student. CS Major.
+[PNU](https://cse.pusan.ac.kr/cseEng/index..do) student. CS Major.

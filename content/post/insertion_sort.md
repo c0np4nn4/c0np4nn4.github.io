@@ -2,9 +2,10 @@
 title = "Insertion Sort"
 description = "Sorting"
 date = 2023-03-16
+toc = true
 
 [taxonomies]
-categories = ["Algorithm"]
+categories = ["Lect", "Algorithm"]
 tags = ["Sorting", "Algorithm"]
 
 [extra]

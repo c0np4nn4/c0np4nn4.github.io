@@ -2,9 +2,10 @@
 title = "Heap Sort"
 description = "Sorting"
 date = 2023-03-21
+toc = true
 
 [taxonomies]
-categories = ["Algorithm"]
+categories = ["Lect", "Algorithm"]
 tags = ["Sorting", "Algorithm"]
 
 [extra]

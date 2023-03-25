@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}
+<title>{{ page.title }} | {{ config.title }}</title>
+{% endblock %}
+
+{% block content %}
+
+
+<p>
+  <div class="title_postpage">{{ page.title }}</div>
+</p>
+<p>
+  <div class="date_postpage">{{ page.date }}</div>
+  <div class="taxonomies_postpage">
+  {% if page.taxonomies.categories %}
+      {% for category in page.taxonomies.categories %}
+      <a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">/{{ category }}</a>
+      {% endfor %}
+  {% endif %}
+  {% if page.taxonomies.tags %}
+      {% for tag in page.taxonomies.tags %}
+      &emsp;<a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">#{{ tag }}</a>
+      {% endfor %}
+  {% endif %}
+  </div>
+</p>
+
+<hr />
+<div style="font-size: 1.4rem; font-weight: bold">Table of Contents</div>
+{% if page.toc %}
+    <ul>
+    {% for h1 in page.toc %}
+        <li>
+            <a style="text-decoration: none; font-weight: bold; color: #f05650" href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+            {% if h1.children %}
+                <ul>
+                    {% for h2 in h1.children %}
+                        <li>
+                            <a style="text-decoration: none; font-weight: bold; color: #f05650" href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                            {% if h2.children %}
+                                <ul>
+                                    {% for h3 in h2.children %}
+                                        <li>
+                                            <a style="text-decoration: none; font-weight: bold; color: #f05650" href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+
+    </ul>
+{% endif %}
+
+<p>
+  {{ page.content | safe }}
+</p>
+
+{% if page.extra.math %}
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+{% endif %}
+
+{% endblock content %}
+

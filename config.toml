@@ -49,10 +49,10 @@ emily_favicon = "/images/favicon.png"
 emily_iconsize = 70
 
 # number of posts in index.html.
-emily_indexposts = 7
+emily_indexposts = 3
 
 # switch to dark-theme
-emily_dark_mode = false
+emily_dark_mode = true
 
 # show theme-toggler
-emily_theme_toggler = false
+emily_theme_toggler = true

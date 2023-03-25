@@ -2,6 +2,7 @@
 title = "Fallback"
 description = "Ethernaut: Fallback"
 date = 2023-03-22
+toc = true
 
 [taxonomies]
 categories = ["Ethernaut"]

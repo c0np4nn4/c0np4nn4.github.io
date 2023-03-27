@@ -5,6 +5,9 @@ theme = "emily_zola_theme"
 # The default language; used in feeds.
 default_language = "en"
 
+build_search_index = true
+index_format = "elasticlunr_json"
+
 compile_sass = true
 
 taxonomies = [
@@ -43,13 +46,14 @@ emily_author = "c0np4nn4"
 # Please save image to static/images
 emily_icon = "/images/logo.png"
 emily_favicon = "/images/favicon.png"
+# emily_favicon = "/images/favicon_c0np4nn4.png"
 
 # header icon width.
 # height will be automatically rendered.
 emily_iconsize = 70
 
 # number of posts in index.html.
-emily_indexposts = 3
+emily_indexposts = 5
 
 # switch to dark-theme
 emily_dark_mode = true

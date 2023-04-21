@@ -1,6 +1,6 @@
 +++
 title = "OS: midterm"
-description = "Intent"
+description = "OS"
 date = 2023-04-15
 toc = true
 
@@ -13,7 +13,7 @@ math=true
 +++
 
 ---
-*2023 Spring, PNU, CB26044 (Prof. Ahn)*
+*2023 Spring, PNU, CB26044 (Professor Ahn)*
 
 # 범위
 - ***Ch1 ~ Ch11***

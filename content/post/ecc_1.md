@@ -15,8 +15,6 @@ math=true
 ---
 
 # Weierstrass Form
-- `ECC` 를 설명할 때 많이 나오는 폼입니다.
-
 $$Y^2 = X^3 + a X + b$$
 
 - `Singularity` 를 방지하고자 아래 조건이 추가됩니다.

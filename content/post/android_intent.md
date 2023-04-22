@@ -6,7 +6,7 @@ toc = true
 
 [taxonomies]
 categories = ["Android", "Lect"]
-tags = ["Cryptography", "ECC"]
+tags = []
 
 [extra]
 math=true

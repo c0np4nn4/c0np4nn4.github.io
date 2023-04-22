@@ -2,8 +2,9 @@ $tender-blue:#b3deef;
 $tender-yellow:#ffc24b;
 $tender-red:#f43753;
 $tender-magenta:#d3b987;
+$tender-gray: #b9b4a8;
 
-$backgroundcolor: #282828;
+$backgroundcolor: #1f1f1f;
 $textcolor: #feffff;
 $lighttextcolor: #eeeeee;
 
@@ -153,33 +154,33 @@ body {
 
 h1 {
     font-size: 2.2rem;
-    color: $tender-blue;
+    color: $textcolor;
 }
 
 h2 {
     font-size: 2.0rem;
-    color: $tender-blue;
+    color: $textcolor;
 }
 
 h3 {
     font-size: 1.5rem;    
-    color: $tender-blue;
+    color: $textcolor;
 }
 
 h4 {
     font-size: 1.3rem;    
-    color: $tender-blue;
+    color: $textcolor;
 
 }
 
 h5 {
     font-size: 1.2rem;    
-    color: $tender-blue;
+    color: $textcolor;
 }
 
 h6 {
     font-size: 1.1rem;    
-    color: $tender-blue;
+    color: $textcolor;
 
 }
 
@@ -192,10 +193,11 @@ pre {
     overflow-x: auto;
     overflow-y: hidden;
     padding: 20px;
+    font-size: 0.8rem;
 }
 
 :not(pre) > code {
-    background-color: $tender-blue;
+    background-color: $tender-gray;
     color: #1f1f1f;
     border-radius: 0.5rem;
 
@@ -208,7 +210,10 @@ pre {
 
 blockquote {
     border-left: 5px solid $tender-blue;
-    padding: 0.5rem;
+    padding-top: 0.3rem;
+    padding-left: 2.5rem;
+    padding-bottom: 0.3rem;
+    font-size: 1.1rem;
     margin: 1rem;
 }
 
@@ -220,12 +225,25 @@ table th {
     padding: 10px;
 }
 
-table th, td {
-    border: solid 1px $tender-magenta;
+table tr td:nth-child(n+2) {
+  position:relative;
+  margin-left: 5px;
+  padding-left: 10px;
+}
+
+table tr td:nth-child(n+2)::after {
+  position:absolute;
+  left:0;
+  top:0;
+  content:"";
+  width: 2px;
+  height: 22px;
+  background-color: white;
 }
 
 table td {
-    padding: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 button {
@@ -246,4 +264,9 @@ mark {
   font-size: 0.9rem;
 
   margin: 0rem 0.2rem;
+}
+
+txtred {
+  color: red;
+  font-style: bold;
 }

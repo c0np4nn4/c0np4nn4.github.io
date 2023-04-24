@@ -143,4 +143,159 @@ math=true
 
 ## RelativeLayout
 - 상대 `View` 의 위치를 기준으로 정렬하는 `Layout` 입니다.
-- 크게 `배치` 속성과 `정렬` 속성으로 나뉩니다.
+
+### 배치와 정렬
+- `RelativeLayout` 내부의 `View` 들은 `배치` 속성과 `정렬` 속성을 가집니다.
+  - `배치`
+    - ***layout_<>***: 상대 `View` 기준 배치
+      - `layout_above`, `layout_below`, `layout_toLeftOf`, `layout_toRightOf`, etc.
+  - `정렬`
+    - ***layout_align<>***: 상대 `View` 기준 정렬
+      - `layout_alignTop`, `layout_alignBottom`, etc
+    - ***layout_alignParent<>***: 부모 `View` 기준 정렬
+      - `layout_alignParentTop`, `layout_alignParentBottom`, etc
+
+### ID 지정 
+- `RelativeLayout` 에서는 ***상대*** 라는 존재를 지칭하는 것이 중요합니다.
+- 따라서, 기준이 되는 `View`의 <txtred>id 선언</txtred>이 필수입니다.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/image"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="toLeftOf"
+        android:layout_toLeftOf="@id/image" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="toRightOf"
+        android:layout_toRightOf="@id/image" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/image"
+        android:layout_toLeftOf="@id/image"
+        android:text="toLeftOf &amp; alignTop" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/image"
+        android:layout_toRightOf="@id/image"
+        android:text="toRightOf &amp; alignBottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/image"
+        android:text="toLeftOf &amp; alignParentBottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/image"
+        android:text="toRightOf &amp; alignParentBottom" />
+
+
+
+</RelativeLayout>
+```
+
+<img src="../../images/post/android/layout_05.png" alt="adsf" width="400rem"/>
+
+---
+
+## FrameLayout
+- `View`를 겹쳐서 출력하는 `Layout` 입니다.
+- 추가한 `View` 순서대로 계속 겹쳐서 보여줍니다.
+- `Visibility` 속성값을 이용해서 겹쳐진 `View` 를 보여주는 등의 방법으로 활용할 수 있습니다.
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button1" />
+</FrameLayout>
+```
+
+<img src="../../images/post/android/layout_06.png" alt="adsf" width="400rem"/>
+
+---
+
+## GridLayout
+- 행과 열로 구성된 테이블 화면을 만드는 `Layout` 입니다.
+- `GridLayout` 이 갖는 주요 ***속성*** 은 아래와 같습니다.
+  - `Orientation`: ("vertical" | "horizontal")
+  - `rowCount`, `columnCount`: 행과 열의 개수를 지정합니다.
+- `GridLayout` 내의 요소들이 갖는 주요 ***속성*** 은 아래와 같습니다.
+  - `layout_row`, `layout_column`: 위치할 행과 열의 정보를 명시합니다.
+  - `layout_gravity`: 특정 `View` 를 확장해서 출력합니다.
+  - `layout_columnSpan`, `layout_rowSpan`: 주변 행렬을 병합합니다.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:columnCount="3"
+    android:orientation="horizontal"
+    >
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowSpan="2"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:text="A" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="F" />
+</GridLayout>
+```
+
+<img src="../../images/post/android/layout_07.png" alt="adsf" width="400rem"/>

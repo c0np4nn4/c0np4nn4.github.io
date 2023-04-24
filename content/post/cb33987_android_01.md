@@ -169,3 +169,4 @@ math=true
 - 컴포넌트, velog: [Velog](https://velog.io/@hoyaho/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-4%EB%8C%80-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EF%BD%9C-Hello-Android)
 - 리소스, tistory: [Tistory](https://aroundck.tistory.com/286)
 - 프로젝트 구조, tistory: [Tistory](https://curryyou.tistory.com/366)
+- 4대 컴포넌트, [tistory 블로그](http://whyprogrammer.tistory.com/605)

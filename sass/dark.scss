@@ -197,9 +197,10 @@ pre {
 }
 
 :not(pre) > code {
-    background-color: $tender-gray;
-    color: #1f1f1f;
-    // border-radius: 0.5rem;
+    background-color: #2f5d47;
+    // color: #1f1f1f;
+    color: $textcolor;
+    border-radius: 0.2rem;
 
     padding: 0.15rem 0.35rem;
     margin: 0.1rem;

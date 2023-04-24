@@ -1,5 +1,5 @@
 +++
-title = "Android: Layout"
+title = "Android(5): Layout"
 description = "CB33987, android programming class"
 date = 2023-04-24
 toc = true
@@ -299,3 +299,5 @@ math=true
 ```
 
 <img src="../../images/post/android/layout_07.png" alt="adsf" width="400rem"/>
+
+---

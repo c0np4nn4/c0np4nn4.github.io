@@ -1,5 +1,5 @@
 +++
-title = "Android: View"
+title = "Android(4): View"
 description = "CB33987, android programming class"
 date = 2023-04-24
 toc = true

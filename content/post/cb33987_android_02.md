@@ -18,10 +18,9 @@ math=true
 
 # Kotlin
 - `Kotlin` 언어는 `JVM(Java Virtual Machine)` 에서 동작하는 프로그래밍 언어 입니다.
-- 2017 년에 Google 에서 *Android 공식 언어* 로 지정하였습니다. ([jetbrains blog](https://blog.jetbrains.com/kotlin/2017/05/kotlin-on-android-now-official/))
+- 2017 년에 Google 에서 *Android 공식 언어* 로 지정하였습니다. 
 - `Kotlin` 은 **객체지향** 과 **함수형 프로그래밍** 스타일을 지원한다고 합니다.
-- `Kotlin` 의 주요 특징으로는 `안정성`이 있는데, 이는 ***Null*** 에 대해 언어 자체가 안정성을 보장하기 때문입니다.
-  - ***Null Safety*** 에 관한 참고 내용: [Blog](https://shinjekim.github.io/kotlin/2019/10/01/Kotlin-%EB%84%90-%EC%95%88%EC%A0%84%EC%84%B1(Null-Safety)/)
+- `Kotlin` 의 주요 특징으로는 `안정성`이 있는데, 이는 ***Null*** 에 대해 <u>*언어 자체에서 안정성을 보장*</u>하기 때문입니다.
 
 ***TL;DR***
 - `Kotlin` 언어를 학습합니다.
@@ -86,22 +85,20 @@ array.plus(6)
 - 기본적으로 <u>*Immutable*</u> 이며, *Mutable* 의 경우에는 명시해주어야 합니다.
 ```kotlin
 // 초기화된 immutable list 를 선언합니다.
-var imm_list: List<Int> = listOf(10, 20, 30, 40, 50)
-
-// immutable list 이기 때문에, ERROR 는 아니지만 값이 추가되지는 않습니다.
-imm_list.plus(60)
-
+var list: List<Int> = listOf(10, 20, 30, 40, 50)
 // 초기화된 mutable list 를 선언합니다.
 var mut_list: MutableList<Int> = mutableListOf(100, 200, 300, 400, 500)
 
+// immutable list 이기 때문에, ERROR 는 아니지만 값이 추가되지는 않습니다.
+list.plus(60)
 // multable list 는 `add` 를 사용합니다.
 mut_list.add(600)
 
 // (+) filter 를 이용하면 Collection 내부 데이터 중 원하는 것들만 참조할 수 있습니다.
-val imm_list_filt = imm_list.filter{it % 3 == 0}
-val mut_list_filt = mut_list.filter{it % 3 == 0}
+val list_filt = list.filter {it % 3 == 0}
+val mut_list_filt = mut_list.filter {it % 3 == 0}
 
-println("imm_list 출력: $imm_list_filt")
+println("list 출력: $list_filt")
 println("mut_list 출력: $mut_list_filt")
 ```
 
@@ -171,8 +168,8 @@ while (i > 0) i--
 
 ## 클래스
 ```kotlin
+// 'name' 변수는 parameter 에서 내부 변수로 선언함
 public class Novel constructor(val name: String, page: Int) {
-  // 'name' 변수는 parameter 에서 내부 변수로 선언함
 
   // 내부 변수
   var page = page
@@ -191,13 +188,11 @@ fun main() {
 }
 ```
 
-- *constructor* 에 관한 보다 자세한 설명은 [블로그, velog](https://velog.io/@conatuseus/Kotlin-%EC%83%9D%EC%84%B1%EC%9E%90-%EB%BF%8C%EC%8B%9C%EA%B8%B0) 에 잘 정리되어 있습니다.
 
 ### 상속
 - 부모 클래스를 물려받아 기능을 수정, 추가하는 개념입니다.
 - `Kotlin` 에서는 `open` 키워드를 명시적으로 적어줘야지만 `상속`이 가능한 클래스 및 함수로 사용할 수 있습니다.
-  - `Kotlin` 에서의 *Keyword* 에 관해서는 [블로그](https://velog.io/@conatuseus/Kotlin-%ED%82%A4%EC%9B%8C%EB%93%9C-%EC%A0%95%EB%A6%AC-open-internal-companion-data-class-%EC%9E%91%EC%84%B1%EC%A4%91)를 참고해보면 좋습니다.
-- 즉, `open class`는 <u>부모 클래스가 될 수 있는 클래스</u> 입니다.
+- 즉, `open class`는 <u>***부모 클래스가 될 수 있는 클래스***</u> 입니다.
 ```kotlin
 open class Book(val author: String) {
   open fun print_author() {
@@ -309,3 +304,12 @@ fun main() {
 row 2: [4, 5, 6]
 col 1: [1, 4, 7]
 ```
+
+---
+
+# 참고
+- Kotlin 공식언어 지정, [JetBrains](https://blog.jetbrains.com/kotlin/2017/05/kotlin-on-android-now-official/)
+- Null Safety: [블로그](https://shinjekim.github.io/kotlin/2019/10/01/Kotlin-%EB%84%90-%EC%95%88%EC%A0%84%EC%84%B1(Null-Safety)/)
+- constructor, [블로그](https://velog.io/@conatuseus/Kotlin-%EC%83%9D%EC%84%B1%EC%9E%90-%EB%BF%8C%EC%8B%9C%EA%B8%B0)
+- Keyword [블로그](https://velog.io/@conatuseus/Kotlin-%ED%82%A4%EC%9B%8C%EB%93%9C-%EC%A0%95%EB%A6%AC-open-internal-companion-data-class-%EC%9E%91%EC%84%B1%EC%A4%91)
+

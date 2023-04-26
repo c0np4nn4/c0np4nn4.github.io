@@ -121,6 +121,16 @@ math=true
 
 ---
 
+## 앱 모듈 빌드 프로세스
+
+<img src="../../images/post/android/android_01.png" alt="adsf" width="400rem"/>
+
+<center>
+출처: Lecture notes
+</center>
+
+---
+
 ## Android Studio
 - Android 전용 IDE 입니다.
 - IntelliJ IDEA 를 기반으로 제작되었으며, `Java`, `Kotlin`, `C++` 를 지원합니다.
@@ -147,7 +157,7 @@ math=true
   - ***res***
     - 리소스
 - ***Gradle Scripts***
-  - Build 및 Library 설정
+  - Build 및 Library 를 관리하기 위한 설정 파일
 
 ---
 

@@ -149,7 +149,7 @@ math=true
   - `배치`
     - ***layout_<>***: 상대 `View` 기준 배치
       - `layout_above`, `layout_below`, `layout_toLeftOf`, `layout_toRightOf`, etc.
-  - `정렬`
+  - `정렬(align)`
     - ***layout_align<>***: 상대 `View` 기준 정렬
       - `layout_alignTop`, `layout_alignBottom`, etc
     - ***layout_alignParent<>***: 부모 `View` 기준 정렬

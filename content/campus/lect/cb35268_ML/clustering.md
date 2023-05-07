@@ -32,7 +32,9 @@ math=true
 
 ## K Nearest Neighbors
 - 어떤 데이터 분포가 있을 때, 데이터 $x_q$ 에 대하여, 가까운 $k$ 명의 이웃을 찾는 알고리즘입니다.
+
 $$NN(k, x_q)$$
+
 - 이를 이용하여 다음과 같이 활용할 수 있습니다.
   - `Classification`: 찾은 $k$ 명의 이웃들의 속성 중 다수를 대표하는 것으로 `Class` 를 나눌 수 있습니다.
   - `Regression`: $NN(k, x_q)$ 의 평균값을 구하거나, $NN(k, x_q)$ 를 데이터로 하여 *Linear Regression* 모델을 만들어 문제를 해결할 수 있습니다.

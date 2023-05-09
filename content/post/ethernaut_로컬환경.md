@@ -51,13 +51,26 @@ git clone git@github.com:OpenZeppelin/ethernaut.git
 
 이어서 `yarn install` 로 dependency 들을 설치합니다.
 
+```bash
+nvm use 16.18.0
+yarn install
+```
+
 <img src="../../../images/post/ethernaut/ethernaut_local_4.png" width="400rem" alt="adsf" style="border: 2px solid white"/>
 
 다음으로는 `Ethernaut` 에서 제공하는 스마트 컨트랙트를 컴파일합니다.
 
+```bash
+yarn compile:contracts
+```
+
 <img src="../../../images/post/ethernaut/ethernaut_local_5.png" width="500rem" alt="adsf" style="border: 2px solid white"/>
 
 이제 로컬넷을 띄울 차례입니다. `hardhat` 을 이용하며 총 20개의 가상 계정 정보를 확인할 수 있습니다.
+
+```bash
+yarn network
+```
 
 <img src="../../../images/post/ethernaut/ethernaut_local_6.png" width="600rem" alt="adsf" style="border: 2px solid white"/>
 
@@ -65,4 +78,12 @@ git clone git@github.com:OpenZeppelin/ethernaut.git
 
 이제 새로운 터미널을 열어서 `yarn start:ethernaut` 을 입력하면 *react* 로 만들어진 웹페이지를 확인할 수 있습니다.
 
+```bash
+yarn start:ethernaut
+```
+
 <img src="../../../images/post/ethernaut/ethernaut_local_7.png" width="800rem" alt="adsf" style="border: 2px solid white"/>
+
+---
+
+로컬에서 돌아가는 네트워크로 트랜잭션을 보내기 때문에 굉장히 쾌적환 환경에서 `Ethernaut` 문제를 풀 수 있습니다!

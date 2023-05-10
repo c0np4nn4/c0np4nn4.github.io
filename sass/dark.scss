@@ -12,10 +12,7 @@ body {
     line-height: 1.5;
     color: $textcolor;
     background-color: $backgroundcolor;
-    // font-family: 'Noto Serif KR', serif;
     font-family: 'Hahmlet', serif;
-    // font-family: 'Cinzel', serif;
-    // font-family: 'Hi Melody', cursive;
     width: 80%;
     min-width: 200px;
     max-width: 720px;
@@ -200,23 +197,24 @@ pre {
 }
 
 :not(pre) > code {
-    background-color: #2f5d47;
+    background-color: #3f3f3f;
     // color: #1f1f1f;
-    color: $textcolor;
-    border-radius: 0.2rem;
+    color: #ffffff;
+    border-radius: 0.24rem;
 
     padding: 0.15rem 0.35rem;
     margin: 0.1rem;
     font-weight: bold;
     font-size: 0.9rem;
 
-    margin: 0rem 0.2rem;
+    // margin: 0rem 0.2rem;
 }
 
 blockquote {
     border-left: 4px solid $tender-blue;
     padding-top: 0.3rem;
     padding-left: 1.2rem;
+    padding-right: 1.2rem;
     padding-bottom: 0.3rem;
     font-size: 0.9rem;
     margin: 0rem;
@@ -275,4 +273,8 @@ mark {
 txtred {
   color: red;
   font-style: bold;
+}
+
+txtylw {
+  color: yellow;
 }

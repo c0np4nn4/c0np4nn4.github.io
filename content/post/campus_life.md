@@ -1,7 +1,7 @@
 +++
 title = "Campus Life"
 description = "Notes for all campus activity"
-date = 5000-05-05
+date = 3333-03-03
 toc = true
 
 [taxonomies]
@@ -13,7 +13,12 @@ math=true
 +++
 
 # About
-- 대학교 생활 중의 기록을 저장할 공간입니다.
+- 대학생활을 기록할 공간입니다.
+
+---
+
+# Note
+- [생각 기록](../../campus/thinks/)
 
 ---
 

@@ -91,3 +91,14 @@ $$\text{exp}\big((c + o(1))n^{1/3}\log^{2/3}n\big)\quad\quad (c<2)$$
 - 위에서 논한 내용으로 `RSA` 와 소인수 분해에 관해 아래의 `open problem` 이 있습니다.
 > $\gcd(e, \phi(N))=1$ 을 만족하는 $N, e$ 에 대하여 `함수` $\mathcal{f}_{e, N}$ 를 아래와 같이 정의할 수 있습니다.
 
+
+---
+---
+---
+
+# 3. Low Private Exponent
+- `복호화`시간을 줄이기 위해 작은 $d$ 값을 사용하는 아이디어를 떠올릴 수 있습니다.
+- *modular exponentitaion* 연산이 $\log_2{d}$ 의 시간을 쓰기 때문에, 매우 효과적이 됨을 알 수 있습니다.
+- 불행히도, ***M. Wiener*** 가 개발한 공격 방법은 <txtylw>RSA</txtylw> cryptosystem 을 아주 효과적으로 공격할 수 있음이 알려져있습니다.
+---
+## Theorem 2 (M. Wiener)

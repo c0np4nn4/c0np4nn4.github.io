@@ -24,7 +24,7 @@ body {
         display: block;
         margin: 0 auto;
         max-width: 90%;
-        border: 2px solid white;
+        border: 0.3rem solid $tender-blue;
     }
     
     ul {
@@ -224,16 +224,20 @@ blockquote {
 
 table {
     max-width: 90%;
+    border: 1px solid white;
 }
 
 table th {
     padding: 10px;
+    border: 1px solid white;
 }
 
-table tr td:nth-child(n+2) {
-  position:relative;
+// table tr td:nth-child(n+2) {
+table tr td {
+  // position:relative;
   margin-left: 5px;
   padding-left: 10px;
+  border: 1px solid white;
 }
 
 table tr td:nth-child(n+2)::after {
@@ -244,6 +248,7 @@ table tr td:nth-child(n+2)::after {
   width: 2px;
   height: 22px;
   background-color: white;
+
 }
 
 table td {

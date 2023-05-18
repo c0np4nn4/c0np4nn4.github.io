@@ -19,6 +19,18 @@ body {
     margin: 0 auto;
     padding-top: 40px;
     padding-bottom: 40px;
+
+    details {
+      color: #1f1f1f;
+      background-color: $tender-magenta;
+      border-radius: 0.5rem;
+      padding: 0.1rem 0.3rem;
+
+      font-weight: bold;
+      font-size: 1.2rem;
+
+      margin: 0rem 0.2rem;
+    }
     
     img, video {
         display: block;

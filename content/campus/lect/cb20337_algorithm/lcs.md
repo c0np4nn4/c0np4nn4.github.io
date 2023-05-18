@@ -5,7 +5,7 @@ date = 2023-04-04
 toc = true
 
 [taxonomies]
-categories = ["Lect", "Algorithm"]
+categories = ["Algorithm", "Lect"]
 tags = ["Dynamic Programming", "Algorithm"]
 
 [extra]

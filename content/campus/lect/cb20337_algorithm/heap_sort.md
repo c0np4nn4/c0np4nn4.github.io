@@ -5,7 +5,7 @@ date = 2023-03-21
 toc = true
 
 [taxonomies]
-categories = ["Lect", "Algorithm"]
+categories = ["Algorithm", "Lect"]
 tags = ["Sorting", "Algorithm"]
 
 [extra]

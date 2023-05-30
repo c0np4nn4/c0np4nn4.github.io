@@ -1,7 +1,7 @@
 +++
 title = "Campus Life"
 description = "Notes for all campus activity"
-date = 3333-03-03
+date = 3000-01-01
 toc = true
 
 [taxonomies]

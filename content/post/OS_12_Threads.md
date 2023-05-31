@@ -12,6 +12,8 @@ tags = ["OS", "Concurrency", "Threads"]
 math=true
 +++
 
+*2023 Spring, PNU, CB26044 (Professor Ahn)*
+
 ---
 
 # Motivation

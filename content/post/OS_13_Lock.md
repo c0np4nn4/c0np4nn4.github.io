@@ -222,5 +222,52 @@ void lock() {
 void unlock() {
   flag[self] = 0;         // Lock 을 놓습니다.
 }
-
 ```
+
+- `lock()` 함수에서 `turn = other;` 부분은 <txtred>필수적</txtred>으로 있어야 합니다.
+  - `flag[self] = 1;` 직후 ***Context Switch*** 가 일어나는 상황을 가정해봅니다.
+  - 그렇게 되면, 모든 `Thread`가 <txtred>*기다리는*</txtred>상태가 됩니다.
+
+---
+## H/W Supports
+- 즉, `Lock`을 fetch 하는 과정은 크게 두 부분으로 나눌 수 있습니다.
+> - `Lock`이 획득 가능한지 ***TEST***
+> - `Lock`을 획득해오는 ***SET***
+- 이를 `H/W`의 도움을 받아 <txtylw>*Atomic Instruction*</txtylw>으로 구현하면 훨씬 유리합니다.
+
+---
+
+### Test-And-Set (Atomic Exchange)
+- 간단한 `Lock` 을 만드는 코드입니다.
+```c
+int TestAndSet(int *ptr, int new) {
+  int old = *ptr;
+  *ptr = new;
+  return old;
+}
+```
+
+- 위 코드를 아래와 같이 `while` 문 속에서 활용할 수 있습니다.
+```c
+while(TestAndSet(&lock->flag, 1) == 1);
+```
+
+- 처음 TestAndSet 을 호출할 때는 <txtylw>false</txtylw> 이지만, 그 이후에는 <txtylw>true</txtylw> 가 되어 `Critical Section`으로 진입하게 됩니다.
+
+---
+
+- `Test-And-Set`을 평가하면 아래와 같습니다.
+- ***Correctness***: <txtylw>**Yes**</txtylw>
+  - 하나의 `Thread`만 `Critical Section`으로 들어갈 수 있게 합니다.
+- ***Fairness***: <txtred>**No**</txtred>
+  - 극단적인 예로, 어떤 `Thread` 는 평생 *Spin* 할 수도 있습니다..
+  - 이는 <u>*`Process` 의 도착순서와 무관하게 `Lock`을 획득하기 때문*</u> 입니다.
+- ***Performance***
+  - `Single-Cpu` 일 때는 오버헤드가 큽니다.
+  - 하지만, `CPU`의 수만큼 `Thread`가 사용될 때는 꽤 잘 동작한다고 합니다.
+
+---
+
+### Compare-And-Swap
+- `Test-And-Set` 에서는 단순히 `Lock`의 소유 여부만을 검사했습니다.
+- 이번에는 

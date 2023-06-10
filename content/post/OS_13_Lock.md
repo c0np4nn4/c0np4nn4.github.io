@@ -270,4 +270,145 @@ while(TestAndSet(&lock->flag, 1) == 1);
 
 ### Compare-And-Swap
 - `Test-And-Set` 에서는 단순히 `Lock`의 소유 여부만을 검사했습니다.
-- 이번에는 
+- 이번에는 `expected` 값을 추가하여, 예상되는 값인지 <txtred>비교</txtred>하는 부분을 추가합니다.
+
+```cpp
+int CompareAndSwap(int *ptr, int expected, int new) {
+  int actual = *ptr;
+  if (actual == expected)
+    *ptr = new;
+  return actual;
+}
+
+void lock(lock_t *lock) {
+  while (CompareAndSwap(&lock->flag, 0, 1) == 1)
+    ; // spin
+}
+```
+
+---
+
+### Load-Linked and Store-Conditional
+- 간략히 설명하면, <txtylw>*Link 위치의 값(*ptr) 을 미리 로드*</txtylw>해둔 뒤, <txtylw>*해당 Link의 값이 변경되었는지 (conditional)*</txtylw> 검사하여 값(Lock)을 저장하는 방식입니다.
+- 따라서, `Lock` 값을 획득한 직후 만일 <txtred>Context Switch</txtred>가 발생해서 미리 로드했던 `Lock` 값에 대한 변화를 감지할 수 있게 됩니다.
+
+---
+### Fetch-and-Add
+- `Fetch and Add` 는 이전의 값을 반환함과 동시에 값을 증가시키는 코드입니다.
+```cpp
+int FetchAndAdd(int *ptr) {
+  int old = *ptr;
+  *ptr = old + 1;
+  return old;
+}
+```
+
+### Ticket Lock
+- `Ticket Lock`은 `FetchAndAdd`를 기반으로 구현할 수 있는 `Lock` 입니다.
+- 각 프로세스가 `Ticket` 을 받고 자기 차례를 기다림으로써, <txtylw>*Fairness*</txtylw>를 충족시킵니다.
+
+```cpp
+typedef strut __lock_t {
+  int ticket;
+  int turn;
+} lock_t;
+
+void lock_init(lock_t* lock) {
+  lock->ticket = 0;
+  lock->turn = 0;
+}
+
+void lock(lock_t *lock) {
+  int myturn = FetchAndAdd(&lock->ticket);
+  while (lock->turn != myturn)
+    ; //spin
+}
+
+void unlock(lock_t* lock) {
+  FetchAndAdd(&lock->turn);
+}
+```
+
+---
+## Spinning Issue
+- `H/W`의 도움을 받아 구현된 `spin lock`들은 매우 단순하고 잘 작동합니다.
+- 하지만, thread가 spinning에 걸리면 <txtred>*전체 time slice를 아무것도 하지 않고 단순히 value checking*</txtred> 만 하게 된다는 점에서 <txtylw>비효율적</txtylw>입니다.
+- 여기서 <txtylw>***OS***</txtylw>의 도움이 필요합니다.
+
+---
+### Simple Approach: Just yield
+- `spin`에 빠질 것 같으면 일찌감치 `CPU`를 포기하는 방식입니다.
+  - ***OS*** 가 해당 thread를 *running* 에서 *ready* state로 전환합니다.
+  - 그러나, <txtylw>*Context Switch*</txtylw>와 <txtylw>*Starvation*</txtylw> 문제가 여전히 남아있습니다.
+    - **포기**하는 순간 어떤 thread 가 cpu 를 선점해야하는지 정하지 않으면, fairness 문제가 발생하기 때문입니다.
+
+---
+### Using Queue: Sleeping
+- `Queue`를 이용하면, 다음으로 `CPU`를 획득할 thread를 명시할 수 있습니다.
+- 아래 두 함수를 구현합니다.
+> - park(): 호출한 thread 를 `sleep` 시킵니다.
+> - unpark(threadID): `threadID`로 지칭된 thread를 깨웁니다.
+- 아래는 두 함수를 이용한 코드입니다.
+
+```cpp
+typedef struct __lock_t {
+  int flag;
+  int guard;
+  queue_t *q;
+} lock_t;
+
+void lock_init(lock_t *m) {
+  m->flag = 0;
+  m->guard = 0;
+  queue_init(m->q);
+}
+
+void lock(lock_t* m) {
+  while (TestAndSet(&m->guard, 1) == 1)
+    ; // spin 을 돌며 guard lock 을 획득합니다.
+
+  if (m->flag == 0) {
+    m->flag = 1;  // lock을 획득합니다.
+    m->guard = 0;
+  } else {
+    queue_add(m->q, gettid()); // 우선 Queue 에 추가합니다.
+    m->guard = 0;
+    park(); // `sleep` 시킵니다.
+  }
+}
+
+void unlock(lock_t *m) {
+  while (TestAndSet(&m->guard, 1) == 1)
+    ; // spin 을 돌며 guard lock 을 획득합니다.
+  
+  if (queue_empty(m->q))
+    m->flag = 0;  // Queue에서 기다리는 thread가 없으므로, Lock 자체를 놓아버립니다.
+
+  else
+    unpark(queue_remove(m->q)); // Queue 의 가장 상단에서 기다리는 thread를 깨웁니다.
+
+  m->guard = 0;
+}
+```
+
+---
+### Wakeup/Waiting Race
+- 만약 `thread A`가 `Lock`을 갖고 있는 상황에서, `thread B`를 `park()`하려는 순간 ***Context Switch***가 일어났다고 가정해봅니다.
+- `thread A`는 정상적으로 `unlock`을 하겠지만, `thread B`가 아직 `Queue`에 들어온 것은 아니기에 `Lock`을 <u>그냥 놓아버립니다</u>.
+- 결과적으로, `thread B`는 영원히 잠들어 버릴 수도 있습니다...
+- `Solaris OS`에서는 이러한 <txtylw>*곧 sleep이 되는 thread가 있음*</txtylw> 을 처리하기 위한 `setpark()` 시스템 콜을 갖고 있다고 합니다.
+
+---
+- `Linux`에서도`Futex`라는 이름으로 비슷한 개념을 구현하고 있습니다.
+- 정말 간략히 적고 넘어가면, `futex_wait(address, expected)`함수로 '일단 sleep' 시키고, 두 인자 값이 서로 달라지는 순간 sleep 에서 깨는 구조입니다.
+- 또, `futex_wake(address)` 라는 함수로 queue 에서 기다리고 있는 thread 를 지정해서 깨우기도 합니다.
+
+---
+### Two-Phase Locks
+- `Two-Phase Lock`은 `spinning`을 잘 활용한 방법입니다.
+> - *first phase*
+>   - `lock`을 얻기까지 spinning 합니다.
+>   - 여기서 `lock`을 얻지 못하면, 다음 phase로 넘어갑니다.
+> - *second phase*
+>   - 호출자가 `sleep`에 들어갑니다.
+>   - `lock free`가 되는 순간 `sleep`에서 깹니다.

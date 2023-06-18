@@ -51,7 +51,7 @@ body {
         text-decoration: underline;
     }
 
-    @media screen and(max-width: 480px) {
+    @media screen and (max-width: 480px) {
         width: 90%;
     }
 }
@@ -145,7 +145,7 @@ body {
     color: $lighttextcolor;
     text-decoration: none;
 
-    @media screen and(max-width: 480px) {
+    @media screen and (max-width: 480px) {
         display: none;
     }
 }

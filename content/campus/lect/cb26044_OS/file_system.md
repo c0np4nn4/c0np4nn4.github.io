@@ -5,8 +5,8 @@ date = 2023-05-18
 toc = true
 
 [taxonomies]
-categories = [""]
-tags = ["OS", "", ""]
+categories = ["OS"]
+tags = ["OS"]
 
 [extra]
 math=true

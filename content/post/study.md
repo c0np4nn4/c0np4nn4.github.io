@@ -19,3 +19,4 @@ math=true
 
 # Study
 - [Rust basic](../../study/rust/)
+- [OS](../../study/OS/)

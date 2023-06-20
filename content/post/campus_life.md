@@ -28,7 +28,3 @@ math=true
 - [CB26105, PL](../../campus/lect/cb26105_PL/)
 - [CB33987, Android](../../campus/lect/cb33987_android/)
 - [CB35268, Machine Learning](../../campus/lect/cb35268_ML/)
-
----
-
-# Study

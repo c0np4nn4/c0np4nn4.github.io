@@ -218,7 +218,8 @@ pre {
 
 :not(pre) > code {
     background-color: #424242;
-    color: #ffffff;
+    // color: #ffffff;
+    color: orange;
     border-radius: 0.4rem;
     /* border: 0.01rem solid $tender-blue; */
     
@@ -226,7 +227,7 @@ pre {
     margin: 0.3rem;
     margin-left:0rem;
 
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: 'Hahmlet', serif;
 
     // margin: 0rem 0.2rem;

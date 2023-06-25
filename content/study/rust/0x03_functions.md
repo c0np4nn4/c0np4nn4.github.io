@@ -77,11 +77,11 @@ fn main() {
 - 수식 `5 + 6`은 `11` 이라는 값으로 연산됩니다.
 - 이처럼 어떠한 결과값을 내는 것을 `Expression`이라 생각하면 됩니다.
 - `Expression`은 `Statement`의 일부분이 될 수도 있습니다.
-> - `Expression`의 예시들은 아래와 같습니다.
->     - `let y = 6;` 에서 `6`은 값을 나타내는 일종의 `Expression` 입니다.
->     - 함수 호출도 `Expression` 입니다.
->     - 매크로 호출도 `Expression` 입니다.
->     - `{}`로 정의되는 새로운 *block scope* 생성도 일종의 `Expression` 입니다.
+- `Expression`의 예시들은 아래와 같습니다.
+> - `let y = 6;` 에서 `6`
+> - 함수 호출
+> - 매크로 호출
+> - `{}`로 정의되는 새로운 *block scope* 생성
 
 ```rust
 fn main() {

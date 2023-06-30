@@ -13,6 +13,12 @@ math=true
 +++
 
 ---
+# TL;DR
+> - `Rust`는 <txtylw>Compile</txtylw> 단계에서 메모리에 관한 검사를 함
+> - <txtylw>소유권</txtylw>으로 메모리 관리를 할 수 있음
+> - <txtylw>Move</txtylw>, <txtylw>Clone</txtylw>, <txtylw>Copy</txtylw> 의 소유권 이동에 관한 개념이 있음
+
+---
 
 # 🤔 소유권
 - 프로그래밍에서 <txtylw>*메모리 관리*</txtylw> 는 일반적으로 아래 두 방식으로 이뤄집니다.

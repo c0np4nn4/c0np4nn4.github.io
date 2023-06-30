@@ -18,3 +18,4 @@ math=true
 - 0x04. [주석](@/post/0x04_comment.md)
 - 0x05. [제어문](@/post/0x05_control_flow.md)
 - 0x06. [소유권](@/post/0x06_ownership.md)
+- 0x07. [Reference](@/post/0x07_reference.md)

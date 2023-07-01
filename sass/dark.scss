@@ -253,10 +253,28 @@ blockquote {
 
     margin: 0.8rem;
 
+    // border-top-left-radius: 0.8rem;
+    // border-top-right-radius: 0.8rem;
     border-radius: 0.8rem;
     
     font-size: 0.9rem;
     background-color: #2f2f2f;
+
+    overflow-x: scroll;
+
+
+}
+
+blockquote::-webkit-scrollbar {
+    height: 0.3rem;
+    background-color: $backgroundcolor;
+    border-bottom-left-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+}
+
+blockquote::-webkit-scrollbar-thumb {
+    height: 0.3rem;
+    background-color: aquamarine;
 }
 
 :not(code) > table {

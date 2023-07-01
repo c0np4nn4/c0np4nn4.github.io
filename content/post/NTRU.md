@@ -26,9 +26,9 @@ math=true
 > - $\mathcal{L_f}$, $\mathcal{L_g}$, $\mathcal{L_{\phi}}$, $\mathcal{L_m}$
 >     - 정수 계수를 갖는 최고차항이 $N-1$인 다항식들의 집합들입니다.
 
-> - Ring $R=\mathbb{Z}\[X\] / (X^N - 1)$ 상에서의 원소들을 다룹니다.
->     - $F \in R$ 인 $F$는 아래와 같이 <txtylw>벡터</txtylw>로 표현할 수도 있습니다.
->     - $F = \sum_{i=0}^{N-1} F_i x^i = \[F_0, F_1, \dots, F_{N-1}\]$
+> - Ring $\mathcal{R}=\mathbb{Z}\[X\] / (X^N - 1)$ 상에서의 원소들을 다룹니다.
+>     - $F \in \mathcal{R}$ 인 $F$는 아래와 같이 <txtylw>벡터</txtylw>로 표현할 수도 있습니다.
+>     - $F = \sum\limits_{i=0}^{N-1} F_i x^i = \[F_0, F_1, \dots, F_{N-1}\]$
 
 > > - $\bmod (X^N-1)$ 상에서의 곱셈을 $\circledast$로 표기하고, *Star Multiplication* 라 읽습니다.
 > >     - <txtylw>Cyclic Convolution product</txtylw> 연산이며, 아래와 같이 정의됩니다.
@@ -55,7 +55,7 @@ math=true
 >     - <txtylw>비밀키</txtylw>를 이용하면, 오직 `Bob`만이 ***암호화된 데이터*** 를 복호화할 수 있습니다.
 
 > - 키 생성에는 $f, g \in \mathcal{L_g}$인 <txtylw>다항식</txtylw> $f, g$ 가 사용됩니다.
-> - 이때, $f$ 는 아래와 같이 Ring $\mathbb{R}$ 상에서 $\bmod q$, $\bmod p$ 에 대한 <txtred>역원을 가진다</txtred>는 조건을 만족하는 다항식 입니다. $f_p$, $f_q$는 각각 $\bmod p$, $\bmod q$ 에서의 <txtylw>역원</txtylw>입니다.
+> - 이때, $f$ 는 아래와 같이 Ring $\mathcal{R}$ 상에서 $\bmod q$, $\bmod p$ 에 대한 <txtred>역원을 가진다</txtred>는 조건을 만족하는 다항식 입니다. $f_p$, $f_q$는 각각 $\bmod p$, $\bmod q$ 에서의 <txtylw>역원</txtylw>입니다.
 > 
 > $$
 > \begin{align}
@@ -132,19 +132,105 @@ math=true
 
 ---
 
-## ⚙ 인자 선택, Parameters
-- 앞서 살펴본 `NTRU Algorithm`을 위해 몇 가지 인자를 설정해야 합니다.
-- $N, q$ 는 보통 2의 거듭제곱 ($2^k$)로 정해집니다.
-- $p$ 는 $q$ 보다 매우 작은 홀수로 정해지며, $\gcd(p, q) = 1$을 만족해야 합니다.
+# ⚙ 인자 선택, Parameters
+- 앞서 살펴본 `NTRU Algorithm`을 진행하기 위해 <txtylw>인자</txtylw>를 선택할 때의 고려 사항에 관해 살펴봅니다.
+> - $N, q$ 는 보통 2의 거듭제곱 ($2^k$)로 정해집니다.
+> - $p$ 는 $q$ 보다 매우 작은 홀수로 정해지며, $\gcd(p, q) = 1$을 만족해야 합니다.
 
 ---
 
-### Norm estimate
-- 우선 <txtylw>*Width*</txtylw> 라 불리는 값을 정의합니다. <txtylw>*Width*</txtylw>는 <txtylw>다항식의 계수</txtylw> 중 <u>가장 큰 수</u>와 <u>가장 작은 수</u>의 차이를 의미하며, 아래와 같이 표기합니다.
-$$\mid F\mid_{\infty}=\max\limits_{0\le i \le N-1} \\{ F_i \\} - \min\limits_{0\le i \le N-1} \\{ F_i \\} $$
-- 그리고, 아래와 <txtylw>다항식 계수의 평균값</txtylw>인 $\bar{F}$ 를 구해서 아래의 값을 정의합니다.
-$$\mid F\mid_{2}=\big(\sum\limits_{i=0}^{N-1} (F_i - \bar{F})^2 \big)^{\frac{1}{2}}$$
+## ⚙ Norm estimate
+> - 우선 <txtylw>*Width*</txtylw> 라 불리는 값을 정의합니다. <txtylw>*Width*</txtylw>는 <txtylw>다항식의 계수</txtylw> 중 <u>가장 큰 수</u>와 <u>가장 작은 수</u>의 차이를 의미하며, 아래와 같이 표기합니다.
+> $$\mid F\mid_{\infty}=\max\limits_{0\le i \le N-1} \\{ F_i \\} - \min\limits_{0\le i \le N-1} \\{ F_i \\} $$
+
+> - 그리고, 아래와 <txtylw>다항식 계수의 평균값</txtylw>인 $\bar{F}$ 를 구해서 아래의 값을 정의합니다.
+> $$\mid F\mid_{2}=\big(\sum\limits_{i=0}^{N-1} (F_i - \bar{F})^2 \big)^{\frac{1}{2}}$$
 
 - 앞서 구한 $\mid F\mid_{\infty}, \mid F\mid_{2}$ 를 기반으로, `Don Coppersmith`의 아래 명제를 이해할 수 있습니다.
-    - $\epsilon > 0$인 경우, $\epsilon$과 $N$값에 따라 상수 $\gamma_1, \gamma_2 > 0$이 존재하며, 무작위로 선택된 <txtylw>두 다항식</txtylw> $F, G \in \mathbb{R}$이 아래의 부등식을 만족한다.
-    $$\gamma_1 \mid F\mid_{2} \mid G\mid_{2} \\ \le \\ \mid F \circledast G \mid_{\infty} \\ \le \\ \gamma_2 \mid F\mid_{2}\mid G\mid_{2}$$
+> - $\epsilon > 0$인 경우, $\epsilon$과 $N$값에 따라 상수 $\gamma_1, \gamma_2 > 0$이 존재하며, <txtylw>무작위로 선택된 두 다항식</txtylw> $F, G \in \mathcal{R}$이 아래의 부등식을 만족한다.
+> $$\gamma_1 \mid F\mid_{2} \mid G\mid_{2} \\ \le \\ \mid F \circledast G \mid_{\infty} \\ \le \\ \gamma_2 \mid F\mid_{2}\mid G\mid_{2}$$
+
+---
+
+## ⚙ Sample Spaces
+> - 평문 $m$에 관한 $\mathcal{L_m}$ 에 대해 아래와 같이 정의합니다.
+> $$\mathcal{L_m} = \big{\\{} m \in \mathcal{R}: \text{coefficients are lying between} -\frac{1}{2} (p-1) \\ \text{and} \\ \frac{1}{2}(p-1) \big{\\}}$$
+> - 따라서, $\bmod p$ 에 의해 평문 $m$이 변하는 일도 없습니다.
+
+> > - 나머지 집합 $\mathcal{L_f}, \mathcal{L_g}, \mathcal{L_{\phi}}$ 에 관해서는 아래의 수식을 이용합니다.
+> > $$\mathcal{L}(d_1, d_2) := \big\\{ \mathcal{F} \in \mathcal{R} \mid \mathcal{F} \\ \text{has} \\
+> > \begin{cases}
+> > d_1 \\ \text{coefficients equal to 1} \newline
+> > d_2 \\ \text{coefficients equal to -1} \newline
+> > \text{rests are equal to 0} \newline
+> > \end{cases}
+> > \big\\}$$
+> > - 즉, <u><txtylw>계수</txtylw>가 **1**인 항이 $d_1$개</u>, <u><txtylw>계수</txtylw>가 **-1**인 항이 $d_2$개</u>, <u>나머지는 모두 0</u>임을 나타내는 수식입니다.
+> 
+> > - 예를 들어, $N$ = 5, $d_1 = 2$, $d_2 = 1$ 인 경우 아래와 같이 생각할 수 있습니다.
+> > $$\mathcal{L}(2, 1) \ni 1 * x^4 - x^3 + 0 * x^2 + 0 * x^1 + 1$$
+> > - 벡터로 나타내면, $[1, -1, 0, 0, 1]$ 입니다.
+
+> > - 위 수식과 함께 인자 $d_f, d_g, d_{\phi}$ 를 추가로 활용하여 <txtred>*sample space*</txtred> 를 아래와 같이 정의합니다.
+> > $$
+> > \begin{align}
+> > \mathcal{L_f} & = \mathcal{L}(d_f, d_f - 1) \newline
+> > \mathcal{L_g} & = \mathcal{L}(d_g, d_g) \newline
+> > \mathcal{L_{\phi}} & = \mathcal{L}(d_{\phi}, d_{\phi}) \newline
+> > \end{align}
+> > $$
+> 
+> > - 이 때, $\mathcal{L_f} = \mathcal{L}(d_f, d_f)$ 로 정하게 되면, $f(1) = 0$ 을 만족하게 된다고 합니다.
+> > - 즉 $f = (x-1)k(x)$ 가 되는데, 이렇게 되면 modulo $x^N -1$ 상에서 $\gcd(x^N-1, f) \neq 1$가 되므로, <txtylw>역원</txtylw>을 갖지 못합니다.
+> > - 앞서 <txtred>키 생성</txtred> 에서 $f_p$, $f_q$라는 <txtylw>역원</txtylw>을 사용함을 상기할 필요가 있습니다.
+> > - 따라서, $\mathcal{L_f} = \mathcal{L}(d_f, d_f - 1)$ 로 정의합니다.
+
+> - 각 <txtred>*Sample space*</txtred>의 원소인 $f, g, \phi$ 는 각각 아래와 같은 $L^2$ norm 을 갖습니다.
+> $$
+> \begin{align}
+> |f \mid_2 & = \sqrt{2d_f - 1 - N^{-1}} \newline
+> |g \mid_2 & = \sqrt{2d_g} \newline
+> |\phi \mid_2 & = \sqrt{2d_{\phi}}
+> \end{align}
+> $$
+
+---
+
+## ⚙ Decryption Criterion
+> - <txtylw>복호화 단계</txtylw>에서 $a = p\phi \circledast g + f \circledast m \bmod q$ 를 할 때, $\bmod q$ 에 의해 값이 바뀌지 않도록 해야 합니다.
+> - 이를 위해서는, $|p\phi \circledast g + f \circledast m\mid_{\infty} < q$ 를 만족해야 합니다.
+>     - 만약 $q$ 이상이 되면, $\bmod q$에 의해 값이 줄어들기 때문으로 이해할 수 있습니다.
+>         - $q \equiv 0 \bmod q$
+>         - $q + 1 \equiv 1 \bmod q$
+>         - $q + 2 \equiv 2 \bmod q$
+> - 이는 아래 두 식을 만족하도록 <txtylw>인자를 선택</txtylw>하면 거의 항상 참이 된다고 합니다.
+> $$
+> \begin{align}
+> & \mid f \circledast m \mid_{\infty} \\  \le \\  q / 4 \newline
+> & \mid p\phi \circledast g \mid_{\infty} \\  \le \\ q / 4 \newline
+> \end{align}
+> $$
+
+> - 앞서 살펴본 `Don Coppersmith`의 <txtylw>명제</txtylw>의 부등식에 의해, 수 $\epsilon$에 따라 $1-\epsilon$의 확률로 아래의 값을 얻을 수 있습니다.
+> $$
+> \begin{align}
+> & \mid f \mid_{2} \mid m \mid_{2} \\ \approx \\  \frac{q}{4\gamma_2} \newline
+> & \mid \phi \mid_{2} \mid g \mid_{2} \\ \approx \\  \frac{q}{4p\gamma_2} \newline
+> \end{align}
+> $$
+
+---
+# 🛡 Security Analysis
+
+---
+# 🛠 Practical Implementations of NTRU
+
+---
+# 🎇 Additional Topics
+
+---
+# 📚 Reference
+- [NTRU a lattice-based encryption system, Eindhoven University of Technology](https://pure.tue.nl/ws/portalfiles/portal/69853173/Wit_2014.pdf)
+- [The Mathematics of the NTRU PKC, Abderrahmane Nitaj](https://nitaj.users.lmno.cnrs.fr/ntru3final.pdf)
+- [NTRU: A Ring-Based PKC, HPS98, pdf](https://www.ntru.org/f/hps98.pdf)
+- [NTRU: A Ring-Based PKC, HPS98, slideplayer](https://slideplayer.com/slide/5368908/)

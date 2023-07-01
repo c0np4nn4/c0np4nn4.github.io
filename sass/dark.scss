@@ -267,6 +267,7 @@ blockquote {
 
 blockquote::-webkit-scrollbar {
     height: 0.3rem;
+    width: 0.3rem;
     background-color: $backgroundcolor;
     border-bottom-left-radius: 0.8rem;
     border-bottom-right-radius: 0.8rem;
@@ -274,6 +275,7 @@ blockquote::-webkit-scrollbar {
 
 blockquote::-webkit-scrollbar-thumb {
     height: 0.3rem;
+    width: 0.3rem;
     background-color: aquamarine;
 }
 

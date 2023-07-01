@@ -111,7 +111,7 @@ math=true
 > \end{align}
 > $$
 > - <txtylw>다항식</txtylw> $a$의 <txtylw>계수</txtylw>가 모두 $-q/2$ 에서 $q/2$ 사이이므로, $\bmod q$ 를 하더라도 <txtred>계수가 그대로</txtred>있게 됩니다.
->    - 범위를 좀 더 정확히 적자면 $-\lfloor \frac{q-1}{2} \rfloor$ 이상 $\lceil \frac{q-1}/{2} \rceil$ 이하 입니다.
+>    - 범위를 좀 더 정확히 적자면 $-\lfloor \frac{q-1}{2} \rfloor$ 이상 $\lceil \frac{q-1}{2} \rceil$ 이하 입니다.
 
 > - 따라서, $a$ 에 대한 수식을 정리하면 아래와 같습니다.
 > $$a = p\phi \circledast g + f \circledast m \\ \\ \text{in} \\ \\ \mathbb{Z}\[X\]/(X^N - 1)$$

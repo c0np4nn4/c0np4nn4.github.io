@@ -25,3 +25,7 @@ math=true
 - 0x06. [소유권](@/post/0x06_ownership.md)
 - 0x07. [Reference](@/post/0x07_reference.md)
 - 0x08. [Slice](@/post/0x08_slice.md)
+
+---
+📙 Struct
+- 0x09. [Struct](@/post/0x09_struct.md)

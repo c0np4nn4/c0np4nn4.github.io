@@ -12,6 +12,7 @@ tags = ["cryptography"]
 math=true
 +++
 
+---
 - Discrete Logarithm Problem[[#]](@/post/DLP.md)
     - Baby-Step Giant-Step [[#]](@/post/baby_step_giant_step.md)
 - NTRU[[#]](@/post/NTRU.md)

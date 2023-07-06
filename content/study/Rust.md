@@ -36,3 +36,8 @@ math=true
 📙 Enum
 - 0x0C. [Enum](@/post/0x0C_enum.md)
 - 0x0D. [Match 제어문](@/post/0x0D_match_control_flow.md)
+- 0x0E. [if let 구문](@/post/0x0E_if_let.md)
+
+---
+📙 Managing Growing Projects
+- 0x0F. [Packages and Crates](@/post/0x0F_packages_and_crates.md)

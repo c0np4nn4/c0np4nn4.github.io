@@ -108,6 +108,35 @@ fn main() {
 - 반복문에서는 `조건`에 따라 `break`, `continue`를 주는 경우가 많습니다.
 - 이를 `loop` 보다 `while` 로 구현하면 좀 더 용이합니다.
 
+```rust
+fn main() {
+    let mut cnt = 1;
+
+    while cnt < 10 {
+        println!("count: {cnt}");
+
+        cnt += 1;
+    }
+}
+```
+
 ---
 ### 📍 for
 - 또, ***Array***, ***Tuple*** 등과 같은 일종의 `collection`을 반복적으로 참조하거나 할 때는 `for`를 사용하면 편리합니다.
+
+```rust
+fn main() {
+    let msg: String = "Hello, world!".to_string();
+
+    // for 
+    for (_, c) in msg.as_bytes().iter().enumerate() {
+        if *c as char == ',' {
+            break;
+        }
+
+        print!("{}", c.clone() as char);
+    }
+
+    println!("");
+}
+```

@@ -31,3 +31,8 @@ math=true
 - 0x09. [Struct](@/post/0x09_struct.md)
 - 0x0A. [Struct Usage](@/post/0x0A_struct_usage.md)
 - 0x0B. [Method Syntax](@/post/0x0B_method.md)
+
+---
+📙 Enum
+- 0x0C. [Enum](@/post/0x0C_enum.md)
+- 0x0D. [Match 제어문](@/post/0x0D_match_control_flow.md)

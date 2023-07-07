@@ -41,3 +41,5 @@ math=true
 ---
 📙 Managing Growing Projects
 - 0x0F. [Packages and Crates](@/post/0x0F_packages_and_crates.md)
+- 0x10. [Modules, Scope and Privacy](@/post/0x10_modules_scope_privacy.md)
+- 0x11. [Paths in the Module Tree](@/post/0x11_path_in_module_tree.md)

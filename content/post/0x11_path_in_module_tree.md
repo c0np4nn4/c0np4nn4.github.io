@@ -47,3 +47,43 @@ pub fn eat_at_restaurant() {
 ---
 ## 📍 Exposing with 'pub' keyword
 - `pub` 키워드를 사용하면 <txtred>*private*</txtred> 을 <txtred>*public*</txtred> 으로 바꿀 수 있습니다.
+- `pub`을 적절히 사용하여 <txtylw>API</txtylw>를 구성하는 방법은 [Rust API Guide](https://rust-lang.github.io/api-guidelines/)에서 보다 자세히 확인할 수 있습니다.
+
+> - `src/main.rs` 와 `src/lib.rs` 를 모두 갖고 있는 Pacakge의 경우 아래와 같이 코드가 구성됩니다.
+>     - `lib.rs`에 module tree 를 명시
+>     - `main.rs`는 마치 *외부 rust binary* 처럼 `lib.rs`의 코드를 사용
+> - 따라서, 이러한 구성은 `API`를 설계할 때 유리합니다.
+
+---
+## 📍 Relative Path: 'super' keyword
+- 상위 모듈에 접근할 때 사용하는 키워드 입니다.
+```rust
+fn foo() {}
+
+mod myModule {
+    fn foo2() {
+        bar();
+        super::foo();
+    }
+
+    fn bar() {}
+}
+```
+
+---
+## 📍 'pub' keyword w/ Struct and Enum
+- `Struct`는 `pub`을 각 <txtylw>field</txtylw>에 대해 지정할 수 있습니다.
+```rust
+pub struct myStruct {
+    field_1: u8,
+    pub field_2: u8,
+}
+```
+
+- 반면, `Enum`은 `pub`을 하면 모든 타입이 `pub`이 됩니다.
+```rust
+pub enum myEnum {
+    type_1,
+    type_2,
+}
+```

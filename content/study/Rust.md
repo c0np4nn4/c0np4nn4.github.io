@@ -43,3 +43,6 @@ math=true
 - 0x0F. [Packages and Crates](@/post/0x0F_packages_and_crates.md)
 - 0x10. [Modules, Scope and Privacy](@/post/0x10_modules_scope_privacy.md)
 - 0x11. [Paths in the Module Tree](@/post/0x11_path_in_module_tree.md)
+- 0x12. [Use keyword](@/post/0x12_use_keyword.md)
+- 0x13. [Modules and Files](@/post/0x13_modules_and_files.md)
+

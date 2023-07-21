@@ -12,6 +12,7 @@ tags = ["Solidity", "Ethereum"]
 math=true
 +++
 
+---
 # 📄 코드 분석
 
 ```solidity

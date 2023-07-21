@@ -17,7 +17,13 @@ math=true
 
 ---
 # 📗 Write-up
+
+<center>
+
 | 문제 | Write-up |
 | --- | --- |
 | 1. Fallback | [fallback](@/post/0x01_ethernaut_fallback.md) |
 | 2. Fallout | [fallout](@/post/0x02_ethernaut_fallout.md) |
+| 3. CoinFlip| [CoinFlip](@/post/0x03_ethernaut_coinflip.md) |
+
+</center>

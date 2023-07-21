@@ -51,3 +51,9 @@ math=true
 - 0x14. [Vector](@/post/0x14_vector.md)
 - 0x15. [String](@/post/0x15_string.md)
 - 0x16. [Hashmap](@/post/0x16_hashmap.md)
+
+---
+📙 Error Handling
+- 0x17. [panic!](@/post/0x17_panic.md)
+- 0x18. [Result](@/post/0x18_Result.md)
+

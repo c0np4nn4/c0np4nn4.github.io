@@ -46,3 +46,8 @@ math=true
 - 0x12. [Use keyword](@/post/0x12_use_keyword.md)
 - 0x13. [Modules and Files](@/post/0x13_modules_and_files.md)
 
+---
+📙 Common Collections
+- 0x14. [Vector](@/post/0x14_vector.md)
+- 0x15. [String](@/post/0x15_string.md)
+- 0x16. [Hashmap](@/post/0x16_hashmap.md)

@@ -6,7 +6,7 @@ toc = true
 
 [taxonomies]
 categories = ["Ethernaut"]
-tags = ["Solidity", "Ethereum", "Foundry"]
+tags = ["Solidity", "Ethereum"]
 
 [extra]
 math=true

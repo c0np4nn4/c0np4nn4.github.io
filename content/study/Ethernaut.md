@@ -19,4 +19,5 @@ math=true
 # 📗 Write-up
 | 문제 | Write-up |
 | --- | --- |
-| 1. Fallback | [fallback](@/post/ethernaut_fallback.md) |
+| 1. Fallback | [fallback](@/post/0x01_ethernaut_fallback.md) |
+| 2. Fallout | [fallout](@/post/0x02_ethernaut_fallout.md) |

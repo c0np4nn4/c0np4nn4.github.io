@@ -57,3 +57,8 @@ math=true
 - 0x17. [panic!](@/post/0x17_panic.md)
 - 0x18. [Result](@/post/0x18_Result.md)
 
+---
+📙 Generic Types, Traits, and Lifetimes
+- 0x19. [Generic Types](@/post/0x19_generic.md)
+- 0x1A. [Trait](@/post/0x1A_trait.md)
+

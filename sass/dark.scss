@@ -218,7 +218,8 @@ pre {
 }
 
 :not(pre) > code {
-    color: gainsboro;
+    // color: gainsboro;
+    color: #6196be;
     background-color: #1f1f1f;
     border-radius: 0.5rem;
     padding: 0.1rem 0.3rem;
@@ -270,6 +271,7 @@ blockquote::-webkit-scrollbar-thumb {
     max-width: 90%;
     /* border: 1px solid white; */
     background: #2f2f2f;
+
 }
 
 table th {

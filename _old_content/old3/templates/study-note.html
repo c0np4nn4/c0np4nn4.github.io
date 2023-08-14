@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>
+    Study Note
+</h3>
+
+<div>
+    공부한 것들을 정리한 공간입니다.
+</div>
+
+{% for year, posts in section.pages | group_by(attribute="year") %}
+    <h3>{{ year }}</h3>
+
+    {% for post in posts %}
+    <p>
+      <div class="date">
+        {{ post.date }}
+      </div>
+      <div class="archive_title">
+        <a href="{{ post.permalink }}">{{ post.title }}</a>
+      </div>
+      <div class="taxonomies_index">
+          {% if post.taxonomies.categories %}
+              {% for category in post.taxonomies.categories %}
+              &emsp;<a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">/{{ category }}</a>
+              {% endfor %}
+          {% endif %}
+          {% if post.taxonomies.tags %}
+              {% for tag in post.taxonomies.tags %}
+              &emsp;<a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">#{{ tag }}</a>
+              {% endfor %}
+          {% endif %}
+      </div>      
+    </p>
+    {% endfor %}
+    
+{% endfor %}
+
+{% endblock content %}
+
+

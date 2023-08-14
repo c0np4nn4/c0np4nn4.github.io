@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  {% block title %}
+  <title>{{ config.title }}</title>
+  {% endblock %}
+
+  <link rel="shortcut icon" type="image/png" href="{{ config.extra.emily_favicon }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link id="stylesheet" rel="stylesheet" type="text/css" href="/dark.css">
+
+  <script type="text/javascript" src="/js/theme.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Dongle:wght@300&family=Hahmlet:wght@500&family=Hi+Melody&family=Martel+Sans:wght@900&family=Noto+Serif+KR:wght@500&display=swap" rel="stylesheet">
+
+</head>
+
+<div class="header">
+  <div class="site_title">
+    <p><a href="/"><img src="{{ config.base_url }}{{ config.extra.emily_icon }}" alt="{{ config.title }}"
+          width="{{ config.extra.emily_iconsize }}" height=auto></a></p>
+    <p><a href="/">&nbsp;{{ config.title }}</a></p>
+  </div>
+  <div class="menu">
+    <a href="/post">>archives</a>
+    &nbsp;
+    <a href="/about">>about</a>
+    <!-- &nbsp; -->
+    <!-- <a href="/daily">>daily</a> -->
+    &nbsp;
+    <a href="/study">>study</a>
+  </div>
+</div>
+
+<body onload="getTheme()">
+  <section class="section">
+    <div class="container">
+      {% block content %} {% endblock %}
+    </div>
+  </section>
+</body>
+
+<div class="footer">
+  <a href="/">{{ config.title }}</a>&emsp;&copy; {{ config.extra.emily_author }}<br>
+  powered by <a href="https://www.getzola.org/">Zola</a>, theme <a
+    href="https://github.com/kyoheiu/emily_zola_theme">emily</a>.
+</div>
+
+</html>
+

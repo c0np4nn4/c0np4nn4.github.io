@@ -16,3 +16,13 @@ date = "2023-08-15"
 이번 테마에서부터는 글을 한 문장씩 끊어쓰는 것이 아니라 `한 문단`씩 정리해서 써보려고 한다. 
 `Markdown` 으로 글을 작성하다보니 자연스레 `-` 를 사용해서 `한 문장`씩 쓰곤 했는데, 가독성에도 큰 효용은 없는 것 같고 글쓰기 연습에도 큰 효과가 없었던 것 같다.
 
+<script src="https://utteranc.es/client.js"
+        repo="c0np4nn4/utterance_repo"
+        issue-term="pathname"
+        label="utterances"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+

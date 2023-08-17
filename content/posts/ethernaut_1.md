@@ -104,3 +104,13 @@ date = "2023-08-17"
 <center>
 <img alt="Done" src="../../ethernaut_img/1_fallback_3.png" />
 </center>
+
+<script src="https://utteranc.es/client.js"
+        repo="c0np4nn4/utterance_repo"
+        issue-term="pathname"
+        label="utterances"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+

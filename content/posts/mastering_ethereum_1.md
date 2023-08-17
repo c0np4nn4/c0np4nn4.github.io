@@ -123,3 +123,13 @@ date = "2023-08-15"
 이번 장에서는 원론적인 이야기와 이더리움 전반에 관한 내용을 간략히 다루었습니다.
 이더리움의 구체적인 스펙에 관해서는 다음 장부터 소개되는 것으로 보입니다.
 
+<script src="https://utteranc.es/client.js"
+        repo="c0np4nn4/utterance_repo"
+        issue-term="pathname"
+        label="utterances"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+

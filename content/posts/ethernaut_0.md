@@ -42,3 +42,13 @@ yarn start:ethernaut # Ethernaut 웹 페이지
 # 팁
 간혹, 로컬에서 Tx가 fail 되는 경우가 있습니다.
 이 때는 지갑의 Nonce 정보를 초기화해주면 됩니다.
+
+<script src="https://utteranc.es/client.js"
+        repo="c0np4nn4/utterance_repo"
+        issue-term="pathname"
+        label="utterances"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+

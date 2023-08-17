@@ -63,3 +63,14 @@ EVM 은 이러한 트랜잭션을 일종의 `입력값`으로 사용하여 컨�
 
 # TODO
 `Hardhat`을 이용해 간단한 `Faucet` 컨트랙트를 로컬 네트워크에 배포하고 호출하는 예제를 진행해보려 합니다.
+
+<script src="https://utteranc.es/client.js"
+        repo="c0np4nn4/utterance_repo"
+        issue-term="pathname"
+        label="utterances"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+

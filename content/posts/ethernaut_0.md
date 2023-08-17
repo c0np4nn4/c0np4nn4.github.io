@@ -1,5 +1,5 @@
 +++
-title = "Ethernaut 0"
+title = "Ethernaut Introduction"
 date = "2023-08-15"
 +++
 

@@ -16,8 +16,8 @@ toc = true
 use_cdn = true
 favicon = "/icon/favicon.png"
 theme = "toggle" # light, dark, auto, toggle
-# mathjax = true
-# mathjax_dollar_inline_enable = true
+mathjax = true
+mathjax_dollar_inline_enable = true
 
 menu = [
     { name = "/posts", url = "/posts", weight = 1 },

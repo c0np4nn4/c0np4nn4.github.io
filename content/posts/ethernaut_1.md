@@ -9,6 +9,10 @@ date = "2023-08-17"
 
 ---
 
+# TL;DR
+> `fallback()`, `receive()` 함수를 구현할 때는 ownership에 관해서 조심히 다뤄야 함을 보여주는 문제입니다.
+> 위 두 함수에 대해 알고 있는지 묻는 문제입니다.
+
 # Description
 문제에서 제공하는 `FallbackFactory` 컨트랙트의 `validateInstance()` 함수를 살펴보면 아래와 같습니다.
 

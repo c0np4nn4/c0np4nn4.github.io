@@ -3,14 +3,20 @@ title = "CoinFlip"
 date = "2023-08-20"
 +++
 
+
 ---
 
 > My Solutions: [github](https://github.com/c0np4nn4/EtherStudy/tree/main/ethernaut_solution)
 
 ---
 
+
 # TL;DR
 > 스마트 컨트랙트 상에서 ***Randomness*** 를 구현하는 것의 어려움을 확인하는 문제입니다.
+
+<center>
+<img alt="main image" src="https://images.unsplash.com/photo-1624365169198-38255ba54160?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" />
+</center>
 
 # Introduction
 
@@ -138,3 +144,13 @@ main().catch((error) => {
 스마트 컨트랙트 상에서 `랜덤값`을 기반으로 한 구현의 어려움을 확인할 수 있었습니다.
 특히, 블록체인 상에 기록되는 값을 기반으로 해서 `랜덤`을 구현하는 것은 전혀 `랜덤`이 아님을 확인할 수 있습니다.
 따라서 `Hash Value`를 이용한 컨트랙트를 작성하고자 한다면, `input` 값은 off-chain 에 두는 것이 안전함을 알 수 있습니다.
+
+<script src="https://utteranc.es/client.js"
+        repo="c0np4nn4/utterance_repo"
+        issue-term="pathname"
+        label="utterances"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+

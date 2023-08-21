@@ -15,3 +15,4 @@ remote_image = "https://images.unsplash.com/photo-1639152201720-5e536d254d81?ixl
 - 0x01.[Fallback](@/posts/ethernaut_1.md)
 - 0x02.[Fal1out](@/posts/ethernaut_2.md)
 - 0x03.[CoinFlip](@/posts/ethernaut_3.md)
+- 0x04.[Telephone](@/posts/ethernaut_4.md)

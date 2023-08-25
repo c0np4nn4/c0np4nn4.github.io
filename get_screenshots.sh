@@ -1,2 +1,2 @@
- cp -r ~/Pictures/* ./static/ethernaut_img/
-echo "copy done"
+ cp -r ~/Pictures/* ./static/
+echo "[+] copy done"

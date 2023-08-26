@@ -20,3 +20,6 @@ remote_image = "https://images.unsplash.com/photo-1639152201720-5e536d254d81?ixl
 | 0x03 | [CoinFlip](@/posts/ethernaut_3.md) | `Randomness` on EVM | [coinflip.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/coinflip.js) |
 | 0x04 | [Telephone](@/posts/ethernaut_4.md) | `tx.origin` and `msg.sender` | [telephone.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/telephone.js) |
 | 0x05 | [Token](@/posts/ethernaut_5.md) | `Under/Overflow` | [token.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/token.js) |
+| 0x06 | [Delegation](@/posts/ethernaut_6.md) | `delegateCall` | [delegation.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/delegation.js) |
+| 0x07 | [Force](@/posts/ethernaut_7.md) | `selfdestruct` | [force.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/force.js) |
+| 0x08 | [Vault](@/posts/ethernaut_8.md) | `Storage` | [vault.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/wo_log/vault.js) |

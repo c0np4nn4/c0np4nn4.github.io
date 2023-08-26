@@ -11,7 +11,7 @@ date = "2023-08-24"
 ---
 
 # TL;DR
-> ***Delegation Call*** 과 ***storage slot***에 대한 문제입니다.
+> ***delegateCall*** 과 ***storage slot***에 대한 문제입니다.
 
 <center>
 <img alt="main image" src="https://images.unsplash.com/photo-1524769490-6d12a683d9ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2035&q=80" />

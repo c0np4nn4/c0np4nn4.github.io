@@ -23,3 +23,5 @@ remote_image = "https://images.unsplash.com/photo-1639152201720-5e536d254d81?ixl
 | 0x06 | [Delegation](@/posts/ethernaut_6.md) | `delegateCall` | [delegation.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/delegation.js) |
 | 0x07 | [Force](@/posts/ethernaut_7.md) | `selfdestruct` | [force.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/force.js) |
 | 0x08 | [Vault](@/posts/ethernaut_8.md) | `Storage` | [vault.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/wo_log/vault.js) |
+| 0x09 | [King](@/posts/ethernaut_9.md) | `Ownership`, `malicious receive()` | [king.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/wo_log/king.js) |
+| 0x0A | [Re-entrance](@/posts/ethernaut_10.md) | `Re-Entrancy` | [reentrance.js](https://github.com/c0np4nn4/EtherStudy/blob/main/ethernaut_solution/scripts/wo_log/reentrance.js) |

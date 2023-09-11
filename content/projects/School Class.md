@@ -19,5 +19,5 @@ remote_image = "https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixl
 - [Compiler](@/posts/2023_fall_Compiler.md)
 - [Database](@/posts/2023_fall_DB.md)
 - Design and Implement Embedded Systems
-- Network Security
+- [Network Security](@/posts/2023_fall_NetworkSecurity.md)
 - Software Engineering

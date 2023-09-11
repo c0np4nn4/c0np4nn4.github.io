@@ -60,7 +60,9 @@ src="https://images.unsplash.com/photo-1552819401-700b5e342b9d?ixlib=rb-4.0.3&ix
 
 # Exploit
 ## Strategy
-(overview 그림 추가 예정)
+<center>
+<img alt="overview" src="../../ethernaut_img/10_reentrance_3.png" />
+</center>
 
 앞서 설명한대로, `Attacker` 계정에서 `receive()` 함수 내에 `withdraw()`를 호출하도록 정의한뒤,  `withdraw()`를 호출하여 ***Recursive call*** 을 일으킵니다.
 

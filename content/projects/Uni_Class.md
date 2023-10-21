@@ -1,5 +1,5 @@
 +++
-title = "School Class"
+title = "Uni Class"
 description = "Computer Sciecne & Engineering"
 weight = 1
 

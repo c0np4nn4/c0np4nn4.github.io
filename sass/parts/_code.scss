@@ -111,3 +111,10 @@ pre code[class*="language-rs"]::before {
   background: #fff8f6;
   color: #ff4647;
 }
+
+pre code[class*="language-solidity"]::before,
+pre code[class*="language-sol"]::before {
+  content: "solidity";
+  background: #fff8f6;
+  color: #ff4647;
+}

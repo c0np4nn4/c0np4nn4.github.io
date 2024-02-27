@@ -33,6 +33,11 @@ html {
   transform-origin: top; 
 }
 
+code {
+  color: crimson;
+  background-color: lightgray;
+}
+
 @media all and (min-width:640px) {
   html {
     font-size: 16.5px;

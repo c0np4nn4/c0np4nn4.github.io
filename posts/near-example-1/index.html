@@ -1,0 +1,58 @@
+<!doctype html><html class="dark light"><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=3_fDSANQ1lZHsWb4hxyDgILfwMpL33vhlCIi37-BkDM name=google-site-verification><title>
+     NEAR smart contract example 1
+    
+  </title><meta content="NEAR smart contract example 1" property=og:title><link href=/icon/favicon.png rel=icon type=image/png><link href=https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@4.5.8/index.min.css rel=stylesheet><script>MathJax={tex:{inlineMath:[[`\$`,`\$`],[`\\\\(`,`\\\\)`]]}}</script><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><link href="https://c0np4nn4.github.io/ atom.xml" rel=alternate title=c0np4nn4 type=application/atom+xml><link href=https://c0np4nn4.github.io/theme/light.css rel=stylesheet><link href=https://c0np4nn4.github.io/theme/dark.css id=darkModeStyle rel=stylesheet><link href=https://c0np4nn4.github.io/main.css media=screen rel=stylesheet><script src=https://c0np4nn4.github.io/js/feather.min.js></script><body><div class=content><header><div class=main><a href=https://c0np4nn4.github.io/>c0np4nn4</a><div class=socials><a class=social href=https://github.com/c0np4nn4 rel=me> <img alt=github src=/social_icons/github.svg> </a></div></div><nav><a href=/posts style=margin-left:.7em>/posts</a><a href=/projects style=margin-left:.7em>/projects</a><a href=/about style=margin-left:.7em>/about</a></nav><nav>| <a href id=dark-mode-toggle onclick=toggleTheme()></a><script src=https://c0np4nn4.github.io/js/themetoggle.js></script></nav></header><main><article><div class=title><div class=page-header>NEAR smart contract example 1<span class=primary-color style=font-size:1.6em>.</span></div><div class=meta>Posted on <time>2024-02-26</time></div></div><h1>Table of Contents</h1><ul><li><a href=https://c0np4nn4.github.io/posts/near-example-1/#count-on-near>Count on NEAR</a><li><a href=https://c0np4nn4.github.io/posts/near-example-1/#smart-contract-code>Smart Contract code</a> <ul><li><a href=https://c0np4nn4.github.io/posts/near-example-1/#bildeu>빌드</a><li><a href=https://c0np4nn4.github.io/posts/near-example-1/#account-saengseong>Account 생성</a><li><a href=https://c0np4nn4.github.io/posts/near-example-1/#baepo-deploy>배포 (Deploy)</a><li><a href=https://c0np4nn4.github.io/posts/near-example-1/#teseuteu>테스트</a></ul></ul><section class=body><center> <img src="https://images.pexels.com/photos/1010973/pexels-photo-1010973.jpeg?auto=compress&cs=tinysrgb&w=800"> </center><h1 id=count-on-near>Count on NEAR</h1><ul><li>수를 세는 contract 를 만듭니다.</ul><h1 id=smart-contract-code>Smart Contract code</h1><ul><li>SC 코드는 아래와 같습니다.<li>참고로 <code>src/lib.rs</code> 에 작성된 파일입니다.</ul><pre class=language-rs data-lang=rs style=color:#bfbab0;background-color:#0f1419><code class=language-rs data-lang=rs><span style=color:#f73>use </span><span>near_sdk</span><span style=color:#f29668>::</span><span>borsh</span><span style=color:#f29668>::</span><span>{</span><span style=color:#39bae6;font-style:italic>self</span><span style=color:#bfbab0cc>,</span><span> BorshDeserialize</span><span style=color:#bfbab0cc>,</span><span> BorshSerialize}</span><span style=color:#bfbab0cc>;
+</span><span style=color:#f73>use </span><span>near_sdk</span><span style=color:#f29668>::</span><span>{log</span><span style=color:#bfbab0cc>,</span><span> near_bindgen}</span><span style=color:#bfbab0cc>;
+</span><span>
+</span><span>
+</span><span style=color:#bfbab0cc>#</span><span>[</span><span style=color:#ffb454>near_bindgen</span><span>]
+</span><span style=color:#bfbab0cc>#</span><span>[</span><span style=color:#ffb454>derive</span><span>(Default</span><span style=color:#bfbab0cc>,</span><span> BorshDeserialize</span><span style=color:#bfbab0cc>,</span><span> BorshSerialize)]
+</span><span style=color:#f73>pub struct </span><span style=color:#59c2ff>Counter </span><span>{
+</span><span>    val</span><span style=color:#bfbab0cc>: </span><span style=color:#f73>i8</span><span>,
+</span><span>}
+</span><span>
+</span><span style=color:#bfbab0cc>#</span><span>[</span><span style=color:#ffb454>near_bindgen</span><span>]
+</span><span style=color:#f73>impl </span><span style=color:#59c2ff>Counter </span><span>{
+</span><span>    </span><span style=color:#5c6773;font-style:italic>// Public read-only method: Returns the counter value.
+</span><span>    </span><span style=color:#f73>pub fn </span><span style=color:#ffb454>get_num</span><span>(</span><span style=color:#f29668>&</span><span style=color:#f29718>self</span><span>) </span><span style=color:#bfbab0cc>-> </span><span style=color:#f73>i8 </span><span>{
+</span><span>        </span><span style=color:#f73>return </span><span style=color:#39bae6;font-style:italic>self</span><span style=color:#f29668>.</span><span>val</span><span style=color:#bfbab0cc>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style=color:#5c6773;font-style:italic>// Public method: Increment the counter.
+</span><span>    </span><span style=color:#f73>pub fn </span><span style=color:#ffb454>increment</span><span>(</span><span style=color:#f29668>&</span><span style=color:#f73>mut </span><span style=color:#f29718>self</span><span>) {
+</span><span>        </span><span style=color:#39bae6;font-style:italic>self</span><span style=color:#f29668>.</span><span>val </span><span style=color:#f29668>+= </span><span style=color:#f29718>1</span><span style=color:#bfbab0cc>;
+</span><span>        </span><span style=color:#f07178>log!</span><span>(</span><span style=color:#c2d94c>"Increased number to {}"</span><span style=color:#bfbab0cc>, </span><span style=color:#39bae6;font-style:italic>self</span><span style=color:#f29668>.</span><span>val)</span><span style=color:#bfbab0cc>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style=color:#5c6773;font-style:italic>// Public method: Decrement the counter.
+</span><span>    </span><span style=color:#f73>pub fn </span><span style=color:#ffb454>decrement</span><span>(</span><span style=color:#f29668>&</span><span style=color:#f73>mut </span><span style=color:#f29718>self</span><span>) {
+</span><span>        </span><span style=color:#39bae6;font-style:italic>self</span><span style=color:#f29668>.</span><span>val </span><span style=color:#f29668>-= </span><span style=color:#f29718>1</span><span style=color:#bfbab0cc>;
+</span><span>        </span><span style=color:#f07178>log!</span><span>(</span><span style=color:#c2d94c>"Decreased number to {}"</span><span style=color:#bfbab0cc>, </span><span style=color:#39bae6;font-style:italic>self</span><span style=color:#f29668>.</span><span>val)</span><span style=color:#bfbab0cc>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style=color:#5c6773;font-style:italic>// Public method - Reset to zero.
+</span><span>    </span><span style=color:#f73>pub fn </span><span style=color:#ffb454>reset</span><span>(</span><span style=color:#f29668>&</span><span style=color:#f73>mut </span><span style=color:#f29718>self</span><span>) {
+</span><span>        </span><span style=color:#39bae6;font-style:italic>self</span><span style=color:#f29668>.</span><span>val </span><span style=color:#f29668>= </span><span style=color:#f29718>0</span><span style=color:#bfbab0cc>;
+</span><span>        </span><span style=color:#f07178>log!</span><span>(</span><span style=color:#c2d94c>"Reset counter to zero"</span><span>)</span><span style=color:#bfbab0cc>;
+</span><span>    }
+</span><span>}
+</span></code></pre><h2 id=bildeu>빌드</h2><ul><li>배포에 앞서 우선 빌드(Build)를 진행합니다.</ul><pre class=language-bash data-lang=bash style=color:#bfbab0;background-color:#0f1419><code class=language-bash data-lang=bash><span style=color:#5c6773;font-style:italic>#!/bin/sh
+</span><span>
+</span><span style=color:#f07178>echo </span><span style=color:#c2d94c>">> Building contract"
+</span><span>
+</span><span style=color:#ffb454>rustup</span><span> target add wasm32-unknown-unknown
+</span><span style=color:#ffb454>cargo</span><span> build</span><span style=color:#f29718> --all --target</span><span> wasm32-unknown-unknown</span><span style=color:#f29718> --release
+</span></code></pre><h2 id=account-saengseong>Account 생성</h2><ul><li>배포하려면 또한 <code>NEAR Account</code>가 필요합니다.<li>아래의 <code>cargo-near</code> 명령어를 활용해 아무 testnet 계정을 일단 만들어봅니다.</ul><pre class=language-bash data-lang=bash style=color:#bfbab0;background-color:#0f1419><code class=language-bash data-lang=bash><span style=color:#ffb454>cargo-near</span><span> near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+</span></code></pre><center> <img alt=result src=../../near/gen_testnet_account.png> </center><h2 id=baepo-deploy>배포 (Deploy)</h2><ul><li><code>innocent-organization.testnet</code> 계정으로 배포를 시도합니다.</ul><pre class=language-bash data-lang=bash style=color:#bfbab0;background-color:#0f1419><code class=language-bash data-lang=bash><span style=color:#5c6773;font-style:italic># near deploy &LTaccount-id> &LTwasm file path>
+</span><span style=color:#ffb454>near</span><span> deploy innocent-organization.testnet target/wasm32-unknown-unknown/release/counter.wasm
+</span></code></pre><center> <img alt=result src=../../near/deploy_counter.png> </center><h2 id=teseuteu>테스트</h2><ul><li>성공적으로 배포된 것을 확인하기 위해 아래와 같이 테스트를 진행합니다.</ul><pre class=language-bash data-lang=bash style=color:#bfbab0;background-color:#0f1419><code class=language-bash data-lang=bash><span style=color:#ffb454>near</span><span> view innocent-organization.testnet get_num
+</span><span style=color:#5c6773;font-style:italic># 0
+</span><span>
+</span><span style=color:#ffb454>near</span><span> call innocent-organization.testnet increment</span><span style=color:#f29718> --useAccount</span><span> innocent-organization.testnet
+</span><span style=color:#ffb454>near</span><span> view innocent-organization.testnet get_num 
+</span><span style=color:#5c6773;font-style:italic># 1
+</span><span>
+</span><span style=color:#ffb454>near</span><span> call innocent-organization.testnet decrement</span><span style=color:#f29718> --useAccount</span><span> innocent-organization.testnet
+</span><span style=color:#ffb454>near</span><span> view innocent-organization.testnet get_num
+</span><span style=color:#5c6773;font-style:italic># 0
+</span></code></pre></section></article></main></div>

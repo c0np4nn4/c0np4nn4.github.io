@@ -1,10 +1,10 @@
 base_url = "https://c0np4nn4.github.io/"
 title = "c0np4nn4"
 build_search_index = true
-generate_feed = true
+generate_feeds = true
 compile_sass = true
 minify_html = true
-seo = true
+# seo = true
 
 theme="apollo"
 

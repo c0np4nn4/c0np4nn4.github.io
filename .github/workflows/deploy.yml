@@ -25,21 +25,22 @@ jobs:
       - name: Build Quartz
         run: npx quartz build
 
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: "gh-pages"
-          clean: false
+      - name: Delete gh-pages branch locally
+        run: |
+          git checkout --orphan temp-branch
+          git branch -D gh-pages
+
+      - name: Create a new gh-pages branch
+        run: git checkout -b gh-pages
 
       - name: Copy built files to gh-pages
-        run: |
-          rm -rf ./*
-          cp -r ./* ./
+        run: cp -r ./* ./
       
       - name: Add & Commit
         uses: EndBug/add-and-commit@v4.4.0
         with:
           add: '.'
+          message: "Deploy to GitHub Pages"
           ref: "gh-pages"
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}

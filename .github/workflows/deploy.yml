@@ -28,6 +28,10 @@ jobs:
         run: npm ci
       - name: Build Quartz
         run: npx quartz build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
 
   deploy:
     needs: build
@@ -42,7 +46,7 @@ jobs:
       - name: Copy files to gh-pages branch
         run: |
           rm -rf ./*
-          cp -r public/* ./
+          cp -r ../public/* ./ # ../public로 경로를 지정해 줍니다.
           git add --all
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"

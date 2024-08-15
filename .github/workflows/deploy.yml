@@ -10,10 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-22.04
@@ -29,26 +25,29 @@ jobs:
       - name: Build Quartz
         run: npx quartz build
 
-      - name: Move public folder to safe location
-        run: mv public $GITHUB_WORKSPACE/public
-
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
-          fetch-depth: 0
+          ref: "gh-pages"
+          clean: false
 
-      - name: Copy files to gh-pages branch
+      - name: Copy built files to gh-pages
         run: |
-          rm -rf *
-          cp -r $GITHUB_WORKSPACE/public/* ./
-          git add --all
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git commit -m "Deploy to GitHub Pages"
+          rm -rf ./*
+          cp -r ./* ./
       
-      - name: Push to gh-pages branch
-        run: git push --force origin gh-pages
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v4.4.0
+        with:
+          add: '.'
+          ref: "gh-pages"
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+      - name: Push commit
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          branch: "gh-pages"
+          force: true
 

@@ -25,30 +25,8 @@ jobs:
       - name: Build Quartz
         run: npx quartz build
 
-      - name: Delete gh-pages branch locally
-        run: |
-          git checkout --orphan temp-branch
-          git branch -D gh-pages
-
-      - name: Create a new gh-pages branch
-        run: git checkout -b gh-pages
-
-      - name: Copy built files to gh-pages
-        run: cp -r ./* ./
-      
-      - name: Add & Commit
-        uses: EndBug/add-and-commit@v4.4.0
+      - name: Checkout to gh-pages branch
+        uses: actions/checkout@v2
         with:
-          add: '.'
-          message: "Deploy to GitHub Pages"
           ref: "gh-pages"
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
-      - name: Push commit
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.TOKEN }}
-          branch: "gh-pages"
-          force: true
-
+          clean: true

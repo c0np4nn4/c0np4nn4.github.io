@@ -4,16 +4,16 @@ on:
   push:
     branches:
       - main
- 
+
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
- 
+
 concurrency:
   group: "pages"
   cancel-in-progress: false
- 
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -28,26 +28,9 @@ jobs:
         run: npm ci
       - name: Build Quartz
         run: npx quartz build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
- 
-  # deploy:
-  #   needs: build
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4
 
   deploy:
     needs: build
-    environment:
-      name: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout gh-pages branch
@@ -58,14 +41,14 @@ jobs:
 
       - name: Copy files to gh-pages branch
         run: |
+          rm -rf ./*
+          cp -r public/* ./
+          git add --all
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          rm -rf ./*
-          cp -r ../public/* ./
-          git add --all
           git commit -m "Deploy to GitHub Pages"
       
-      - name: Deploy to GitHub Pages
+      - name: Push to gh-pages branch
         run: git push origin gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}

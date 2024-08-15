@@ -28,17 +28,27 @@ jobs:
         run: npm ci
       - name: Build Quartz
         run: npx quartz build
-      - name: Deploy to gh-pages branch
+
+      - name: Move public folder to safe location
+        run: mv public $GITHUB_WORKSPACE/public
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Copy files to gh-pages branch
         run: |
+          rm -rf *
+          cp -r $GITHUB_WORKSPACE/public/* ./
+          git add --all
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git checkout -B gh-pages
-          rm -rf *
-          cp -r public/* ./
-          git add --all
           git commit -m "Deploy to GitHub Pages"
-          git push --force origin gh-pages
+      
+      - name: Push to gh-pages branch
+        run: git push --force origin gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
 

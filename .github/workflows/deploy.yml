@@ -45,7 +45,8 @@ jobs:
 
       - name: Copy files to gh-pages branch
         run: |
-          ls -al
+          echo "[1] ls -al ../public/*"
+          ls -al ../public/*
           rm -rf ./*
           cp -r ../public/* ./ # ../public로 경로를 지정해 줍니다.
           git add --all

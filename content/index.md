@@ -1,6 +1,6 @@
 ---
 title: Welcome to Quartz
 ---
-	
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+# Since 2024...
+
+빈수레라 요란합니다.

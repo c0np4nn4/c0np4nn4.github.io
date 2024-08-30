@@ -30,8 +30,7 @@ Goldwasser, Micali, Rackoff (GMR89)의 세미나 논문에서 처음 소개된 �
 근래의 많은 발전들에도 불구하고 **ZKP**의 효율성은 다양한 응용에 활용되기에 충분히 좋지는 않습니다. 
 특히, **Prover Time**은 **ZKP** 스킴이 큰 명제(*large statement*)으로 확장되는 것을 막고 있는 주요 병목입니다.
 
-**ZKP**에서 명제(statement)는 $N$개의 게이트로 이루어진 산술회로(arithmetic circuit)로 표현됩니다.
-**명제**를 **증명**하기 위해서 현존하는 '간결한(succinct)' 크기의 증명을 갖는 **ZKP** 스킴은 다음 두 가지 방식 중 하나를 사용합니다.
+[GLS+]에서도 지적하듯이 $N$개의 게이트로 이루어진 산술회로(arithmetic circuit)로 모델링되는 주장(명제, statement)을 증명하기 위해서, 현존하는 '간결한(succinct)' 크기의 증명을 갖는 **ZKP** 스킴은 다음 두 가지 방식 중 하나를 사용합니다.
 - <mark style="background: #FFB86CA6;">고속 푸리에 변환(FFT)</mark>
 	- 리드-솔로몬 코드 인코딩(Reed-Solomon Code Encoding) 또는 다항식 보간법(polynomial interpolation)을 수행하기 위해 사용됩니다.
 	- Field addition, multiplication 연산에 대해 $O(N \log N)$ 시간 복잡도를 갖습니다.
@@ -39,9 +38,10 @@ Goldwasser, Micali, Rackoff (GMR89)의 세미나 논문에서 처음 소개된 �
 	- 이 방법은 이산 로그 가정(discrete-logarithm assumption)이나 이중 선형 사상(bilinear map)에 기반하며, 크기 $O(N)$의 벡터를 처리합니다.
 	- Field Multiplication 연산에 대해 $O(N \log | \mathbb{F} |)$ 의 시간 복잡도를 가지며, 이 때 $| \mathbb{F} |$ 는 Finite Field의 크기를 의미합니다.
 	- Pippenger 알고리즘 (Pip)을 사용하면 시간 복잡도를 $O(N \log | \mathbb{F} | / \log N)$으로 개선할 수는 있지만, 보안성을 보장하기 위해 $\log | \mathbb{F} | = \omega (\log N)$ 을 만족해야 합니다. 따라서, 최소한 $\log N$ 보다는 빠르게 증가한다는 의미이므로 충분히 큰 $| \mathbb{F} |$ 가 필요함을 의미합니다. 즉, 여전히 **초선형**(super-scalar) 입니다.
-이 두 연산이 결국 **prover time**에서 이론적으로나 실제로나 주된 비용을 차지하게 됩니다.
 
-문헌에서 유일한 예외는 [BCG+17], [BCG20], [BCL22], [GLS+]에서 제시된 스킴들입니다.
+이 두 연산은 결국 **prover time**에서 이론적으로나 실제로나 주된 비용을 차지하게 됩니다.
+
+간결한 증명크기에 대해 이렇게 증명을 생성하는 것과 달리, 문헌에서 설명하는 유일한 예외에는 [BCG+17], [BCG20], [BCL22], [GLS+]에서 제시된 스킴들이 있습니다.
 
 - Prover Time
 	- **[BCG+17]**: 선형 시간으로 인코딩할 수 있는 오류 수정 코드(linear-time encodable error-correcting code)를 사용하여, 
@@ -59,12 +59,15 @@ Goldwasser, Micali, Rackoff (GMR89)의 세미나 논문에서 처음 소개된 �
 - Security
 	- **[GLS+]**: 보안 보장(soundness error)이 회로 크기에 대해 역다항식(inverse polynomial) 수준으로, 이는 충분히 작지 않음
 
-따라서, **ZKP** 스킴에 관한 아래의 질문이 여전히 남아있습니다.
+따라서, **ZKP** 스킴에 관해 아래의 의문을 해결할 여지가 여전히 남아있습니다.
 
 > **Prover Time**이 $O(N)$, **Proof Size**가 $\text{polylog}(N)$인 구체적이고 효율적인 **ZKP** 스킴을 구축할 수 있는가?
 
 ---
 ## 1.1 Our Contribution
+
+<div>
+<center>
 
 | Scheme                                                                 | Prover time | Proof size          | Verifier time | Soundness error                          | Concrete efficiency |
 | ---------------------------------------------------------------------- | ----------- | ------------------- | ------------- | ---------------------------------------- | ------------------- |
@@ -74,7 +77,33 @@ Goldwasser, Micali, Rackoff (GMR89)의 세미나 논문에서 처음 소개된 �
 | [GLS+]                                                                 | $O(N)$      | $O(\sqrt{N})$       | $O(N)$        | $O\left(\frac{1}{\text{poly}(N)}\right)$ | ✔                   |
 | ***<mark style="background: #FF5582A6;"> &nbsp; Orion &nbsp;</mark>*** | $O(N)$      | $O(\log^2 N)$       | $O(N)$        | $\text{negl}(N)$                         | ✔                   |
 
+</center>
+</div>
+
 본 논문에서는 위 질문에 대한 답으로 새로운 **ZKP** 스킴을 제안합니다. 
 구체적으로 본 논문에서 제시한 스킴은 아래의 특징을 갖습니다.
 
-- 
+1. 본 논문에서는 압도적인 확률로 constant relative distance를 갖는 임의 구조의 linear-time encodable code를 제안합니다. 
+   이러한 code는 linear-time ZKP Schemes ([BCG+17], [BCG20], [BCL22], [GLS+])에서 모두 사용되었으므로, 본 논문에서의 새로운 construction도 이러한 효율성을 개선합니다.
+   핵심적인 technique은 <mark style="background: #FFF3A3A6;">*small set expansion problem*을 기반으로 임의의 Graph가 good expander graph인지 검사</mark>하는 것입니다.
+2. 본 논문에서는 $O(\log^2 N)$ 크기의 **Proof Size**를 효율적으로 얻는 새로운 *reduction*을 제시합니다.
+   이 기술은 [RR20]에서 제안된 <mark style="background: #FFF3A3A6;">"code switching"이라는 이름의 *Proof Composition (증명 합성)*</mark> 입니다.
+   본 논문에서는 linear-time encodable code의 encoding circuit을 이용해, 
+   **Prover Time**에 적은 오버헤드를 일으키며 [BCG20, GLS+]의 **Proof Size**를 $O(\sqrt{N})$ 에서 $O(\log^2N)$ 으로까지 reduce하는 효율적인 예시를 개발했습니다.
+3. 마지막으로, 본 논문에서는 **Orion** 이라는 이름의 새로운 ZKP Scheme을 개발하고 이를 실험적으로 평가했습니다.
+   $2^{20}$개의 Gate로 이루어진 Circuit (R1CS에서 $2^{20}$개의 constraint로 구성)에서 아래와 같은 측정 결과를 얻었습니다.
+   **Orion**은 현존하는 ZKP Scheme 중에서 <mark style="background: #FFF3A3A6;">가장 빠른 **Prover Time**</mark>을 가집니다.
+   <mark style="background: #FFF3A3A6;">**Proof Size**도 [GLS+]보다 6.5배 더 작습니다</mark>.
+   또한, 이 Scheme은 그럴듯하게 ***Post-Quantum***도 만족하며 Fiat-shamir를 활용하면 Non-interactive하게도 만들 수 있습니다.
+
+<div>
+<center>
+
+|       Name        | Value |
+| :---------------: | :---: |
+|  **Prover Time**  | 3.09s |
+|  **Proof Size**   | 1.5MB |
+| **Verifier Time** | 70ms  |
+
+</center>
+</div>

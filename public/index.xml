@@ -48,10 +48,10 @@
     <description>Since 2024… 빈수레라 요란합니다.</description>
     <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
   </item><item>
-    <title>Sekai2024 CTF</title>
-    <link>https://aurev01r.xyz/CTF/Sekai2024</link>
-    <guid>https://aurev01r.xyz/CTF/Sekai2024</guid>
-    <description></description>
+    <title>Sometrick writeup</title>
+    <link>https://aurev01r.xyz/CTF/Sekai2024-some-trick-writeup</link>
+    <guid>https://aurev01r.xyz/CTF/Sekai2024-some-trick-writeup</guid>
+    <description>SekaiCTF2024 👾 Some Trick 이번 대회에서 가장 쉬운 난이도로 출제된 Crypto 문제이다. 문제 코드는 아래와 같다. import random from secrets import randbelow, randbits from flag import FLAG CIPHER_SUITE = randbelow(2**256) print(f&quot;oPUN_SASS_SASS_l version 4.0.{CIPHER_SUITE}&quot;) random.seed(CIPHER_SUITE) GSIZE = 8209 GNUM = 79 LIM = GSIZE**GNUM def gen(n): p, i = [0] * n, 0 for j in random.sample(range(1, n), n - 1): p[i], i = j, j return tuple(p) def gexp(g, e): res = tuple(g) while e: if e &amp; 1: res = tuple(res[i] for i in g) e &gt;&gt;= 1 g = tuple(g[i] for i in g) return res def enc(k, m, G): if not G: return m mod = len(G[0]) return gexp(G[0], k % mod)[m % mod] + enc(k // mod, m // mod, G[1:]) * mod def inverse(perm): res = list(perm) for i, v in enumerate(perm): res[v] = i return res G = [gen(GSIZE) for i in range(GNUM)] FLAG = int.from_bytes(FLAG, &#039;big&#039;) left_pad = randbits(randbelow(LIM.bit_length() - FLAG.bit_length())) FLAG = (FLAG &lt;&lt; left_pad.bit_length()) + left_pad FLAG = (randbits(randbelow(LIM.bit_length() - FLAG.bit_length())) &lt;&lt; FLAG.bit_length()) + FLAG bob_key = randbelow(LIM) bob_encr = enc(FLAG, bob_key, G) print(&quot;bob says&quot;, bob_encr) alice_key = randbelow(LIM) alice_encr = enc(bob_encr, alice_key, G) print(&quot;alice says&quot;, alice_encr) bob_decr = enc(alice_encr, bob_key, [inverse(i) for i in G]) print(&quot;bob says&quot;, bob_decr) 🕶️ 문제 분석 FLAG에 적당한 padding 을 붙이는 것으로 시작한다.</description>
     <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
   </item><item>
     <title>Simple ZK Static Program Analysis</title>

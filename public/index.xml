@@ -6,6 +6,24 @@
       <description>최근 10 건 on 🪴 c0np4nn4</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Foundations of Data Availability Sampling</title>
+    <link>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</link>
+    <guid>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</guid>
+    <description>Abstract 더욱 확장성을 가진 블록체인을 만드는 방향으로 나가면서, 몇년 전부터 DAS(Data Availability Sampling)이라는 접근법이 알려지기 시작했습니다. 심지어 이더리움과 같은 거대한 블록체인도 확장성 향상을 위해 결국 DAS를 배포할 계획을 하고 있습니다.</description>
+    <pubDate>Tue, 17 Sep 2024 23:30:36 GMT</pubDate>
+  </item><item>
+    <title>FRIDA2024</title>
+    <link>https://aurev01r.xyz/Paper-Review/FRIDA</link>
+    <guid>https://aurev01r.xyz/Paper-Review/FRIDA</guid>
+    <description>Abstract 이더리움과 같은 블록체인이 꾸준히 성장함에 따라, 제한된 자원을 사용하는 클라이언트들은 더 이상 전체 데이터를 저장할 수 없게 되었습니다. Light node를 사용하면, 블록체인을 사용하면서도 전체적으로 좋은 상태인지 검증하는 작업은 제외한 형태로, 헤더만 저장할 수 있습니다.</description>
+    <pubDate>Tue, 17 Sep 2024 23:04:46 GMT</pubDate>
+  </item><item>
+    <title>zk-Regex 분석</title>
+    <link>https://aurev01r.xyz/Notes/zk-regex-analysis</link>
+    <guid>https://aurev01r.xyz/Notes/zk-regex-analysis</guid>
+    <description></description>
+    <pubDate>Wed, 11 Sep 2024 04:31:50 GMT</pubDate>
+  </item><item>
     <title>Digital Signature</title>
     <link>https://aurev01r.xyz/Cryptography/Digital-Signature</link>
     <guid>https://aurev01r.xyz/Cryptography/Digital-Signature</guid>
@@ -37,8 +55,8 @@
     <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
   </item><item>
     <title>Orion2022</title>
-    <link>https://aurev01r.xyz/Papers/Orion</link>
-    <guid>https://aurev01r.xyz/Papers/Orion</guid>
+    <link>https://aurev01r.xyz/Paper-Review/Orion</link>
+    <guid>https://aurev01r.xyz/Paper-Review/Orion</guid>
     <description>Abstract 영지식 증명은 다양한 실제 응용이 가능한 강력한 암호학적 프리미티브입니다. 그러나 기존의 영지식 증명 스킴들은 증명 크기가 간결한 대신, 증명 생성 시간에서 큰 오버헤드를 겪고 있어, 실용적인 효율성과 확장성에 한계가 있었습니다. 이러한 문제를 해결하기 위해 본 논문에서는 Orion이라는 새로운 영지식 증명 시스템을 제안했습니다.</description>
     <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
   </item><item>
@@ -47,24 +65,6 @@
     <guid>https://aurev01r.xyz/</guid>
     <description>Since 2024… 빈수레라 요란합니다.</description>
     <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
-  </item><item>
-    <title>Sometrick writeup</title>
-    <link>https://aurev01r.xyz/CTF/Sekai2024-some-trick-writeup</link>
-    <guid>https://aurev01r.xyz/CTF/Sekai2024-some-trick-writeup</guid>
-    <description>SekaiCTF2024 👾 Some Trick 이번 대회에서 가장 쉬운 난이도로 출제된 Crypto 문제이다. 문제 코드는 아래와 같다. import random from secrets import randbelow, randbits from flag import FLAG CIPHER_SUITE = randbelow(2**256) print(f&quot;oPUN_SASS_SASS_l version 4.0.{CIPHER_SUITE}&quot;) random.seed(CIPHER_SUITE) GSIZE = 8209 GNUM = 79 LIM = GSIZE**GNUM def gen(n): p, i = [0] * n, 0 for j in random.sample(range(1, n), n - 1): p[i], i = j, j return tuple(p) def gexp(g, e): res = tuple(g) while e: if e &amp; 1: res = tuple(res[i] for i in g) e &gt;&gt;= 1 g = tuple(g[i] for i in g) return res def enc(k, m, G): if not G: return m mod = len(G[0]) return gexp(G[0], k % mod)[m % mod] + enc(k // mod, m // mod, G[1:]) * mod def inverse(perm): res = list(perm) for i, v in enumerate(perm): res[v] = i return res G = [gen(GSIZE) for i in range(GNUM)] FLAG = int.from_bytes(FLAG, &#039;big&#039;) left_pad = randbits(randbelow(LIM.bit_length() - FLAG.bit_length())) FLAG = (FLAG &lt;&lt; left_pad.bit_length()) + left_pad FLAG = (randbits(randbelow(LIM.bit_length() - FLAG.bit_length())) &lt;&lt; FLAG.bit_length()) + FLAG bob_key = randbelow(LIM) bob_encr = enc(FLAG, bob_key, G) print(&quot;bob says&quot;, bob_encr) alice_key = randbelow(LIM) alice_encr = enc(bob_encr, alice_key, G) print(&quot;alice says&quot;, alice_encr) bob_decr = enc(alice_encr, bob_key, [inverse(i) for i in G]) print(&quot;bob says&quot;, bob_decr) 🕶️ 문제 분석 FLAG에 적당한 padding 을 붙이는 것으로 시작한다.</description>
-    <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
-  </item><item>
-    <title>Simple ZK Static Program Analysis</title>
-    <link>https://aurev01r.xyz/Notes/16AUG,-PSE-Core-Program</link>
-    <guid>https://aurev01r.xyz/Notes/16AUG,-PSE-Core-Program</guid>
-    <description>들어가며 8월 16일 금요일의 PSE Core Program off-line meet 시간에는 ZKP 를 활용한 미니 해커톤이 진행되었다. 나는 Orion 논문을 읽다가 발견했던 흥미로운 주제인 ZK Static Program Analysis 로 미니 해커톤에 참가했다.</description>
-    <pubDate>Fri, 16 Aug 2024 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>📕(BOJ)6198</title>
-    <link>https://aurev01r.xyz/PS/BOJ/%F0%9F%93%95(BOJ)6198</link>
-    <guid>https://aurev01r.xyz/PS/BOJ/%F0%9F%93%95(BOJ)6198</guid>
-    <description>문제 [링크] N 개의 빌딩이 일렬로 나란히 서있는 모습을 상상해보자. i 번째 위치의 빌딩에서 오른쪽 방향을 바라볼 때, i 번째 보다 높이가 낮은 빌딩들의 옥상을 볼 수 있다. 이 때, 볼 수 있는 옥상의 총 갯수를 구하는 문제이다. 풀이 어제 해결한 📕(BOJ)2493 문제의 아이디어를 이용했다.</description>
-    <pubDate>Tue, 03 Jan 2023 00:00:00 GMT</pubDate>
   </item>
     </channel>
   </rss>

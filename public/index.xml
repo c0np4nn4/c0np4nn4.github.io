@@ -6,6 +6,36 @@
       <description>최근 10 건 on 🪴 c0np4nn4</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Ethernaut(0x03), Coin Flip</title>
+    <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x03),-Coin-Flip</link>
+    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x03),-Coin-Flip</guid>
+    <description>Random인 척 하는 값을 이용한다고도 볼 수 있고. Random을 구현하기 힘듦을 나타내는 것이라고도 할 수 있고. 아무튼 그런 문제입니다. 초 심플한 문제입니다. flip() 함수 하나만 있는데, 플레이어가 할 일은 _guess 값을 제대로 넣는 것 밖에 없습니다. 솔직히 script 짜기 귀찮지만, 연습삼아 해보기로 했습니다.</description>
+    <pubDate>Thu, 03 Oct 2024 19:56:18 GMT</pubDate>
+  </item><item>
+    <title>Ethernaut(0x02), Fal1out</title>
+    <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x02),-Fal1out</link>
+    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x02),-Fal1out</guid>
+    <description>문제에 나와있듯이 ownership 을 획득하면 되는 문제입니다. 사실 코드를 좀 살펴보면, ***Factory.sol 에 풀이 완료 조건이 있긴 합니다. instance.owner() 와 현재 player 가 동일하다면 통과하는 로직입니다. owner 를 바꾸는 로직은 문제에서 /*constructor*/로 주석을 남긴 함수가 바로 보입니다.</description>
+    <pubDate>Thu, 03 Oct 2024 19:45:49 GMT</pubDate>
+  </item><item>
+    <title>Ethernaut(0x01), Fallback</title>
+    <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x01),-Fallback</link>
+    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x01),-Fallback</guid>
+    <description>소스코드부터 살펴보겠습니다. 이미지로 가져왔는데, 일일이 다 볼 필요는 없어서 그냥 전체 코드 양을 가늠하는 느낌으로 첨부해보았습니다. 사실 receive(), fallback() 함수가 어떤 것인지 살펴보면 되는 문제입니다. 코드는 함수 이름들에서 알 수 있듯이, 누구나 Ether를 기여(contribute)할 수 있고.</description>
+    <pubDate>Thu, 03 Oct 2024 18:14:32 GMT</pubDate>
+  </item><item>
+    <title>Ethernaut(0x00), Hello Ethernaut</title>
+    <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x00),-Hello-Ethernaut</link>
+    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x00),-Hello-Ethernaut</guid>
+    <description>시키는대로 따라하면 되는 단계입니다. 한때는 풀이를 와장창 적어보기도 했었습니다. 마치 ‘다음에 푸시는 분들도 참고해보세요’하는 식으로 말이죠. 물론 정답은 없겠습니다만, 이렇게 기록을 남기는 것은 내가 나중에 다시 봤을 때, 스스로 접근 방법을 기억할 수 있으면 좋겠다. 라는 마음으로 해나가는 것이 좋다고 생각합니다.</description>
+    <pubDate>Thu, 03 Oct 2024 18:10:16 GMT</pubDate>
+  </item><item>
+    <title>Ethernaut, 로컬 풀이 환경구축</title>
+    <link>https://aurev01r.xyz/Ethernaut/Ethernaut,-%EB%A1%9C%EC%BB%AC-%ED%92%80%EC%9D%B4-%ED%99%98%EA%B2%BD%EA%B5%AC%EC%B6%95</link>
+    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut,-%EB%A1%9C%EC%BB%AC-%ED%92%80%EC%9D%B4-%ED%99%98%EA%B2%BD%EA%B5%AC%EC%B6%95</guid>
+    <description>Openzeppelin이 호스팅하고 있는 Ethernaut에서 문제를 직접 풀 수도 있겠지만, testnet인 sepolia를 이용해야 하므로 faucet을 통해 ETH를 받아와야 합니다. Faucet을 통하는 과정이 번거롭기도 하고, testnet이다보니 블록 생성까지 기다려야 하는 등 아무래도 문제 풀이에 불편함이 많습니다.</description>
+    <pubDate>Thu, 03 Oct 2024 16:26:30 GMT</pubDate>
+  </item><item>
     <title>Foundations of Data Availability Sampling</title>
     <link>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</link>
     <guid>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</guid>
@@ -34,36 +64,6 @@
     <link>https://aurev01r.xyz/Cryptography/Hash-Function</link>
     <guid>https://aurev01r.xyz/Cryptography/Hash-Function</guid>
     <description>(wip).</description>
-    <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
-  </item><item>
-    <title>Public Key Cryptography</title>
-    <link>https://aurev01r.xyz/Cryptography/Public-Key-Cryptography</link>
-    <guid>https://aurev01r.xyz/Cryptography/Public-Key-Cryptography</guid>
-    <description>(wip).</description>
-    <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
-  </item><item>
-    <title>Bipartite Graph</title>
-    <link>https://aurev01r.xyz/Data-Structure/bipartite-graph</link>
-    <guid>https://aurev01r.xyz/Data-Structure/bipartite-graph</guid>
-    <description>(wip).</description>
-    <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
-  </item><item>
-    <title>PSE Core Group Resources</title>
-    <link>https://aurev01r.xyz/Notes/PSE-Core-Group-Resources</link>
-    <guid>https://aurev01r.xyz/Notes/PSE-Core-Group-Resources</guid>
-    <description>2024년 PSE Core Group에서 활용한 자료들을 정리한 문서입니다. Week 1 TitleTagLinkKZG articleKZG, PCSdankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.htmlKZG paperKZG, PCSwww.iacr.org/archive/asiacrypt2010/6477178/6477178.pdf.</description>
-    <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
-  </item><item>
-    <title>Orion2022</title>
-    <link>https://aurev01r.xyz/Paper-Review/Orion</link>
-    <guid>https://aurev01r.xyz/Paper-Review/Orion</guid>
-    <description>Abstract 영지식 증명은 다양한 실제 응용이 가능한 강력한 암호학적 프리미티브입니다. 그러나 기존의 영지식 증명 스킴들은 증명 크기가 간결한 대신, 증명 생성 시간에서 큰 오버헤드를 겪고 있어, 실용적인 효율성과 확장성에 한계가 있었습니다. 이러한 문제를 해결하기 위해 본 논문에서는 Orion이라는 새로운 영지식 증명 시스템을 제안했습니다.</description>
-    <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
-  </item><item>
-    <title>Welcome to Quartz</title>
-    <link>https://aurev01r.xyz/</link>
-    <guid>https://aurev01r.xyz/</guid>
-    <description>Since 2024… 빈수레라 요란합니다.</description>
     <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
   </item>
     </channel>

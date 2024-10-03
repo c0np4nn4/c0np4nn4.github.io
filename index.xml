@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>🪴 c0np4nn4</title>
+      <link>https://aurev01r.xyz</link>
+      <description>최근 10 건 on 🪴 c0np4nn4</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Welcome to Quartz</title>
+    <link>https://aurev01r.xyz/</link>
+    <guid>https://aurev01r.xyz/</guid>
+    <description>Since 2024… 빈수레라 요란합니다. Ethernaut 풀이 Ethernaut, 로컬 풀이 환경구축.</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>PSE Core Group Resources</title>
+    <link>https://aurev01r.xyz/Notes/PSE-Core-Group-Resources</link>
+    <guid>https://aurev01r.xyz/Notes/PSE-Core-Group-Resources</guid>
+    <description>2024년 PSE Core Group에서 활용한 자료들을 정리한 문서입니다. Week 1 TitleTagLinkKZG articleKZG, PCSdankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.htmlKZG paperKZG, PCSwww.iacr.org/archive/asiacrypt2010/6477178/6477178.pdf.</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>zk-Regex 분석</title>
+    <link>https://aurev01r.xyz/Notes/zk-regex-analysis</link>
+    <guid>https://aurev01r.xyz/Notes/zk-regex-analysis</guid>
+    <description></description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>Foundations of Data Availability Sampling</title>
+    <link>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</link>
+    <guid>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</guid>
+    <description>Abstract 더욱 확장성을 가진 블록체인을 만드는 방향으로 나가면서, 몇년 전부터 DAS(Data Availability Sampling)이라는 접근법이 알려지기 시작했습니다. 심지어 이더리움과 같은 거대한 블록체인도 확장성 향상을 위해 결국 DAS를 배포할 계획을 하고 있습니다.</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>FRIDA2024</title>
+    <link>https://aurev01r.xyz/Paper-Review/FRIDA</link>
+    <guid>https://aurev01r.xyz/Paper-Review/FRIDA</guid>
+    <description>Abstract 이더리움과 같은 블록체인이 꾸준히 성장함에 따라, 제한된 자원을 사용하는 클라이언트들은 더 이상 전체 데이터를 저장할 수 없게 되었습니다. Light node를 사용하면, 블록체인을 사용하면서도 전체적으로 좋은 상태인지 검증하는 작업은 제외한 형태로, 헤더만 저장할 수 있습니다.</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>Orion2022</title>
+    <link>https://aurev01r.xyz/Paper-Review/Orion</link>
+    <guid>https://aurev01r.xyz/Paper-Review/Orion</guid>
+    <description>Abstract 영지식 증명은 다양한 실제 응용이 가능한 강력한 암호학적 프리미티브입니다. 그러나 기존의 영지식 증명 스킴들은 증명 크기가 간결한 대신, 증명 생성 시간에서 큰 오버헤드를 겪고 있어, 실용적인 효율성과 확장성에 한계가 있었습니다. 이러한 문제를 해결하기 위해 본 논문에서는 Orion이라는 새로운 영지식 증명 시스템을 제안했습니다.</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>Sometrick writeup</title>
+    <link>https://aurev01r.xyz/CTF/Sekai2024-some-trick-writeup</link>
+    <guid>https://aurev01r.xyz/CTF/Sekai2024-some-trick-writeup</guid>
+    <description>SekaiCTF2024 👾 Some Trick 이번 대회에서 가장 쉬운 난이도로 출제된 Crypto 문제이다. 문제 코드는 아래와 같다. import random from secrets import randbelow, randbits from flag import FLAG CIPHER_SUITE = randbelow(2**256) print(f&quot;oPUN_SASS_SASS_l version 4.0.{CIPHER_SUITE}&quot;) random.seed(CIPHER_SUITE) GSIZE = 8209 GNUM = 79 LIM = GSIZE**GNUM def gen(n): p, i = [0] * n, 0 for j in random.sample(range(1, n), n - 1): p[i], i = j, j return tuple(p) def gexp(g, e): res = tuple(g) while e: if e &amp; 1: res = tuple(res[i] for i in g) e &gt;&gt;= 1 g = tuple(g[i] for i in g) return res def enc(k, m, G): if not G: return m mod = len(G[0]) return gexp(G[0], k % mod)[m % mod] + enc(k // mod, m // mod, G[1:]) * mod def inverse(perm): res = list(perm) for i, v in enumerate(perm): res[v] = i return res G = [gen(GSIZE) for i in range(GNUM)] FLAG = int.from_bytes(FLAG, &#039;big&#039;) left_pad = randbits(randbelow(LIM.bit_length() - FLAG.bit_length())) FLAG = (FLAG &lt;&lt; left_pad.bit_length()) + left_pad FLAG = (randbits(randbelow(LIM.bit_length() - FLAG.bit_length())) &lt;&lt; FLAG.bit_length()) + FLAG bob_key = randbelow(LIM) bob_encr = enc(FLAG, bob_key, G) print(&quot;bob says&quot;, bob_encr) alice_key = randbelow(LIM) alice_encr = enc(bob_encr, alice_key, G) print(&quot;alice says&quot;, alice_encr) bob_decr = enc(alice_encr, bob_key, [inverse(i) for i in G]) print(&quot;bob says&quot;, bob_decr) 🕶️ 문제 분석 FLAG에 적당한 padding 을 붙이는 것으로 시작한다.</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>Digital Signature</title>
+    <link>https://aurev01r.xyz/Cryptography/Digital-Signature</link>
+    <guid>https://aurev01r.xyz/Cryptography/Digital-Signature</guid>
+    <description>디지털 서명: 안전한 전자 문서의 보증 디지털 세상이 점점 더 확장됨에 따라, 우리는 온라인에서 중요한 문서를 전송하거나 계약을 맺을 때 그 문서의 진위성을 보장받을 필요가 있습니다. 예를 들어, 누군가가 문서를 조작하지 않았다는 것을 어떻게 확신할 수 있을까요? 또는, 그 문서를 실제로 특정한 사람이 작성했음을 어떻게 증명할 수 있을까요? 바로 이때 등장하는 기술이 디지털 서명입니다.</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>Hash Function</title>
+    <link>https://aurev01r.xyz/Cryptography/Hash-Function</link>
+    <guid>https://aurev01r.xyz/Cryptography/Hash-Function</guid>
+    <description>(wip).</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item><item>
+    <title>Public Key Cryptography</title>
+    <link>https://aurev01r.xyz/Cryptography/Public-Key-Cryptography</link>
+    <guid>https://aurev01r.xyz/Cryptography/Public-Key-Cryptography</guid>
+    <description>(wip).</description>
+    <pubDate>Thu, 03 Oct 2024 20:24:47 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

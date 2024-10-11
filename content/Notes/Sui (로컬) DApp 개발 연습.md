@@ -357,7 +357,6 @@ sui client call --package <PACKAGE-ID> --module <MODULE> --functio <FUNCTION> --
 
 ![[Pasted image 20241011004441.png]]
 
-```
 > [!important]
 > Docs 에서는 이보다 좀 더 유연한 방법인 `ptb`를 설명하고 있습니다.
 > 
@@ -375,7 +374,6 @@ sui client call --package <PACKAGE-ID> --module <MODULE> --functio <FUNCTION> --
 > 	
 > 	
 > 	![[Pasted image 20241011005135.png]]
-```
 
 ---
 

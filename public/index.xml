@@ -6,6 +6,30 @@
       <description>최근 10 건 on 🪴 c0np4nn4</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Sui, DApp Frontend</title>
+    <link>https://aurev01r.xyz/Sui,-DApp-Frontend</link>
+    <guid>https://aurev01r.xyz/Sui,-DApp-Frontend</guid>
+    <description>1. Example yarn create @mysten/dapp --template react-client-dapp # &lt;ENTER&gt; cd my-first-sui-dapp yarn yarn dev 지갑을 연결해볼 수 있는 예제 사이트가 나옵니다. 2. 코드 분석 2-1.</description>
+    <pubDate>Thu, 10 Oct 2024 17:31:37 GMT</pubDate>
+  </item><item>
+    <title>Drawing 2024-10-11 00.13.35.excalidraw</title>
+    <link>https://aurev01r.xyz/Res/Excalidraw/Drawing-2024-10-11-00.13.35.excalidraw</link>
+    <guid>https://aurev01r.xyz/Res/Excalidraw/Drawing-2024-10-11-00.13.35.excalidraw</guid>
+    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
+    <pubDate>Thu, 10 Oct 2024 15:13:35 GMT</pubDate>
+  </item><item>
+    <title>Sui (로컬) DApp 개발 연습</title>
+    <link>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-DApp-%EA%B0%9C%EB%B0%9C-%EC%97%B0%EC%8A%B5</link>
+    <guid>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-DApp-%EA%B0%9C%EB%B0%9C-%EC%97%B0%EC%8A%B5</guid>
+    <description>우선 아래와 같이 입력해 새로운 프로젝트를 생성합니다. sui move new my_frist_package 생성된 폴더인 my_first_package로 가보면 manifest file 인 Move.toml과 소스코드가 있는 sources 디렉토리가 있습니다. 1. Package 정의하기 sources/my_first_package.move 는 사실 아무런 기능을 하지 않습니다.</description>
+    <pubDate>Thu, 10 Oct 2024 07:28:36 GMT</pubDate>
+  </item><item>
+    <title>Sui (로컬) 개발 환경 구축</title>
+    <link>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95</link>
+    <guid>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95</guid>
+    <description>Docs 읽고 한글로 정리해두려고 합니다… TL;DR Tool, Sui 설치 Localnet 구동 sui start with options (faucet, regensis) Localnet &lt;&gt; CLI 연결 sui client &lt;env&gt; Localnet Account 생성 sui client &lt;address&gt; ...</description>
+    <pubDate>Thu, 10 Oct 2024 05:27:53 GMT</pubDate>
+  </item><item>
     <title>Ethernaut(0x03), Coin Flip</title>
     <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x03),-Coin-Flip</link>
     <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x03),-Coin-Flip</guid>
@@ -41,30 +65,6 @@
     <guid>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</guid>
     <description>Abstract 더욱 확장성을 가진 블록체인을 만드는 방향으로 나가면서, 몇년 전부터 DAS(Data Availability Sampling)이라는 접근법이 알려지기 시작했습니다. 심지어 이더리움과 같은 거대한 블록체인도 확장성 향상을 위해 결국 DAS를 배포할 계획을 하고 있습니다.</description>
     <pubDate>Tue, 17 Sep 2024 23:30:36 GMT</pubDate>
-  </item><item>
-    <title>FRIDA2024</title>
-    <link>https://aurev01r.xyz/Paper-Review/FRIDA</link>
-    <guid>https://aurev01r.xyz/Paper-Review/FRIDA</guid>
-    <description>Abstract 이더리움과 같은 블록체인이 꾸준히 성장함에 따라, 제한된 자원을 사용하는 클라이언트들은 더 이상 전체 데이터를 저장할 수 없게 되었습니다. Light node를 사용하면, 블록체인을 사용하면서도 전체적으로 좋은 상태인지 검증하는 작업은 제외한 형태로, 헤더만 저장할 수 있습니다.</description>
-    <pubDate>Tue, 17 Sep 2024 23:04:46 GMT</pubDate>
-  </item><item>
-    <title>zk-Regex 분석</title>
-    <link>https://aurev01r.xyz/Notes/zk-regex-analysis</link>
-    <guid>https://aurev01r.xyz/Notes/zk-regex-analysis</guid>
-    <description></description>
-    <pubDate>Wed, 11 Sep 2024 04:31:50 GMT</pubDate>
-  </item><item>
-    <title>Digital Signature</title>
-    <link>https://aurev01r.xyz/Cryptography/Digital-Signature</link>
-    <guid>https://aurev01r.xyz/Cryptography/Digital-Signature</guid>
-    <description>디지털 서명: 안전한 전자 문서의 보증 디지털 세상이 점점 더 확장됨에 따라, 우리는 온라인에서 중요한 문서를 전송하거나 계약을 맺을 때 그 문서의 진위성을 보장받을 필요가 있습니다. 예를 들어, 누군가가 문서를 조작하지 않았다는 것을 어떻게 확신할 수 있을까요? 또는, 그 문서를 실제로 특정한 사람이 작성했음을 어떻게 증명할 수 있을까요? 바로 이때 등장하는 기술이 디지털 서명입니다.</description>
-    <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
-  </item><item>
-    <title>Hash Function</title>
-    <link>https://aurev01r.xyz/Cryptography/Hash-Function</link>
-    <guid>https://aurev01r.xyz/Cryptography/Hash-Function</guid>
-    <description>(wip).</description>
-    <pubDate>Fri, 30 Aug 2024 11:00:47 GMT</pubDate>
   </item>
     </channel>
   </rss>

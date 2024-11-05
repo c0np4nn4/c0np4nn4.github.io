@@ -6,17 +6,35 @@
       <description>최근 10 건 on 🪴 c0np4nn4</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>2.3 Polynomials over Galois Field GF(2)</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</guid>
+    <description></description>
+    <pubDate>Tue, 05 Nov 2024 11:15:56 GMT</pubDate>
+  </item><item>
+    <title>2.2 Finite Fields</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.2-Finite-Fields</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.2-Finite-Fields</guid>
+    <description>2.1 Groups에서 살펴본 Group 개념을 기반으로 algebric coding theory 나 다음과 같은 error-correcting codes 를 구축하는데 기반이 되는 Field 개념을 살펴봅니다. Reed-Solomon Codes (RS codes) Bose-Chaudhuri-Hocquenghem codes (BCH codes) low-density parity-check codes (LDPC codes) 2.2.1 기본 정의 및 개념 Definition 정의 2.6] Field 원소의 집합 F 는 Group 에서 다뤘던 두 이항 연산 addition (+), multiplication (\cdot) 이 정의되었을 때, 아래 조건을 만족하면 Field 가 됩니다.</description>
+    <pubDate>Tue, 05 Nov 2024 02:29:22 GMT</pubDate>
+  </item><item>
+    <title>2.1 Groups</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.1-Groups</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.1-Groups</guid>
+    <description>2.1.1 기본 정의 및 개념 원소의 집합 G가 있다고 해봅시다. 임의의 이항 연산(binary operation) * 를 규칙(rule)이라 부르고, 아래와 같이 c \in G 인 원소 c 를 고유하게(uniquely) 정의한다고 해보겠습니다. c = a * b 이러한 이항 연산 * 가 G에 대해 정의되어 있다면, G가 *에서 닫혀있다(closed)고 합니다.</description>
+    <pubDate>Mon, 04 Nov 2024 08:31:13 GMT</pubDate>
+  </item><item>
+    <title>NEAR, FastAuth</title>
+    <link>https://aurev01r.xyz/Notes/NEAR,-FastAuth</link>
+    <guid>https://aurev01r.xyz/Notes/NEAR,-FastAuth</guid>
+    <description></description>
+    <pubDate>Thu, 24 Oct 2024 00:38:57 GMT</pubDate>
+  </item><item>
     <title>Sui, DApp Frontend</title>
-    <link>https://aurev01r.xyz/Sui,-DApp-Frontend</link>
-    <guid>https://aurev01r.xyz/Sui,-DApp-Frontend</guid>
+    <link>https://aurev01r.xyz/Notes/Sui,-DApp-Frontend</link>
+    <guid>https://aurev01r.xyz/Notes/Sui,-DApp-Frontend</guid>
     <description>1. Example yarn create @mysten/dapp --template react-client-dapp # &lt;ENTER&gt; cd my-first-sui-dapp yarn yarn dev 지갑을 연결해볼 수 있는 예제 사이트가 나옵니다. 2. 코드 분석 2-1.</description>
     <pubDate>Thu, 10 Oct 2024 17:31:37 GMT</pubDate>
-  </item><item>
-    <title>Drawing 2024-10-11 00.13.35.excalidraw</title>
-    <link>https://aurev01r.xyz/Res/Excalidraw/Drawing-2024-10-11-00.13.35.excalidraw</link>
-    <guid>https://aurev01r.xyz/Res/Excalidraw/Drawing-2024-10-11-00.13.35.excalidraw</guid>
-    <description>⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠ You can decompress Drawing data with the command palette: ‘Decompress current Excalidraw file’.</description>
-    <pubDate>Thu, 10 Oct 2024 15:13:35 GMT</pubDate>
   </item><item>
     <title>Sui (로컬) DApp 개발 연습</title>
     <link>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-DApp-%EA%B0%9C%EB%B0%9C-%EC%97%B0%EC%8A%B5</link>
@@ -47,24 +65,6 @@
     <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x01),-Fallback</guid>
     <description>소스코드부터 살펴보겠습니다. 이미지로 가져왔는데, 일일이 다 볼 필요는 없어서 그냥 전체 코드 양을 가늠하는 느낌으로 첨부해보았습니다. 사실 receive(), fallback() 함수가 어떤 것인지 살펴보면 되는 문제입니다. 코드는 함수 이름들에서 알 수 있듯이, 누구나 Ether를 기여(contribute)할 수 있고.</description>
     <pubDate>Thu, 03 Oct 2024 18:14:32 GMT</pubDate>
-  </item><item>
-    <title>Ethernaut(0x00), Hello Ethernaut</title>
-    <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x00),-Hello-Ethernaut</link>
-    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x00),-Hello-Ethernaut</guid>
-    <description>시키는대로 따라하면 되는 단계입니다. 한때는 풀이를 와장창 적어보기도 했었습니다. 마치 ‘다음에 푸시는 분들도 참고해보세요’하는 식으로 말이죠. 물론 정답은 없겠습니다만, 이렇게 기록을 남기는 것은 내가 나중에 다시 봤을 때, 스스로 접근 방법을 기억할 수 있으면 좋겠다. 라는 마음으로 해나가는 것이 좋다고 생각합니다.</description>
-    <pubDate>Thu, 03 Oct 2024 18:10:16 GMT</pubDate>
-  </item><item>
-    <title>Ethernaut, 로컬 풀이 환경구축</title>
-    <link>https://aurev01r.xyz/Ethernaut/Ethernaut,-%EB%A1%9C%EC%BB%AC-%ED%92%80%EC%9D%B4-%ED%99%98%EA%B2%BD%EA%B5%AC%EC%B6%95</link>
-    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut,-%EB%A1%9C%EC%BB%AC-%ED%92%80%EC%9D%B4-%ED%99%98%EA%B2%BD%EA%B5%AC%EC%B6%95</guid>
-    <description>Openzeppelin이 호스팅하고 있는 Ethernaut에서 문제를 직접 풀 수도 있겠지만, testnet인 sepolia를 이용해야 하므로 faucet을 통해 ETH를 받아와야 합니다. Faucet을 통하는 과정이 번거롭기도 하고, testnet이다보니 블록 생성까지 기다려야 하는 등 아무래도 문제 풀이에 불편함이 많습니다.</description>
-    <pubDate>Thu, 03 Oct 2024 16:26:30 GMT</pubDate>
-  </item><item>
-    <title>Foundations of Data Availability Sampling</title>
-    <link>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</link>
-    <guid>https://aurev01r.xyz/Paper-Review/Data-Availability-Sampling</guid>
-    <description>Abstract 더욱 확장성을 가진 블록체인을 만드는 방향으로 나가면서, 몇년 전부터 DAS(Data Availability Sampling)이라는 접근법이 알려지기 시작했습니다. 심지어 이더리움과 같은 거대한 블록체인도 확장성 향상을 위해 결국 DAS를 배포할 계획을 하고 있습니다.</description>
-    <pubDate>Tue, 17 Sep 2024 23:30:36 GMT</pubDate>
   </item>
     </channel>
   </rss>

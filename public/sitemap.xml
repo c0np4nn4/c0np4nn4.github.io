@@ -5,6 +5,15 @@
     <loc>https://aurev01r.xyz/Cryptography/Digital-Signature</loc>
     <lastmod>2024-08-30T11:00:47.409Z</lastmod>
   </url><url>
+    <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.1-Groups</loc>
+    <lastmod>2024-11-04T08:31:13.599Z</lastmod>
+  </url><url>
+    <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.2-Finite-Fields</loc>
+    <lastmod>2024-11-05T02:29:22.600Z</lastmod>
+  </url><url>
+    <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</loc>
+    <lastmod>2024-11-05T11:15:56.975Z</lastmod>
+  </url><url>
     <loc>https://aurev01r.xyz/Cryptography/Hash-Function</loc>
     <lastmod>2024-08-30T11:00:47.409Z</lastmod>
   </url><url>
@@ -32,11 +41,20 @@
     <loc>https://aurev01r.xyz/Notes/16AUG,-PSE-Core-Program</loc>
     <lastmod>2024-08-16T00:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://aurev01r.xyz/Notes/NEAR,-FastAuth</loc>
+    <lastmod>2024-10-24T00:38:57.023Z</lastmod>
+  </url><url>
     <loc>https://aurev01r.xyz/Notes/PSE-Core-Group-Resources</loc>
     <lastmod>2024-08-30T11:00:47.409Z</lastmod>
   </url><url>
+    <loc>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-DApp-%EA%B0%9C%EB%B0%9C-%EC%97%B0%EC%8A%B5</loc>
+    <lastmod>2024-10-10T07:28:36.042Z</lastmod>
+  </url><url>
     <loc>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95</loc>
     <lastmod>2024-10-10T05:27:53.703Z</lastmod>
+  </url><url>
+    <loc>https://aurev01r.xyz/Notes/Sui,-DApp-Frontend</loc>
+    <lastmod>2024-10-10T17:31:37.015Z</lastmod>
   </url><url>
     <loc>https://aurev01r.xyz/Notes/zk-regex-analysis</loc>
     <lastmod>2024-09-11T04:31:50.077Z</lastmod>
@@ -58,13 +76,4 @@
   </url><url>
     <loc>https://aurev01r.xyz/</loc>
     <lastmod>2024-08-30T11:00:47.409Z</lastmod>
-  </url><url>
-    <loc>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-DApp-%EA%B0%9C%EB%B0%9C-%EC%97%B0%EC%8A%B5</loc>
-    <lastmod>2024-10-10T07:28:36.042Z</lastmod>
-  </url><url>
-    <loc>https://aurev01r.xyz/Res/Excalidraw/Drawing-2024-10-11-00.13.35.excalidraw</loc>
-    <lastmod>2024-10-10T15:13:35.138Z</lastmod>
-  </url><url>
-    <loc>https://aurev01r.xyz/Sui,-DApp-Frontend</loc>
-    <lastmod>2024-10-10T17:31:37.015Z</lastmod>
   </url></urlset>

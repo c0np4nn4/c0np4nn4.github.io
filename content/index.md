@@ -8,3 +8,5 @@ title: Welcome to Quartz
 [[2.1 Groups]]
 
 [[2.2 Finite Fields]]
+
+[[2.3 Polynomials over Galois Field GF(2)]]

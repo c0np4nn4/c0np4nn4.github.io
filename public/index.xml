@@ -6,10 +6,22 @@
       <description>최근 10 건 on 🪴 c0np4nn4</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>2. 5 Basic Properties and Structures of Galois Field</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</guid>
+    <description>이 절에서는 extension field GF(2^m) 의 기본적인 성질 몇 가지를 살펴봅니다. 이는 주요 error-correcting code인 BCH codes, RS Codes를 이해하는데 중요합니다. [!Theorem] 정리 2.7] f(X) 를 GF(2)상의 다항식이라 가정합니다.</description>
+    <pubDate>Thu, 07 Nov 2024 10:21:00 GMT</pubDate>
+  </item><item>
+    <title>2.4 Construction of Galois Field</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.4-Construction-of-Galois-Field</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.4-Construction-of-Galois-Field</guid>
+    <description>이 절에서는 GF(2)의 extension인 GF(2^m)를 만드는 과정을 다룹니다. 간단히 요약하면 아래와 같습니다. Finite Field GF(2)와 degree가 m 인 기약다항식 p(X)을 이용한다. p(X)의 root인 \alpha 를 이용해서 GF(2^m) 의 원소를 거듭제곱 형태로 표현할 수 있다.</description>
+    <pubDate>Thu, 07 Nov 2024 10:03:58 GMT</pubDate>
+  </item><item>
     <title>2.3 Polynomials over Galois Field GF(2)</title>
     <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</link>
     <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</guid>
-    <description></description>
+    <description>다항식(polynomial) f(X) = f_0 + f_1X + f_2X^2 + \cdots f_nX^n 에 대하여, 계수(coefficient) f_i 가 GF(2) 의 원소인 다항식을 polynomial over GF(2) 또는 binary polynomial 이라 부릅니다 ...</description>
     <pubDate>Tue, 05 Nov 2024 11:15:56 GMT</pubDate>
   </item><item>
     <title>2.2 Finite Fields</title>
@@ -53,18 +65,6 @@
     <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x03),-Coin-Flip</guid>
     <description>Random인 척 하는 값을 이용한다고도 볼 수 있고. Random을 구현하기 힘듦을 나타내는 것이라고도 할 수 있고. 아무튼 그런 문제입니다. 초 심플한 문제입니다. flip() 함수 하나만 있는데, 플레이어가 할 일은 _guess 값을 제대로 넣는 것 밖에 없습니다. 솔직히 script 짜기 귀찮지만, 연습삼아 해보기로 했습니다.</description>
     <pubDate>Thu, 03 Oct 2024 19:56:18 GMT</pubDate>
-  </item><item>
-    <title>Ethernaut(0x02), Fal1out</title>
-    <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x02),-Fal1out</link>
-    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x02),-Fal1out</guid>
-    <description>문제에 나와있듯이 ownership 을 획득하면 되는 문제입니다. 사실 코드를 좀 살펴보면, ***Factory.sol 에 풀이 완료 조건이 있긴 합니다. instance.owner() 와 현재 player 가 동일하다면 통과하는 로직입니다. owner 를 바꾸는 로직은 문제에서 /*constructor*/로 주석을 남긴 함수가 바로 보입니다.</description>
-    <pubDate>Thu, 03 Oct 2024 19:45:49 GMT</pubDate>
-  </item><item>
-    <title>Ethernaut(0x01), Fallback</title>
-    <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x01),-Fallback</link>
-    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x01),-Fallback</guid>
-    <description>소스코드부터 살펴보겠습니다. 이미지로 가져왔는데, 일일이 다 볼 필요는 없어서 그냥 전체 코드 양을 가늠하는 느낌으로 첨부해보았습니다. 사실 receive(), fallback() 함수가 어떤 것인지 살펴보면 되는 문제입니다. 코드는 함수 이름들에서 알 수 있듯이, 누구나 Ether를 기여(contribute)할 수 있고.</description>
-    <pubDate>Thu, 03 Oct 2024 18:14:32 GMT</pubDate>
   </item>
     </channel>
   </rss>

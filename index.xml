@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>🪴 c0np4nn4</title>
+      <link>https://aurev01r.xyz</link>
+      <description>최근 10 건 on 🪴 c0np4nn4</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Welcome to Quartz</title>
+    <link>https://aurev01r.xyz/</link>
+    <guid>https://aurev01r.xyz/</guid>
+    <description>Since 2024… 2.1 Groups 2.2 Finite Fields 2.3 Polynomials over Galois Field GF(2).</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>Sometrick writeup</title>
+    <link>https://aurev01r.xyz/CTF/Sekai2024-some-trick-writeup</link>
+    <guid>https://aurev01r.xyz/CTF/Sekai2024-some-trick-writeup</guid>
+    <description>SekaiCTF2024 👾 Some Trick 이번 대회에서 가장 쉬운 난이도로 출제된 Crypto 문제이다. 문제 코드는 아래와 같다. import random from secrets import randbelow, randbits from flag import FLAG CIPHER_SUITE = randbelow(2**256) print(f&quot;oPUN_SASS_SASS_l version 4.0.{CIPHER_SUITE}&quot;) random.seed(CIPHER_SUITE) GSIZE = 8209 GNUM = 79 LIM = GSIZE**GNUM def gen(n): p, i = [0] * n, 0 for j in random.sample(range(1, n), n - 1): p[i], i = j, j return tuple(p) def gexp(g, e): res = tuple(g) while e: if e &amp; 1: res = tuple(res[i] for i in g) e &gt;&gt;= 1 g = tuple(g[i] for i in g) return res def enc(k, m, G): if not G: return m mod = len(G[0]) return gexp(G[0], k % mod)[m % mod] + enc(k // mod, m // mod, G[1:]) * mod def inverse(perm): res = list(perm) for i, v in enumerate(perm): res[v] = i return res G = [gen(GSIZE) for i in range(GNUM)] FLAG = int.from_bytes(FLAG, &#039;big&#039;) left_pad = randbits(randbelow(LIM.bit_length() - FLAG.bit_length())) FLAG = (FLAG &lt;&lt; left_pad.bit_length()) + left_pad FLAG = (randbits(randbelow(LIM.bit_length() - FLAG.bit_length())) &lt;&lt; FLAG.bit_length()) + FLAG bob_key = randbelow(LIM) bob_encr = enc(FLAG, bob_key, G) print(&quot;bob says&quot;, bob_encr) alice_key = randbelow(LIM) alice_encr = enc(bob_encr, alice_key, G) print(&quot;alice says&quot;, alice_encr) bob_decr = enc(alice_encr, bob_key, [inverse(i) for i in G]) print(&quot;bob says&quot;, bob_decr) 🕶️ 문제 분석 FLAG에 적당한 padding 을 붙이는 것으로 시작한다.</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>Digital Signature</title>
+    <link>https://aurev01r.xyz/Cryptography/Digital-Signature</link>
+    <guid>https://aurev01r.xyz/Cryptography/Digital-Signature</guid>
+    <description>디지털 서명: 안전한 전자 문서의 보증 디지털 세상이 점점 더 확장됨에 따라, 우리는 온라인에서 중요한 문서를 전송하거나 계약을 맺을 때 그 문서의 진위성을 보장받을 필요가 있습니다. 예를 들어, 누군가가 문서를 조작하지 않았다는 것을 어떻게 확신할 수 있을까요? 또는, 그 문서를 실제로 특정한 사람이 작성했음을 어떻게 증명할 수 있을까요? 바로 이때 등장하는 기술이 디지털 서명입니다.</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>2. 5 Basic Properties and Structures of Galois Field</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</guid>
+    <description>이 절에서는 extension field GF(2^m) 의 기본적인 성질 몇 가지를 살펴봅니다. 이는 주요 error-correcting code인 BCH codes, RS Codes를 이해하는데 중요합니다. [!Theorem] 정리 2.7] f(X) 를 GF(2)상의 다항식이라 가정합니다.</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>2.1 Groups</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.1-Groups</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.1-Groups</guid>
+    <description>2.1.1 기본 정의 및 개념 원소의 집합 G가 있다고 해봅시다. 임의의 이항 연산(binary operation) * 를 규칙(rule)이라 부르고, 아래와 같이 c \in G 인 원소 c 를 고유하게(uniquely) 정의한다고 해보겠습니다. c = a * b 이러한 이항 연산 * 가 G에 대해 정의되어 있다면, G가 *에서 닫혀있다(closed)고 합니다.</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>2.2 Finite Fields</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.2-Finite-Fields</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.2-Finite-Fields</guid>
+    <description>2.1 Groups에서 살펴본 Group 개념을 기반으로 algebric coding theory 나 다음과 같은 error-correcting codes 를 구축하는데 기반이 되는 Field 개념을 살펴봅니다. Reed-Solomon Codes (RS codes) Bose-Chaudhuri-Hocquenghem codes (BCH codes) low-density parity-check codes (LDPC codes) 2.2.1 기본 정의 및 개념 Definition 정의 2.6] Field 원소의 집합 F 는 Group 에서 다뤘던 두 이항 연산 addition (+), multiplication (\cdot) 이 정의되었을 때, 아래 조건을 만족하면 Field 가 됩니다.</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>2.3 Polynomials over Galois Field GF(2)</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</guid>
+    <description>다항식(polynomial) f(X) = f_0 + f_1X + f_2X^2 + \cdots f_nX^n 에 대하여, 계수(coefficient) f_i 가 GF(2) 의 원소인 다항식을 polynomial over GF(2) 또는 binary polynomial 이라 부릅니다 ...</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>2.4 Construction of Galois Field</title>
+    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.4-Construction-of-Galois-Field</link>
+    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.4-Construction-of-Galois-Field</guid>
+    <description>이 절에서는 GF(2)의 extension인 GF(2^m)를 만드는 과정을 다룹니다. 간단히 요약하면 아래와 같습니다. Finite Field GF(2)와 degree가 m 인 기약다항식 p(X)을 이용한다. p(X)의 root인 \alpha 를 이용해서 GF(2^m) 의 원소를 거듭제곱 형태로 표현할 수 있다.</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>Hash Function</title>
+    <link>https://aurev01r.xyz/Cryptography/Hash-Function</link>
+    <guid>https://aurev01r.xyz/Cryptography/Hash-Function</guid>
+    <description>(wip).</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item><item>
+    <title>Public Key Cryptography</title>
+    <link>https://aurev01r.xyz/Cryptography/Public-Key-Cryptography</link>
+    <guid>https://aurev01r.xyz/Cryptography/Public-Key-Cryptography</guid>
+    <description>(wip).</description>
+    <pubDate>Thu, 07 Nov 2024 10:34:00 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

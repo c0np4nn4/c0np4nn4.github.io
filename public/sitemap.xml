@@ -5,6 +5,9 @@
     <loc>https://aurev01r.xyz/Cryptography/Digital-Signature</loc>
     <lastmod>2024-08-30T11:00:47.409Z</lastmod>
   </url><url>
+    <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</loc>
+    <lastmod>2024-11-07T10:21:00.668Z</lastmod>
+  </url><url>
     <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.1-Groups</loc>
     <lastmod>2024-11-04T08:31:13.599Z</lastmod>
   </url><url>
@@ -13,6 +16,9 @@
   </url><url>
     <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</loc>
     <lastmod>2024-11-05T11:15:56.975Z</lastmod>
+  </url><url>
+    <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.4-Construction-of-Galois-Field</loc>
+    <lastmod>2024-11-07T10:03:58.259Z</lastmod>
   </url><url>
     <loc>https://aurev01r.xyz/Cryptography/Hash-Function</loc>
     <lastmod>2024-08-30T11:00:47.409Z</lastmod>
@@ -76,10 +82,4 @@
   </url><url>
     <loc>https://aurev01r.xyz/</loc>
     <lastmod>2024-08-30T11:00:47.409Z</lastmod>
-  </url><url>
-    <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.4-Construction-of-Galois-Field</loc>
-    <lastmod>2024-11-07T10:03:58.259Z</lastmod>
-  </url><url>
-    <loc>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</loc>
-    <lastmod>2024-11-07T10:21:00.668Z</lastmod>
   </url></urlset>

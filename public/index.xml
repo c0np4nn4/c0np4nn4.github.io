@@ -9,7 +9,7 @@
     <title>2. 5 Basic Properties and Structures of Galois Field</title>
     <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</link>
     <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</guid>
-    <description>이 절에서는 extension field GF(2^m) 의 기본적인 성질 몇 가지를 살펴봅니다. 이는 주요 error-correcting code인 BCH codes, RS Codes를 이해하는데 중요합니다. [!Theorem] 정리 2.7] f(X) 를 GF(2)상의 다항식이라 가정합니다.</description>
+    <description>이 절에서는 extension field GF(2^m) 의 기본적인 성질 몇 가지를 살펴봅니다. 이는 주요 error-correcting code인 BCH codes, RS Codes를 이해하는데 중요합니다. Theorem 정리 2.7] f(X) 를 GF(2)상의 다항식이라 가정합니다.</description>
     <pubDate>Thu, 07 Nov 2024 10:21:00 GMT</pubDate>
   </item><item>
     <title>2.4 Construction of Galois Field</title>

@@ -6,65 +6,65 @@
       <description>최근 10 건 on 🪴 c0np4nn4</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>2. 5 Basic Properties and Structures of Galois Field</title>
-    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</link>
-    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.-5-Basic-Properties-and-Structures-of-Galois-Field</guid>
-    <description>이 절에서는 extension field GF(2^m) 의 기본적인 성질 몇 가지를 살펴봅니다. 이는 주요 error-correcting code인 BCH codes, RS Codes를 이해하는데 중요합니다. Theorem 정리 2.7] f(X) 를 GF(2)상의 다항식이라 가정합니다.</description>
-    <pubDate>Thu, 07 Nov 2024 10:21:00 GMT</pubDate>
+    <title>Tokio_3</title>
+    <link>https://aurev01r.xyz/Notes/Tokio_3</link>
+    <guid>https://aurev01r.xyz/Notes/Tokio_3</guid>
+    <description>Spawning 앞선 튜토리얼은 이를테면 client side의 프로그램을 만들어 보는 과정이었습니다. 여기서는 server를 만드는 과정을 살펴봅니다. Accepting Sockets Server를 만드는 가장 첫 단계는 inbound TCP socket을 accept하도록 코드를 짜는 것입니다.</description>
+    <pubDate>Wed, 11 Dec 2024 20:32:19 GMT</pubDate>
   </item><item>
-    <title>2.4 Construction of Galois Field</title>
-    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.4-Construction-of-Galois-Field</link>
-    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.4-Construction-of-Galois-Field</guid>
-    <description>이 절에서는 GF(2)의 extension인 GF(2^m)를 만드는 과정을 다룹니다. 간단히 요약하면 아래와 같습니다. Finite Field GF(2)와 degree가 m 인 기약다항식 p(X)을 이용한다. p(X)의 root인 \alpha 를 이용해서 GF(2^m) 의 원소를 거듭제곱 형태로 표현할 수 있다.</description>
-    <pubDate>Thu, 07 Nov 2024 10:03:58 GMT</pubDate>
+    <title>Tokio_2</title>
+    <link>https://aurev01r.xyz/Notes/Tokio_2</link>
+    <guid>https://aurev01r.xyz/Notes/Tokio_2</guid>
+    <description>Tutorial 본 튜토리얼에서는 Tokio를 이용하여, 데이터베이스로 동작하는 Redis의 client와 server를 다뤄봅니다. 이 과정에서 asynchronous programming의 기초를 이해할 수 있고, Tokio에 대한 이해도도 높일 수 있습니다. Setup 튜토리얼은 Mini-Redis 라는 Tokio 학습용 crate를 이용해 진행됩니다.</description>
+    <pubDate>Wed, 11 Dec 2024 16:49:52 GMT</pubDate>
   </item><item>
-    <title>2.3 Polynomials over Galois Field GF(2)</title>
-    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</link>
-    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.3-Polynomials-over-Galois-Field-GF(2)</guid>
-    <description>다항식(polynomial) f(X) = f_0 + f_1X + f_2X^2 + \cdots f_nX^n 에 대하여, 계수(coefficient) f_i 가 GF(2) 의 원소인 다항식을 polynomial over GF(2) 또는 binary polynomial 이라 부릅니다 ...</description>
-    <pubDate>Tue, 05 Nov 2024 11:15:56 GMT</pubDate>
+    <title>Tokio_1</title>
+    <link>https://aurev01r.xyz/Notes/Tokio_1</link>
+    <guid>https://aurev01r.xyz/Notes/Tokio_1</guid>
+    <description>Overview Tokio는 Rust 언어를 위한 asynchronous runtime 입니다. 네트워킹 프로그래밍에 활용될 수 있으며, 아래와 같은 주요 component를 제공합니다. asynchronous code 를 실행하기 위한 multi-threaded runtime Standard library의 asynchronous 버전 Project 에서 Tokio의 역할 asynchronous 방식으로 코드를 작성하면 동시에 여러 작업을 할 때 드는 cost를 많이 줄일 수 있습니다.</description>
+    <pubDate>Wed, 11 Dec 2024 16:29:30 GMT</pubDate>
   </item><item>
-    <title>2.2 Finite Fields</title>
-    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.2-Finite-Fields</link>
-    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.2-Finite-Fields</guid>
-    <description>2.1 Groups에서 살펴본 Group 개념을 기반으로 algebric coding theory 나 다음과 같은 error-correcting codes 를 구축하는데 기반이 되는 Field 개념을 살펴봅니다. Reed-Solomon Codes (RS codes) Bose-Chaudhuri-Hocquenghem codes (BCH codes) low-density parity-check codes (LDPC codes) 2.2.1 기본 정의 및 개념 Definition 정의 2.6] Field 원소의 집합 F 는 Group 에서 다뤘던 두 이항 연산 addition (+), multiplication (\cdot) 이 정의되었을 때, 아래 조건을 만족하면 Field 가 됩니다.</description>
-    <pubDate>Tue, 05 Nov 2024 02:29:22 GMT</pubDate>
-  </item><item>
-    <title>2.1 Groups</title>
-    <link>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.1-Groups</link>
-    <guid>https://aurev01r.xyz/Cryptography/ECC-%EA%B8%B0%EC%B4%88/2.1-Groups</guid>
-    <description>2.1.1 기본 정의 및 개념 원소의 집합 G가 있다고 해봅시다. 임의의 이항 연산(binary operation) * 를 규칙(rule)이라 부르고, 아래와 같이 c \in G 인 원소 c 를 고유하게(uniquely) 정의한다고 해보겠습니다. c = a * b 이러한 이항 연산 * 가 G에 대해 정의되어 있다면, G가 *에서 닫혀있다(closed)고 합니다.</description>
-    <pubDate>Mon, 04 Nov 2024 08:31:13 GMT</pubDate>
-  </item><item>
-    <title>NEAR, FastAuth</title>
-    <link>https://aurev01r.xyz/Notes/NEAR,-FastAuth</link>
-    <guid>https://aurev01r.xyz/Notes/NEAR,-FastAuth</guid>
-    <description></description>
-    <pubDate>Thu, 24 Oct 2024 00:38:57 GMT</pubDate>
-  </item><item>
-    <title>Sui, DApp Frontend</title>
-    <link>https://aurev01r.xyz/Notes/Sui,-DApp-Frontend</link>
-    <guid>https://aurev01r.xyz/Notes/Sui,-DApp-Frontend</guid>
-    <description>1. Example yarn create @mysten/dapp --template react-client-dapp # &lt;ENTER&gt; cd my-first-sui-dapp yarn yarn dev 지갑을 연결해볼 수 있는 예제 사이트가 나옵니다. 2. 코드 분석 2-1.</description>
-    <pubDate>Thu, 10 Oct 2024 17:31:37 GMT</pubDate>
+    <title>Welcome to Quartz</title>
+    <link>https://aurev01r.xyz/</link>
+    <guid>https://aurev01r.xyz/</guid>
+    <description>Since 2024… 2.1 Groups 2.2 Finite Fields 2.3 Polynomials over Galois Field GF(2).</description>
+    <pubDate>Wed, 11 Dec 2024 16:29:01 GMT</pubDate>
   </item><item>
     <title>Sui (로컬) DApp 개발 연습</title>
     <link>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-DApp-%EA%B0%9C%EB%B0%9C-%EC%97%B0%EC%8A%B5</link>
     <guid>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-DApp-%EA%B0%9C%EB%B0%9C-%EC%97%B0%EC%8A%B5</guid>
     <description>우선 아래와 같이 입력해 새로운 프로젝트를 생성합니다. sui move new my_frist_package 생성된 폴더인 my_first_package로 가보면 manifest file 인 Move.toml과 소스코드가 있는 sources 디렉토리가 있습니다. 1. Package 정의하기 sources/my_first_package.move 는 사실 아무런 기능을 하지 않습니다.</description>
-    <pubDate>Thu, 10 Oct 2024 07:28:36 GMT</pubDate>
+    <pubDate>Wed, 11 Dec 2024 16:29:01 GMT</pubDate>
   </item><item>
     <title>Sui (로컬) 개발 환경 구축</title>
     <link>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95</link>
     <guid>https://aurev01r.xyz/Notes/Sui-(%EB%A1%9C%EC%BB%AC)-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95</guid>
     <description>Docs 읽고 한글로 정리해두려고 합니다… TL;DR Tool, Sui 설치 Localnet 구동 sui start with options (faucet, regensis) Localnet &lt;&gt; CLI 연결 sui client &lt;env&gt; Localnet Account 생성 sui client &lt;address&gt; ...</description>
-    <pubDate>Thu, 10 Oct 2024 05:27:53 GMT</pubDate>
+    <pubDate>Wed, 11 Dec 2024 16:29:01 GMT</pubDate>
   </item><item>
-    <title>Ethernaut(0x03), Coin Flip</title>
-    <link>https://aurev01r.xyz/Ethernaut/Ethernaut(0x03),-Coin-Flip</link>
-    <guid>https://aurev01r.xyz/Ethernaut/Ethernaut(0x03),-Coin-Flip</guid>
-    <description>Random인 척 하는 값을 이용한다고도 볼 수 있고. Random을 구현하기 힘듦을 나타내는 것이라고도 할 수 있고. 아무튼 그런 문제입니다. 초 심플한 문제입니다. flip() 함수 하나만 있는데, 플레이어가 할 일은 _guess 값을 제대로 넣는 것 밖에 없습니다. 솔직히 script 짜기 귀찮지만, 연습삼아 해보기로 했습니다.</description>
-    <pubDate>Thu, 03 Oct 2024 19:56:18 GMT</pubDate>
+    <title>Sui, DApp Frontend</title>
+    <link>https://aurev01r.xyz/Notes/Sui,-DApp-Frontend</link>
+    <guid>https://aurev01r.xyz/Notes/Sui,-DApp-Frontend</guid>
+    <description>1. Example yarn create @mysten/dapp --template react-client-dapp # &lt;ENTER&gt; cd my-first-sui-dapp yarn yarn dev 지갑을 연결해볼 수 있는 예제 사이트가 나옵니다. 2. 코드 분석 2-1.</description>
+    <pubDate>Wed, 11 Dec 2024 16:29:01 GMT</pubDate>
+  </item><item>
+    <title>zk-Regex 분석</title>
+    <link>https://aurev01r.xyz/Notes/zk-regex-analysis</link>
+    <guid>https://aurev01r.xyz/Notes/zk-regex-analysis</guid>
+    <description></description>
+    <pubDate>Wed, 11 Dec 2024 16:29:01 GMT</pubDate>
+  </item><item>
+    <title>NEAR, FastAuth</title>
+    <link>https://aurev01r.xyz/Notes/NEAR,-FastAuth</link>
+    <guid>https://aurev01r.xyz/Notes/NEAR,-FastAuth</guid>
+    <description></description>
+    <pubDate>Wed, 11 Dec 2024 16:29:01 GMT</pubDate>
+  </item><item>
+    <title>PSE Core Group Resources</title>
+    <link>https://aurev01r.xyz/Notes/PSE-Core-Group-Resources</link>
+    <guid>https://aurev01r.xyz/Notes/PSE-Core-Group-Resources</guid>
+    <description>2024년 PSE Core Group에서 활용한 자료들을 정리한 문서입니다. Week 1 TitleTagLinkKZG articleKZG, PCSdankradfeist.de/ethereum/2020/06/16/kate-polynomial-commitments.htmlKZG paperKZG, PCSwww.iacr.org/archive/asiacrypt2010/6477178/6477178.pdf.</description>
+    <pubDate>Wed, 11 Dec 2024 16:29:01 GMT</pubDate>
   </item>
     </channel>
   </rss>

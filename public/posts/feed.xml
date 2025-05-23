@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>My Blog</title>
+	<subtitle>My blog site.</subtitle>
+	<link href="https://c0np4nn4.github.io/posts/feed.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://c0np4nn4.github.io/posts/"/>
+	<updated>2025-05-23T00:00:00+00:00</updated>
+	<id>https://c0np4nn4.github.io/posts/feed.xml</id>
+	<entry xml:lang="en">
+		<title>Reed-solomon Fingerprinting</title>
+		<published>2025-05-23T00:00:00+00:00</published>
+		<updated>2025-05-23T00:00:00+00:00</updated>
+		<link href="https://c0np4nn4.github.io/posts/pazk-1/" type="text/html"/>
+		<id>https://c0np4nn4.github.io/posts/pazk-1/</id>
+		<content type="html">&lt;h1 id=&quot;2-1-reed-solomon-fingerprinting&quot;&gt;2.1 Reed-Solomon Fingerprinting&lt;a class=&quot;zola-anchor&quot; href=&quot;#2-1-reed-solomon-fingerprinting&quot; aria-label=&quot;Anchor link for: 2-1-reed-solomon-fingerprinting&quot; style=&quot;visibility: hidden;&quot;&gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;증명 시스템을 본격적으로 다루기에 앞서, &lt;code&gt;무작위성(randomness)&lt;&#x2F;code&gt;이 어떻게 특정 알고리즘의 효율을 극대화시킬 수 있는지를 살펴본다. 여기서 다루는 증명 과정의 참여자들은 모두 신뢰할만하고, 계산 능력도 충분하다고 가정한다. 즉, 아래 사항을 전제로 한다.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Alice&lt;&#x2F;em&gt;, &lt;em&gt;Bob&lt;&#x2F;em&gt; 이 서로를 신뢰(trust)한다.&lt;&#x2F;li&gt;
+&lt;li&gt;특정한 연산 $f$ 을 수행할 충분한 능력이 있다.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;2-1-1-setting&quot;&gt;2.1.1 Setting&lt;a class=&quot;zola-anchor&quot; href=&quot;#2-1-1-setting&quot; aria-label=&quot;Anchor link for: 2-1-1-setting&quot; style=&quot;visibility: hidden;&quot;&gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;Alice&lt;&#x2F;code&gt; 와 &lt;code&gt;Bob&lt;&#x2F;code&gt;이 서로 멀리 떨어져 지낸다고 가정해본다. 그들 각각은 $n$ 개의 글자로 이뤄진 &lt;strong&gt;크기가 큰 파일&lt;&#x2F;strong&gt;을 가지고 있다. 각 글자를 ASCII 코드로 생각하면 총 $m=128$ 가지의 글자가 올 수 있다.
+&lt;code&gt;Alice&lt;&#x2F;code&gt; 와 &lt;code&gt;Bob&lt;&#x2F;code&gt;의 파일을 각각 아래와 같이 나타내면,
+$$
+\begin{cases}(a_1, a_2, \cdots, a_n) \ (b_1, b_2, \cdots, b_n)\end{cases}
+$$
+이들의 &lt;font color=&quot;tomato&quot;&gt;목표&lt;&#x2F;font&gt;는 다음과 같다.
+$$
+\text{Pr}[a_i = b_i: \forall i \in [n]] = 1
+$$
+파일의 크기가 크기 때문에, 이들의 실제 목표는 &lt;em&gt;통신 비용 (communication cost)&lt;&#x2F;em&gt; 을 최대한 낮추는 것이 된다.
+&lt;font color=&quot;tomato&quot;&gt;목표&lt;&#x2F;font&gt;를 달성하는 가장 직관적인 방법은 &lt;code&gt;Alice&lt;&#x2F;code&gt; 가 모든 파일을 &lt;code&gt;Bob&lt;&#x2F;code&gt;에게 넘기는 것이다. 하지만, 파일의 크기가 너무 크기 때문에 이러한 전송은 현실적이지 않다. 1997년에 작성된 Eyal Kushilevitz와 Noam Nisan 의 논문 &lt;em&gt;&lt;strong&gt;Communication Complexity&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; 에서는 이런 직관적인 방법보다 더 낮은 정보를 전송하는 &lt;em&gt;deterministic&lt;&#x2F;em&gt; procedure는 없음을 증명하기도 했다. (즉, 파일을 그대로 주는게 결정론적 절차에서는 가장 효율적임을 의미한다.)
+하지만, &lt;code&gt;Alice&lt;&#x2F;code&gt;와 &lt;code&gt;Bob&lt;&#x2F;code&gt;이 아주 작은 확률로 오답을 내놓는 &lt;em&gt;randomized&lt;&#x2F;em&gt; procedure 를 수행할 수 있다고 가정할 때, 훨씬 적은 communication 으로 &lt;font color=&quot;tomato&quot;&gt;목표&lt;&#x2F;font&gt;를 달성할 수 있음을 확인할 수 있다.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>test</title>
+		<published>2025-01-01T00:00:00+00:00</published>
+		<updated>2025-01-01T00:00:00+00:00</updated>
+		<link href="https://c0np4nn4.github.io/posts/hello/" type="text/html"/>
+		<id>https://c0np4nn4.github.io/posts/hello/</id>
+		<content type="html">&lt;h1 id=&quot;hello-world&quot;&gt;Hello World&lt;a class=&quot;zola-anchor&quot; href=&quot;#hello-world&quot; aria-label=&quot;Anchor link for: hello-world&quot; style=&quot;visibility: hidden;&quot;&gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>test 111</title>
+		<published>2025-01-01T00:00:00+00:00</published>
+		<updated>2025-01-01T00:00:00+00:00</updated>
+		<link href="https://c0np4nn4.github.io/posts/test/" type="text/html"/>
+		<id>https://c0np4nn4.github.io/posts/test/</id>
+		<content type="html">&lt;h1 id=&quot;hello-world&quot;&gt;Hello World&lt;a class=&quot;zola-anchor&quot; href=&quot;#hello-world&quot; aria-label=&quot;Anchor link for: hello-world&quot; style=&quot;visibility: hidden;&quot;&gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;$$
+\begin{cases}
+a &amp;amp; b
+\end{cases}
+$$&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>test</title>
+		<published>2025-01-01T00:00:00+00:00</published>
+		<updated>2025-01-01T00:00:00+00:00</updated>
+		<link href="https://c0np4nn4.github.io/posts/world/" type="text/html"/>
+		<id>https://c0np4nn4.github.io/posts/world/</id>
+		<content type="html">&lt;h1 id=&quot;hello-world&quot;&gt;Hello World&lt;a class=&quot;zola-anchor&quot; href=&quot;#hello-world&quot; aria-label=&quot;Anchor link for: hello-world&quot; style=&quot;visibility: hidden;&quot;&gt;&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+</content>
+	</entry>
+</feed>

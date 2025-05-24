@@ -13,9 +13,9 @@ id = "c0np4nn4"
 bio = "Computer Computer Computer"
 # avatar = "img/avatar.webp"
 links = [
-    { name = "GitHub", icon = "github", url = "https://github.com/<your-username>" },
-    { name = "Twitter", icon = "twitter", url = "https://twitter.com/<your-username>" },
-    { name = "Email", icon = "email", url = "mailto:<your-email-address>" },
+    { name = "GitHub", icon = "github", url = "https://github.com/c0np4nn4" },
+    # { name = "Twitter", icon = "twitter", url = "https://twitter.com/<your-username>" },
+    { name = "Email", icon = "email", url = "mailto:c0np4nn4@gmail.com" },
 ]
 
 # Show a few recent posts in home page

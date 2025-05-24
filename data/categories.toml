@@ -1,0 +1,55 @@
+[[collection]]
+type = "card"
+title = "Blockchain Basics"
+subtitle = "블록체인이란?"
+date = "2025-01-01"
+link = "https://example.com/blockchain"
+icon = "https://example.com/icons/blockchain.png"
+content = "블록체인은 데이터를 분산된 네트워크에 저장하는 기술입니다."
+tags = ["blockchain"]
+featured = false
+
+[[collection]]
+type = "card"
+title = "Cryptography Course"
+subtitle = "암호학 입문 강의"
+date = "2025-01-02"
+link = "https://example.com/courses/crypto"
+icon = "https://example.com/icons/course.png"
+content = "이 강의에서는 대칭키, 공개키, 해시 함수 등을 다룹니다."
+tags = ["courses"]
+featured = false
+
+[[collection]]
+type = "card"
+title = "Course Note: Sumcheck"
+subtitle = "3주차 강의 노트"
+date = "2025-01-03"
+link = "https://example.com/notes/sumcheck"
+icon = "https://example.com/icons/note.png"
+content = "Sumcheck 프로토콜의 수학적 구조를 설명한 강의 노트입니다."
+tags = ["course note"]
+featured = false
+
+[[collection]]
+type = "card"
+title = "Groth16 Explained"
+subtitle = "zkSNARK 개요"
+date = "2025-01-04"
+link = "https://example.com/zk/groth16"
+icon = "https://example.com/icons/zk.png"
+content = "Groth16은 효율적인 zkSNARK 프로토콜입니다."
+tags = ["cryptography"]
+featured = false
+
+[[collection]]
+type = "card"
+title = "Polynomial Commitments"
+subtitle = "다항식 커밋이란?"
+date = "2025-01-05"
+link = "https://example.com/math/polynomials"
+icon = "https://example.com/icons/math.png"
+content = "다항식 커밋은 ZK에서 널리 쓰이는 수학 구조입니다."
+tags = ["mathematics"]
+featured = false
+

@@ -7,8 +7,8 @@ insert_anchor_links = "none"
 [extra]
 lang = 'en'
 
-title = "Posts"
-subtitle = "I write about ...."
+title = "About"
+subtitle = "hi"
 
 math = false
 mermaid = false
@@ -17,5 +17,6 @@ comment = false
 reaction = false
 +++
 
-Hi, My name is ....
+Just a normal Rustacean
 
+fool but love mathematics

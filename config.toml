@@ -30,7 +30,7 @@ output_dir = "public"
 compile_sass = true
 minify_html = false # Keep this false, as it may cause issues with some styles
 build_search_index =  false # Keep this false, search is temporarily unsupported
-generate_feeds = false # Whether to generate a feed file in root, read docs for more info about rss feed
+generate_feeds = true # Whether to generate a feed file in root, read docs for more info about rss feed
 feed_filenames = ["feed.xml"] # "feed.xml" | "atom.xml" | "rss.xml", read docs for more info
 taxonomies = [{ name = "tags" }, { name = "categories" }]
 
@@ -56,13 +56,15 @@ anchors = "on"
 #=========================================================================================
 
 [extra]
-
+check_internal_links=true
 sections = [
-  { name = "posts", path = "/posts", is_external = false },
-  { name = "about", path = "/about", is_external = false }
+  { name = "Posts", path = "/posts", is_external = false },
+  # { name = "Category", path = "/category", is_external = false },
+  { name = "About", path = "/about", is_external = false }
   # { name = "tags", path = "/tags", is_external = false },
   # { name = "github", path = "https://github.com/c0np4nn4", is_external = true },
 ]
+
 blog_section_path = "/posts"
 
 back_link_text = "Back" # Text of the back button

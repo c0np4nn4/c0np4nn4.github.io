@@ -1,5 +1,5 @@
 +++
-title = "Reed-solomon Fingerprinting"
+title = "(1) Reed-solomon Fingerprinting"
 description = "An example of the efficiency of randomness"
 date = "2025-05-23"
 

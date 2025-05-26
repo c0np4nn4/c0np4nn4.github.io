@@ -5,7 +5,7 @@ date = "2023-03-07"
 draft = false
 
 [taxonomies]
-categories = ["Lectures"]
+categories = ["Courses"]
 tags = ["Algorithm", "CS"]
 
 [extra]

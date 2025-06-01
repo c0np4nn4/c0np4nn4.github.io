@@ -11,7 +11,7 @@ tags = ["Math", "Course"]
 math = true
 +++
 
-> 현대대수학 (추상대수학) Hungerford 3판의 내용을 정리했습니다.
+> 현대대수학 (추상대수학) Hungerford 3판의 내용 중 일부를 정리했습니다.
 
 ---
 

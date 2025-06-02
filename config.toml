@@ -23,7 +23,7 @@
 
 base_url = "https://c0np4nn4.github.io/"
 title = "c0np4nn4"
-description = "xxxx xxxx xxxx"
+description = "my awesome life"
 default_language = "en"
 theme = "serene"
 output_dir = "public"

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+    
+  
+  <meta name="description" content="My blog site.">
+
+  <title>0-1 Knapsack w&#x2F; Backtracking</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://c0np4nn4.github.io/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://c0np4nn4.github.io/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://c0np4nn4.github.io/img/apple-touch-icon.png">
+  <style>
+  /* nanum-gothic-regular - korean_latin */
+  @font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/nanum-gothic-v26-korean_latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+</style>
+
+  <style>
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a233;
+    --primary-decoration-color: #5871a210;
+    --bg-color: #ffffff;
+    --text-color: #2f3030;
+    --text-pale-color: #767676;
+    --text-decoration-color: #a9a9a9;
+    --highlight-mark-color: #5f75b020;
+
+    --callout-note-color: #5871a2;
+    --callout-tip-color: #268556;
+    --callout-important-color: #885fc9;
+    --callout-warning-color: #ab6632;
+    --callout-caution-color: #c64e4e;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #6f8fd1;
+    --primary-pale-color: #6f8fd166;
+    --primary-decoration-color: #6f8fd112;
+    --bg-color: #1c1c1c;
+    --text-color: #c1c1c1;
+    --text-pale-color: #848484;
+    --text-decoration-color: #5f5f5f;
+    --highlight-mark-color: #8296cb3b;
+
+    --callout-note-color: #6f8fd1;
+    --callout-tip-color: #47976f;
+    --callout-important-color: #9776cd;
+    --callout-warning-color: #ad7a52;
+    --callout-caution-color: #d06161;
+  }
+
+  /* typography */
+  body {
+    --main-font: 'Nanum Gothic', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --font-size: 16px;
+    --line-height: 1.75;
+    --img-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-decoration-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+  txtred {
+    color: tomato;
+  }
+
+  txtblu {
+    color: skyblue;
+  }
+
+  txtylw {
+    color: gold;
+  }
+
+  txtgrn {
+    color: lime;
+  }
+</style>
+
+  <link rel="stylesheet" href="https://c0np4nn4.github.io/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-dark.css" />
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+  <meta name="google-site-verification" content="3_fDSANQ1lZHsWb4hxyDgILfwMpL33vhlCIi37-BkDM" />
+
+</head>
+
+<body class="post dark">
+  
+  
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    <nav>
+      <ul>
+        
+        <li>
+          <a class="h2" href="#general-algorithm-for-backtracking">General Algorithm for backtracking</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#non-promising-node">Non-Promising Node</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#state-space-tree">State Space Tree</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#algorithm">Algorithm</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#ref">Ref</a>
+          
+        </li>
+        
+      </ul>
+    </nav>
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+
+    </button>
+    
+  </aside>
+  <main>
+    
+<header>
+  <nav>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts">← Back</a>
+  </nav>
+</header>
+
+
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+"></div>
+      
+      <article class="prose">
+        <h1>0-1 Knapsack w&#x2F; Backtracking</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">Jun 8, 2023</span>
+            </div>
+
+          
+          <div id="tags">
+            <a class="instant" href="https://c0np4nn4.github.io//tags/graph"><span>#</span>Graph</a><a class="instant" href="https://c0np4nn4.github.io//tags/dijkstra"><span>#</span>Dijkstra</a><a class="instant" href="https://c0np4nn4.github.io//tags/algorithm"><span>#</span>Algorithm</a><a class="instant" href="https://c0np4nn4.github.io//tags/cs"><span>#</span>CS</a><a class="instant" href="https://c0np4nn4.github.io//tags/backtracking"><span>#</span>Backtracking</a><a class="instant" href="https://c0np4nn4.github.io//tags/knapsack"><span>#</span>Knapsack</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        <hr />
+<h1 id="general-algorithm-for-backtracking">General Algorithm for backtracking<a class="zola-anchor" href="#general-algorithm-for-backtracking" aria-label="Anchor link for: general-algorithm-for-backtracking" style="visibility: hidden;"></a>
+</h1>
+<pre data-lang="cpp" class="language-cpp z-code"><code class="language-cpp" data-lang="cpp"><span class="z-source z-c++"><span class="z-storage z-type z-c">void</span> <span class="z-meta z-function z-c++"><span class="z-meta z-toc-list z-full-identifier z-c++"><span class="z-entity z-name z-function z-c++">checknode</span> </span></span><span class="z-meta z-function z-parameters z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function z-parameters z-c++"><span class="z-meta z-group z-c++">node <span class="z-variable z-parameter z-c++">v</span><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-meta z-function z-c++"> </span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  node u<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-keyword z-control z-c++">if</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span><span class="z-meta z-function-call z-c++"><span class="z-variable z-function z-c++">value</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++">v</span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span> <span class="z-keyword z-operator z-comparison z-c">&gt;=</span> best_value<span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    best_value <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-function-call z-c++"><span class="z-variable z-function z-c++">value</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++">v</span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">  <span class="z-punctuation z-section z-block z-end z-c++">}</span></span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-keyword z-control z-c++">if</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span><span class="z-meta z-function-call z-c++"><span class="z-variable z-function z-c++">promising</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++">v</span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-keyword z-control z-c++">for</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span><span class="z-storage z-type z-c">auto</span> c<span class="z-keyword z-operator z-ternary z-c">:</span> v<span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span>
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">      <span class="z-meta z-function-call z-c++"><span class="z-variable z-function z-c++">checknode</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++">u</span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-punctuation z-section z-block z-end z-c++">}</span></span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">  <span class="z-punctuation z-section z-block z-end z-c++">}</span></span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-end z-c++">}</span></span></span>
+</span></code></pre>
+<hr />
+<h1 id="non-promising-node">Non-Promising Node<a class="zola-anchor" href="#non-promising-node" aria-label="Anchor link for: non-promising-node" style="visibility: hidden;"></a>
+</h1>
+<ul>
+<li>기존의 <code>0-1 knapsack problem</code> 에서와 마찬가지로, <code>Non-Promising</code> 여부를 체크하기 위해 아래 용어들을 정의합니다.</li>
+</ul>
+<blockquote>
+<ul>
+<li><txtylw><em>weight</em></txtylw>: 지금까지 선택한 모든 item 들의 무게 합</li>
+<li><txtylw><em>profit</em></txtylw>: 지금까지 선택된 item 들의 이익 합</li>
+<li><txtylw><u><em>max_profit</em></u></txtylw>: 지금까지 계산된 <txtylw><em>profit</em></txtylw> 중 최대값</li>
+</ul>
+</blockquote>
+<ul>
+<li>그리고, <txtred><em><strong>Backtracking</strong></em></txtred> 에서는 여기에 두 용어를 추가로 정의합니다.</li>
+</ul>
+<blockquote>
+<ul>
+<li><txtylw><em>totweight</em></txtylw>: 지금까지의 무게합 + 추가할 수 있는 무게 총합</li>
+<li><txtylw><em>bound</em></txtylw>: 지금까지의 profit + 추가할 수 있는 profit + 단위 무게로 채워넣을 수 있는 profit</li>
+</ul>
+</blockquote>
+<ul>
+<li>정말 이름 그대로 <txtylw><em>bound</em></txtylw> 는, <u>현재 노드에서 아래로 쭉 정답을 찾아나갔을 때, 얻을 수 있는 최대 이익</u> 을 나타냅니다.</li>
+</ul>
+<hr />
+<ul>
+<li><code>Non-Promising</code> 조건들은 아래와 같습니다.</li>
+</ul>
+<blockquote>
+<ul>
+<li><txtylw><em>weight</em></txtylw> 값이 상한선인 <txtred><em><strong>W</strong></em></txtred> 보다 큰가?</li>
+<li>해당 노드에서의 <txtylw><em>bound</em></txtylw> 값이 현재 <txtred><em><strong>max profit</strong></em></txtred> 보다 작은가?</li>
+</ul>
+</blockquote>
+<hr />
+<h1 id="state-space-tree">State Space Tree<a class="zola-anchor" href="#state-space-tree" aria-label="Anchor link for: state-space-tree" style="visibility: hidden;"></a>
+</h1>
+<ul>
+<li>그림과 함께 보면 이해가 쉬울 수 있습니다.</li>
+<li>다음과 같이 아이템들이 주어졌다고 해보겠습니다.</li>
+</ul>
+<center>
+<table><thead><tr><th>i</th><th>$p_i$</th><th>$w_i$</th><th>$p_i / w_i$</th></tr></thead><tbody>
+<tr><td>1</td><td>$40</td><td>2g</td><td>$20</td></tr>
+<tr><td>2</td><td>$30</td><td>5g</td><td>$6</td></tr>
+<tr><td>3</td><td>$50</td><td>10g</td><td>$5</td></tr>
+<tr><td>4</td><td>$10</td><td>5g</td><td>$2</td></tr>
+</tbody></table>
+</center>
+<ul>
+<li>
+<p>그리고, 문제에서 제공한 무게 상한선 <txtred><em><strong>W</strong></em></txtred> 값은 $16$ 이라 하겠습니다.</p>
+</li>
+<li>
+<p><txtylw>State Space Tree</txtylw>가 <u><em>왼쪽 자식</em></u>은 <txtred>선택했음</txtred>을 의미하고, <u><em>오른쪽 자식</em></u>은 <txtred>선택하지 않음</txtred>을 의미한다고 해보겠습니다.
+<img src="../../../images/post/cb20337/backtracking_knapsack_01.png" width="400rem" alt="not yet" style="border: 2px solid #b3deef"/></p>
+</li>
+<li>
+<p>그럼 <txtylw><em>Root Node</em></txtylw> 는 위 그림과 같은 값을 갖게 됩니다.</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><em>profit</em>: $0</li>
+<li><em>weight</em>: 0g</li>
+<li><em>bound</em>: $0$ <txtylw style="font-size: 0.8rem"><em>(현재 weight)</em></txtylw> $+ (40 + 30)$ <txtylw style="font-size: 0.8rem"><em>(<txtred><em><strong>W</strong></em></txtred>를 넘지 않는 선에서의 최대 이익)</em></txtylw> $+ (16 - 7) * (50 / 10)$ <txtylw style="font-size: 0.8rem"> <em>(나머지 무게를 partial profit 으로 최대한 채운 값)</em> </txtylw> $= 0 + 70 + 45 = 115$</li>
+</ul>
+</blockquote>
+<img src="../../../images/post/cb20337/backtracking_knapsack_02.png" width="400rem" alt="not yet" style="border: 2px solid #b3deef"/>
+<ul>
+<li>만약 첫 번째 아이템을 선택했다면, 아래와 같은 값을 갖게 됩니다.</li>
+</ul>
+<blockquote>
+<ul>
+<li><em>profit</em>: $40 <txtylw style="font-size: 0.8rem"><em>(max profit 갱신: $40)</em></txtylw></li>
+<li><em>weight</em>: 2g</li>
+<li><em>bound</em>: $40$ <txtylw style="font-size: 0.8rem"><em>(현재 weight)</em></txtylw> $+ 30$ <txtylw style="font-size: 0.8rem"><em>(<txtred><em><strong>W</strong></em></txtred>를 넘지 않는 선에서의 최대 이익)</em></txtylw> $+ (16 - 7) * (50 / 10)$ <txtylw style="font-size: 0.8rem"> <em>(나머지 무게를 partial profit 으로 최대한 채운 값)</em> </txtylw> $= 40 + 30 + 45 = 115$</li>
+</ul>
+</blockquote>
+<img src="../../../images/post/cb20337/backtracking_knapsack_03.png" width="400rem" alt="not yet" style="border: 2px solid #b3deef"/>
+<ul>
+<li>만약 두 번째 아이템을 선택하지 <txtred>않는다면</txtred>,</li>
+</ul>
+<blockquote>
+<ul>
+<li><em>profit</em>: $40</li>
+<li><em>weight</em>: 2g</li>
+<li><em>bound</em>: $40$ <txtylw style="font-size: 0.8rem"><em>(현재 weight)</em></txtylw> $+ 50$ <txtylw style="font-size: 0.8rem"><em>(<txtred><em><strong>W</strong></em></txtred>를 넘지 않는 선에서의 최대 이익)</em></txtylw> $+ (16 - 12) * (10 / 5)$ <txtylw style="font-size: 0.8rem"> <em>(나머지 무게를 partial profit 으로 최대한 채운 값)</em> </txtylw> $= 40 + 50 + 8 = 98$</li>
+</ul>
+</blockquote>
+<ul>
+<li>이러한 방식으로 <txtred>Backtracking</txtred> 을 진행하며, 적절한 pruning 을 통해 답을 찾아갈 수 있습니다.</li>
+</ul>
+<hr />
+<h1 id="algorithm">Algorithm<a class="zola-anchor" href="#algorithm" aria-label="Anchor link for: algorithm" style="visibility: hidden;"></a>
+</h1>
+<ul>
+<li>이를 C++ 코드로 작성하면 아래와 같습니다.</li>
+</ul>
+<pre data-lang="cpp" class="language-cpp z-code"><code class="language-cpp" data-lang="cpp"><span class="z-source z-c++"><span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> 현재 노드에서의 profit, weight 값을 갖고 옵니다.
+</span></span><span class="z-source z-c++"><span class="z-storage z-type z-c">void</span> <span class="z-meta z-function z-c++"><span class="z-meta z-toc-list z-full-identifier z-c++"><span class="z-entity z-name z-function z-c++">knapsack</span></span></span><span class="z-meta z-function z-parameters z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function z-parameters z-c++"><span class="z-meta z-group z-c++">index <span class="z-variable z-parameter z-c++">i</span><span class="z-punctuation z-separator z-c++">,</span> <span class="z-storage z-type z-c">int</span> <span class="z-variable z-parameter z-c++">profit</span><span class="z-punctuation z-separator z-c++">,</span> <span class="z-storage z-type z-c">int</span> <span class="z-variable z-parameter z-c++">weight</span><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-meta z-function z-c++"> </span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> 만약 무게 제한도 통과하고, maxprofit 보다 큰 이익인 상태라면
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> 정답 후보로 기록해둡니다.
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-keyword z-control z-c++">if</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span>weight <span class="z-keyword z-operator z-comparison z-c">&lt;=</span> W <span class="z-keyword z-operator z-arithmetic z-c">&amp;&amp;</span> profit <span class="z-keyword z-operator z-comparison z-c">&gt;</span> maxprofit<span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    maxprofit <span class="z-keyword z-operator z-assignment z-c">=</span> profit<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    best_num <span class="z-keyword z-operator z-assignment z-c">=</span> i<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> best_set 은 [1, 0, 0, 1, ...] 같은 형태로 이해하면 됩니다.
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    best_set <span class="z-keyword z-operator z-assignment z-c">=</span> is_include<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">  <span class="z-punctuation z-section z-block z-end z-c++">}</span></span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> promising 노드일 때, 좌우 자식에 대한 탐색 구현입니다.
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-keyword z-control z-c++">if</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span><span class="z-meta z-function-call z-c++"><span class="z-variable z-function z-c++">promising</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++">i</span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    is_include<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>i <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-constant z-numeric z-integer z-decimal z-c++">1</span><span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-language z-c">true</span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-meta z-function-call z-c++"><span class="z-variable z-function z-c++">knapsack</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++">i<span class="z-keyword z-operator z-arithmetic z-c">+</span><span class="z-constant z-numeric z-integer z-decimal z-c++">1</span><span class="z-punctuation z-separator z-c++">,</span> profit <span class="z-keyword z-operator z-arithmetic z-c">+</span> p<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>i <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-constant z-numeric z-integer z-decimal z-c++">1</span><span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span><span class="z-punctuation z-separator z-c++">,</span> weight <span class="z-keyword z-operator z-arithmetic z-c">+</span> w<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>i <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-constant z-numeric z-integer z-decimal z-c++">1</span><span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    is_include<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>i <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-constant z-numeric z-integer z-decimal z-c++">1</span><span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-language z-c">false</span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-meta z-function-call z-c++"><span class="z-variable z-function z-c++">knapsack</span><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++">i<span class="z-keyword z-operator z-arithmetic z-c">+</span><span class="z-constant z-numeric z-integer z-decimal z-c++">1</span><span class="z-punctuation z-separator z-c++">,</span> profit<span class="z-punctuation z-separator z-c++">,</span> weight</span></span><span class="z-meta z-function-call z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">  <span class="z-punctuation z-section z-block z-end z-c++">}</span></span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-end z-c++">}</span></span></span>
+</span><span class="z-source z-c++">
+</span><span class="z-source z-c++"><span class="z-storage z-type z-c">bool</span> <span class="z-meta z-function z-c++"><span class="z-meta z-toc-list z-full-identifier z-c++"><span class="z-entity z-name z-function z-c++">promising</span></span></span><span class="z-meta z-function z-parameters z-c++"><span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span></span></span><span class="z-meta z-function z-parameters z-c++"><span class="z-meta z-group z-c++">index <span class="z-variable z-parameter z-c++">i</span><span class="z-punctuation z-section z-group z-end z-c++">)</span></span></span><span class="z-meta z-function z-c++"> </span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  index j<span class="z-punctuation z-separator z-c++">,</span> k<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-storage z-type z-c">int</span> totweight<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-storage z-type z-c">float</span> bound<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> 만약 무게 한도를 초과했다면 끝입니다..
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-keyword z-control z-c++">if</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span>weight <span class="z-keyword z-operator z-comparison z-c">&gt;=</span> W<span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-keyword z-control z-flow z-return z-c++">return</span> <span class="z-constant z-language z-c">false</span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> bound 를 계산하는 블럭입니다.
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++">  <span class="z-keyword z-control z-c++">else</span> <span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    j <span class="z-keyword z-operator z-assignment z-c">=</span> i <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-constant z-numeric z-integer z-decimal z-c++">1</span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    bound <span class="z-keyword z-operator z-assignment z-c">=</span> profit<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    totweight <span class="z-keyword z-operator z-assignment z-c">=</span> weight<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> 일단 무게 한도 내에서 추가할 수 있는 최대한 추가 해봅니다.
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-keyword z-control z-c++">while</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span>j <span class="z-keyword z-operator z-comparison z-c">&lt;=</span> n <span class="z-keyword z-operator z-arithmetic z-c">&amp;&amp;</span> totweight <span class="z-keyword z-operator z-arithmetic z-c">+</span> w<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>j<span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span> <span class="z-keyword z-operator z-comparison z-c">&lt;=</span> W<span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span>
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">      totweight <span class="z-keyword z-operator z-assignment z-augmented z-c">+=</span> w<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>j<span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">      bound <span class="z-keyword z-operator z-assignment z-augmented z-c">+=</span> p<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>j<span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">      j<span class="z-keyword z-operator z-arithmetic z-c">++</span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-punctuation z-section z-block z-end z-c++">}</span></span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> 남은 무게 공간은 partial profit 으로 채웁니다.
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    k <span class="z-keyword z-operator z-assignment z-c">=</span> j<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-keyword z-control z-c++">if</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span>k <span class="z-keyword z-operator z-comparison z-c">&lt;=</span> n<span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-begin z-c++">{</span>
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">      bound <span class="z-keyword z-operator z-assignment z-augmented z-c">+=</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span>W<span class="z-keyword z-operator z-arithmetic z-c">-</span>totweight<span class="z-punctuation z-section z-group z-end z-c++">)</span></span> <span class="z-keyword z-operator z-c">*</span> <span class="z-meta z-group z-c++"><span class="z-punctuation z-section z-group z-begin z-c++">(</span>p<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span><span class="z-keyword z-operator z-arithmetic z-c">/</span>w<span class="z-meta z-brackets z-c++"><span class="z-punctuation z-section z-brackets z-begin z-c++">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c++">]</span></span><span class="z-punctuation z-section z-group z-end z-c++">)</span></span><span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-punctuation z-section z-block z-end z-c++">}</span></span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> 만약 bound 값이 maxprofit 보다 작다면 끝입니다..
+</span></span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">    <span class="z-keyword z-control z-flow z-return z-c++">return</span> bound <span class="z-keyword z-operator z-comparison z-c">&gt;</span> maxprofit<span class="z-punctuation z-terminator z-c++">;</span>
+</span></span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-meta z-block z-c++">  <span class="z-punctuation z-section z-block z-end z-c++">}</span></span>
+</span></span></span><span class="z-source z-c++"><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"></span></span><span class="z-meta z-function z-c++"><span class="z-meta z-block z-c++"><span class="z-punctuation z-section z-block z-end z-c++">}</span></span></span>
+</span></code></pre>
+<hr />
+<h1 id="ref">Ref<a class="zola-anchor" href="#ref" aria-label="Anchor link for: ref" style="visibility: hidden;"></a>
+</h1>
+<ul>
+<li><a rel="nofollow noreferrer" href="https://seungjuitmemo.tistory.com/109">blog</a></li>
+</ul>
+
+      </article>
+
+      
+      
+      <div class="reaction right" data-endpoint="https:&#x2F;&#x2F;example.com&#x2F;api&#x2F;reaction"></div>
+      
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    
+
+
+<footer>
+  <div class="left">
+    <div class="copyright">
+      © 2025 c0np4nn4
+      
+      <span>|</span>
+      Built with <a href="https://www.getzola.org" rel="noreferrer" target="_blank">zola</a> and <a href="https://github.com/isunjn/serene" rel="noreferrer" target="_blank">serene</a>
+      
+    </div>
+  </div>
+
+  <div class="right">
+    
+    
+      
+    
+    
+    <a id="rss-btn" href="https://c0np4nn4.github.io/posts/feed.xml">RSS</a>
+    
+    
+
+    
+  </div>
+</footer>
+
+
+
+
+<dialog id="rss-mask">
+  <div>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml">https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml</a>
+    
+    
+    <button autofocus aria-label="copy" data-link="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z" fill="currentColor"></path></svg>
+
+    </button>
+  </div>
+</dialog>
+
+
+
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="https://c0np4nn4.github.io/js/main.js"></script>
+</body>
+
+</html>

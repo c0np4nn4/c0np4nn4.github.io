@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+    
+  
+  <meta name="description" content="My blog site.">
+
+  <title>Modern Algebra (1-1)</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://c0np4nn4.github.io/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://c0np4nn4.github.io/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://c0np4nn4.github.io/img/apple-touch-icon.png">
+  <style>
+  /* nanum-gothic-regular - korean_latin */
+  @font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/nanum-gothic-v26-korean_latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+</style>
+
+  <style>
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a233;
+    --primary-decoration-color: #5871a210;
+    --bg-color: #ffffff;
+    --text-color: #2f3030;
+    --text-pale-color: #767676;
+    --text-decoration-color: #a9a9a9;
+    --highlight-mark-color: #5f75b020;
+
+    --callout-note-color: #5871a2;
+    --callout-tip-color: #268556;
+    --callout-important-color: #885fc9;
+    --callout-warning-color: #ab6632;
+    --callout-caution-color: #c64e4e;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #6f8fd1;
+    --primary-pale-color: #6f8fd166;
+    --primary-decoration-color: #6f8fd112;
+    --bg-color: #1c1c1c;
+    --text-color: #c1c1c1;
+    --text-pale-color: #848484;
+    --text-decoration-color: #5f5f5f;
+    --highlight-mark-color: #8296cb3b;
+
+    --callout-note-color: #6f8fd1;
+    --callout-tip-color: #47976f;
+    --callout-important-color: #9776cd;
+    --callout-warning-color: #ad7a52;
+    --callout-caution-color: #d06161;
+  }
+
+  /* typography */
+  body {
+    --main-font: 'Nanum Gothic', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --font-size: 16px;
+    --line-height: 1.75;
+    --img-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-decoration-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+  txtred {
+    color: tomato;
+  }
+
+  txtblu {
+    color: skyblue;
+  }
+
+  txtylw {
+    color: gold;
+  }
+
+  txtgrn {
+    color: lime;
+  }
+</style>
+
+  <link rel="stylesheet" href="https://c0np4nn4.github.io/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-dark.css" />
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+  <meta name="google-site-verification" content="3_fDSANQ1lZHsWb4hxyDgILfwMpL33vhlCIi37-BkDM" />
+
+</head>
+
+<body class="post dark">
+  
+  
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    <nav>
+      <ul>
+        
+        <li>
+          <a class="h2" href="#axiom-well-ordering">(Axiom) Well-Ordering</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#thm-division-algorithm">(Thm) Division Algorithm</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#thm-pf-division-algorithm">(Thm-pf) Division Algorithm</a>
+          
+        </li>
+        
+      </ul>
+    </nav>
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+
+    </button>
+    
+  </aside>
+  <main>
+    
+<header>
+  <nav>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts">← Back</a>
+  </nav>
+</header>
+
+
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+"></div>
+      
+      <article class="prose">
+        <h1>Modern Algebra (1-1)</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">Jun 1, 2025</span>
+            </div>
+
+          
+          <div id="tags">
+            <a class="instant" href="https://c0np4nn4.github.io//tags/math"><span>#</span>Math</a><a class="instant" href="https://c0np4nn4.github.io//tags/course"><span>#</span>Course</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        <blockquote>
+<p>현대대수학 (추상대수학) Hungerford 3판의 내용 중 일부를 정리했습니다.</p>
+</blockquote>
+<hr />
+<h1 id="axiom-well-ordering"><txtylw>(Axiom) Well-Ordering</txtylw><a class="zola-anchor" href="#axiom-well-ordering" aria-label="Anchor link for: axiom-well-ordering" style="visibility: hidden;"></a>
+</h1>
+<p>영 이상의 모든 정수 집합 ($\mathbb{Z}_{\ge 0}$)의 공집합이 아닌 임의의 부분집합은 항상 최소원소를 포함한다.</p>
+<ul>
+<li>$\mathbb{Z}$, $\mathbb{Q}$에서는 성립하지 않는다.</li>
+</ul>
+<hr />
+<h1 id="thm-division-algorithm"><txtred>(Thm)</txtred> Division Algorithm<a class="zola-anchor" href="#thm-division-algorithm" aria-label="Anchor link for: thm-division-algorithm" style="visibility: hidden;"></a>
+</h1>
+<p>정수 $a, b$에 대하여 $b &gt; 0$ 일 때
+$$
+a = bq + r \quad 0 \le r &lt; b
+$$
+를 만족하는 정수 $q, r$이 유일하게 존재한다.</p>
+<hr />
+<h1 id="thm-pf-division-algorithm"><txtblu>(Thm-pf)</txtblu> Division Algorithm<a class="zola-anchor" href="#thm-pf-division-algorithm" aria-label="Anchor link for: thm-pf-division-algorithm" style="visibility: hidden;"></a>
+</h1>
+<p>$a, b \in \mathbb{Z}$ 이고 $b &gt; 0$ 이라 하자. 그리고 집합 $S$를 아래와 같이 가정한다.
+$$
+S = \lbrace a - bx: x \in \mathbb{Z}, a - bx \ge 0 \rbrace
+$$</p>
+<ul>
+<li><txtgrn>Step 1. $S \neq \emptyset$ 임을 보인다.</txtgrn></li>
+</ul>
+<p>$a + b |a| \ge 0$ 임을 보이면, $x = -|a|$일 때 $S$가 원소를 최소 하나 포함함을 보일 수 있다. $b$는 정수이므로 $b &gt; 0$는 곧 $b \ge 1$을 의미한다.</p>
+<p>$$
+\begin{aligned}
+b &amp;\ge 1\newline
+b|a| &amp;\ge |a| \newline
+b|a| &amp;\ge -a \newline
+a + b|a| &amp;\ge 0
+\end{aligned}
+$$</p>
+<ul>
+<li><txtgrn>Step 2. $a = bq + r$이고 $r \ge 0$ 을 만족하는 $q, r$을 구한다.</txtgrn></li>
+</ul>
+<p><txtylw>Well-Ordering axiom</txtylw>에 의하여 $S$가 최소원소를 포함한다.</p>
+<p>이 최소원소를 $r \in S$이라 하면, 임의의 $x$에 대하여 $a - bx = r$임을 알 수 있다. 이 때 $x=q$로 두면, 다음이 성립한다.</p>
+<p>$$
+r = a - bq \text{ 이고 } r \ge 0 \quad \Leftrightarrow \quad a = bq + r \text{ 이고 } r \ge 0
+$$</p>
+<ul>
+<li><txtgrn>Step 3. $r&lt;b$ 를 증명한다.</txtgrn></li>
+</ul>
+<p><txtylw>모순에 의한 증명</txtylw>으로 $r&lt;b$를 보인다. 즉, $r \ge b$로 가정한 뒤 모순이 있음을 보임으로써 증명한다.</p>
+<p>그럼 $r \ge b$ 이므로, $r-b \ge 0$이 성립한다. 이를 다시 정리하면</p>
+<p>$$
+\begin{aligned}
+0 \le &amp;r - b = (a - bq) - b = a - b(q+1) \newline
+(\therefore) \quad &amp;r-b \in S
+\end{aligned}
+$$</p>
+<p>즉, $S$의 원소 중 $r$보다 작은 원소인 $r-b$가 존재함을 의미한다.</p>
+<p>그런데, <txtgrn>Step 2</txtgrn>에서 $r$이 $S$의 최소원소라고 하였으므로 이는 모순이다 ($\Rightarrow \Leftarrow$).</p>
+<p>따라서, $r &lt; b$ 이고 <txtgrn>Step 2</txtgrn>의 결론과 함께 정리하면 아래와 같다.</p>
+<p>$$
+a = bq + r \text{ 이고 } 0 \le r &lt; b
+$$</p>
+<p>분명히 위 식을 만족하는 정수 $q, r$이 존재한다.</p>
+<ul>
+<li><txtgrn>Step 4. $q, r$의 유일성</txtgrn></li>
+</ul>
+<p><txtgrn>Step 3</txtgrn>의 결과에 대해, $a = bq_1 + r_1 \text{ 이고 } 0 \le r_1 &lt;b$ 인 정수 $q_1, r_1$을 가정하고 $q_1 = q$, $r_1 = r$임을 증명하자.</p>
+<p>$$
+\begin{aligned}
+a = bq + r &amp;= bq_1 + r_1 \newline
+b(q - q_1) &amp;= r_1 - r \newline
+\end{aligned}
+$$</p>
+<p>그리고</p>
+<p>$$
+\begin{aligned}
+0 \le r &lt; b \newline
+0 \le r_1 &lt; b \newline
+\end{aligned}
+$$</p>
+<p>첫 번째 부등식에 $-1$을 곱한 뒤 두 부등식을 더하면</p>
+<p>$$
+\begin{aligned}
+&amp;b \le -r &lt; 0 \newline
+&amp;0 \le r_1 &lt; b \newline
+\Rightarrow &amp;-b &lt; r_1 - r &lt; b \newline
+\Rightarrow &amp;-b &lt; b(q - q_1) &lt; b \newline
+\Rightarrow &amp;-1 &lt; q - q_1 &lt; 1
+\end{aligned}
+$$</p>
+<p>따라서, $q - q_1 = 0$ 이므로 $q = q_1$이다. 손쉽게 $r = r_1$임을 알 수 있다.</p>
+<p>그러므로, $q, r$은 유일하게 존재한다. $\blacksquare$</p>
+
+      </article>
+
+      
+      
+      <div class="reaction right" data-endpoint="https:&#x2F;&#x2F;example.com&#x2F;api&#x2F;reaction"></div>
+      
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    
+
+
+<footer>
+  <div class="left">
+    <div class="copyright">
+      © 2025 c0np4nn4
+      
+      <span>|</span>
+      Built with <a href="https://www.getzola.org" rel="noreferrer" target="_blank">zola</a> and <a href="https://github.com/isunjn/serene" rel="noreferrer" target="_blank">serene</a>
+      
+    </div>
+  </div>
+
+  <div class="right">
+    
+    
+      
+    
+    
+    <a id="rss-btn" href="https://c0np4nn4.github.io/posts/feed.xml">RSS</a>
+    
+    
+
+    
+  </div>
+</footer>
+
+
+
+
+<dialog id="rss-mask">
+  <div>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml">https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml</a>
+    
+    
+    <button autofocus aria-label="copy" data-link="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z" fill="currentColor"></path></svg>
+
+    </button>
+  </div>
+</dialog>
+
+
+
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="https://c0np4nn4.github.io/js/main.js"></script>
+</body>
+
+</html>

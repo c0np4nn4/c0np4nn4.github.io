@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+    
+  
+  <meta name="description" content="My blog site.">
+
+  <title>Modern Algebra (1-2)</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://c0np4nn4.github.io/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://c0np4nn4.github.io/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://c0np4nn4.github.io/img/apple-touch-icon.png">
+  <style>
+  /* nanum-gothic-regular - korean_latin */
+  @font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/nanum-gothic-v26-korean_latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+</style>
+
+  <style>
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a233;
+    --primary-decoration-color: #5871a210;
+    --bg-color: #ffffff;
+    --text-color: #2f3030;
+    --text-pale-color: #767676;
+    --text-decoration-color: #a9a9a9;
+    --highlight-mark-color: #5f75b020;
+
+    --callout-note-color: #5871a2;
+    --callout-tip-color: #268556;
+    --callout-important-color: #885fc9;
+    --callout-warning-color: #ab6632;
+    --callout-caution-color: #c64e4e;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #6f8fd1;
+    --primary-pale-color: #6f8fd166;
+    --primary-decoration-color: #6f8fd112;
+    --bg-color: #1c1c1c;
+    --text-color: #c1c1c1;
+    --text-pale-color: #848484;
+    --text-decoration-color: #5f5f5f;
+    --highlight-mark-color: #8296cb3b;
+
+    --callout-note-color: #6f8fd1;
+    --callout-tip-color: #47976f;
+    --callout-important-color: #9776cd;
+    --callout-warning-color: #ad7a52;
+    --callout-caution-color: #d06161;
+  }
+
+  /* typography */
+  body {
+    --main-font: 'Nanum Gothic', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --font-size: 16px;
+    --line-height: 1.75;
+    --img-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-decoration-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+  txtred {
+    color: tomato;
+  }
+
+  txtblu {
+    color: skyblue;
+  }
+
+  txtylw {
+    color: gold;
+  }
+
+  txtgrn {
+    color: lime;
+  }
+</style>
+
+  <link rel="stylesheet" href="https://c0np4nn4.github.io/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-dark.css" />
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+  <meta name="google-site-verification" content="3_fDSANQ1lZHsWb4hxyDgILfwMpL33vhlCIi37-BkDM" />
+
+</head>
+
+<body class="post dark">
+  
+  
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    <nav>
+      <ul>
+        
+        <li>
+          <a class="h2" href="#def-divisibility">(Def) Divisibility</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#def-greatest-common-divisor">(Def) Greatest Common Divisor</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#thm-related-with-bezout-s-identity">(Thm) (related with Bézout&#x27;s identity)</a>
+          
+        </li>
+        
+      </ul>
+    </nav>
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+
+    </button>
+    
+  </aside>
+  <main>
+    
+<header>
+  <nav>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts">← Back</a>
+  </nav>
+</header>
+
+
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+"></div>
+      
+      <article class="prose">
+        <h1>Modern Algebra (1-2)</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">Jun 1, 2025</span>
+            </div>
+
+          
+          <div id="tags">
+            <a class="instant" href="https://c0np4nn4.github.io//tags/math"><span>#</span>Math</a><a class="instant" href="https://c0np4nn4.github.io//tags/course"><span>#</span>Course</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        <blockquote>
+<p>현대대수학 (추상대수학) Hungerford 3판의 내용 중 일부를 정리했습니다.</p>
+</blockquote>
+<hr />
+<h1 id="def-divisibility">(<txtgrn>Def</txtgrn>) Divisibility<a class="zola-anchor" href="#def-divisibility" aria-label="Anchor link for: def-divisibility" style="visibility: hidden;"></a>
+</h1>
+<p>정수 $a, b$에 대하여 $b \neq 0$이고 $a = bc$인 정수 $c$가 존재하면 $a$가 $b$로 <txtred>나누어진다</txtred>(divisible)고 하고,
+$b$를 $a$의 약수(divisor) 또는 인수(factor)라 한다. 기호로 나타내면 $b | a$이다.</p>
+<hr />
+
+<blockquote class="callout note has-title">
+  
+  
+  <p class="title">
+    <span class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"></path></svg>
+
+    </span>
+    <strong>참고</strong>
+  </p>
+  <div class="content">
+    <p>$a = bc$이고 $-a = b(-c)$이다. 즉, $a, -a$는 $b$를 공통 약수로 가짐을 알 수 있다.</p>
+<p>조금 더 일반적으로 말하면, <strong>$a, -a$는 같은 약수를 갖는다.</strong></p>
+
+  </div>
+  
+</blockquote>
+
+
+<blockquote class="callout note has-title">
+  
+  
+  <p class="title">
+    <span class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"></path></svg>
+
+    </span>
+    <strong>참고</strong>
+  </p>
+  <div class="content">
+    <p>$b \neq 0$이고 $b|a$라 가정하자.</p>
+<p>즉, $a = bc$ 이므로, $|a| = |b||c|$이고 $0 \le |b| \le |a|$이다.</p>
+<p>이는 곧 $-|a|  \le b \le |a|$를 의미하고 아래 두 사실로 정리된다.</p>
+<blockquote>
+<ol>
+<li>영이 아닌 정수 $a$의 임의의 약수는 |a|와 같거나 작다.</li>
+<li>영이 아닌 임의의 정수는 오직 유한 개의 약수를 갖는다.</li>
+</ol>
+</blockquote>
+
+  </div>
+  
+</blockquote>
+
+<hr />
+<h1 id="def-greatest-common-divisor">(<txtgrn>Def</txtgrn>) Greatest Common Divisor<a class="zola-anchor" href="#def-greatest-common-divisor" aria-label="Anchor link for: def-greatest-common-divisor" style="visibility: hidden;"></a>
+</h1>
+<p>$a, b$를 적어도 하나는 $0$이 아닌 정수라 하자.</p>
+<p>$a, b$가 모두 나누어지는 가장 큰 정수 $d$를 $a, b$의 <txtred>최대공약수</txtred>라 한다.</p>
+<p>다르게 표현하면, $a,b$의 최대공약수 $d$는 다음 두 조건을 만족하는 정수이다.</p>
+<blockquote>
+<ol>
+<li>$d|a$ 이고 $d|b$이다.</li>
+<li>$c|a$ 이고 $c|b$ 이면 $c \le d$이다.</li>
+</ol>
+</blockquote>
+<p>최대공약수 $d$는 $d = \gcd(a, b)$로 나타낸다.</p>
+<ul>
+<li>최대공약수가 1인 두 수를 <txtblu>서로 소</txtblu>(relatively prime)라 부른다.</li>
+</ul>
+<hr />
+<h1 id="thm-related-with-bezout-s-identity">(<txtred>Thm</txtred>) (related with Bézout's identity)<a class="zola-anchor" href="#thm-related-with-bezout-s-identity" aria-label="Anchor link for: thm-related-with-bezout-s-identity" style="visibility: hidden;"></a>
+</h1>
+<blockquote class="quote">
+  
+  <div class="icon" style="display: none;"><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg"  width="10" height="10" viewBox="796 698 200 200">
+<g>
+	<path d="M885.208,749.739v-40.948C836.019,708.791,796,748.81,796,798v89.209h89.208V798h-48.26
+		C836.948,771.39,858.598,749.739,885.208,749.739z"/>
+	<path d="M996,749.739v-40.948c-49.19,0-89.209,40.019-89.209,89.209v89.209H996V798h-48.26
+		C947.74,771.39,969.39,749.739,996,749.739z"/>
+</g>
+</svg>
+</div>
+  <div class="content"><p>적어도 하나는 $0$이 아닌 정수 $a, b$의 최대공약수를 $d = \gcd(a,b)$라 하자.</p>
+<p>$d = au + bv$를 만족하는 정수 $u, v$가 (유일하지는 않지만) 존재한다.</p>
+</div>
+  
+</blockquote>
+<p>우선 $a, b$의 일차 결합($ax + by$)의 집합 $S$를 아래와 같이 정의한다.</p>
+<p>$$
+S = \lbrace as + bt \ | \ s, t \in \mathbb{Z} \rbrace
+$$</p>
+<ul>
+<li><txtgrn>Step 1. $S$의 가장 작은 원소 $m$을 찾는다.</txtgrn></li>
+</ul>
+<p><txtylw>Well-ordering axiom</txtylw>에 따르면, 공집합이 아닌 영 이상의 정수 집합의 부분집합은 항상 최소 원소를 갖는다.</p>
+<p>$as + bt \in S$에 대하여 $s=a, t=b$를 대입하면 $a^2 + b^2 &gt; 0$이다. 따라서 $S$는 항상 0 보다 큰 원소를 최소 하나 갖는다.
+이 원소를 $m = au + bv$라 두자.</p>
+<ul>
+<li><txtgrn>Step 2. $m$이 $\gcd(a, b)$임을 증명한다.</txtgrn></li>
+</ul>
+<p>정수 $m$이 최대공약수 $\gcd(a, b)$임을 증명하기 위해 정의의 다음 두 조건을 만족함을 보인다.</p>
+<blockquote>
+<ol>
+<li>$m|a$ 이고 $m|b$이다.</li>
+<li>$c|a$ 이고 $c|b$ 이면 $c \le m$이다.</li>
+</ol>
+</blockquote>
+<p><txtblu>첫 번째 조건</txtblu>은 우선 $m|a$임을 보인다.</p>
+<p><a href="https://c0np4nn4.github.io/posts/course-2025-modern-algebra-1-1/">나눗셈 알고리즘</a>에 따라 아래와 같이 식을 정리할 수 있다. ($m &gt; 0$)</p>
+<p>$$
+\begin{aligned}
+a &amp;= mq + r \quad  (0 \le r &lt; m) \newline
+r &amp;= a - mq \newline
+r &amp;= a - (au+bv) q \newline
+r &amp;= a(\cdot) + b(\cdot)
+\end{aligned}
+$$</p>
+<p>따라서, 나머지인 $r$도 $S$의 원소임을 알 수 있다.</p>
+<p>하지만, 나눗셈 알고리즘의 조건인 $(r &lt; m)$으로 인해 $S$의 양수 중 최소값인 $m$보다 작아야 하고 그 범위가 $(0 \le r)$이므로 반드시 $r=0$이어야 함을 알 수 있다.</p>
+<p>따라서, $a = mq \Leftrightarrow m | a$ 이다.</p>
+<p>$b$에 대해서도 같은 방법으로 손쉽게 $m | b$ 임을 보일 수 있다.</p>
+<p><txtblu>두 번째 조건</txtblu>는 $c|a, \ c|b$에 이므로 두 값 $a, b$를 각각 $\begin{cases}a = ck \newline b = cs\end{cases}$로 두고 생각한다.</p>
+<p>그렇다면 $m = au + bv = (ck)u + (cs)v = c(\cdot)$으로 정리할 수 있게 된다.</p>
+<p>즉, $c | m$이므로 $c \le |m|$ 인데 $m &gt; 0$이므로 $(\therefore) c \le m$이다.</p>
+<p>위 두 조건 만족을 통해 $\gcd(a, b) = d$에 대하여 $d = au + bv$를 만족하는 $u, v$가 존재함($m$ 값이 존재함)을 알 수 있다. $\blacksquare$</p>
+
+      </article>
+
+      
+      
+      <div class="reaction right" data-endpoint="https:&#x2F;&#x2F;example.com&#x2F;api&#x2F;reaction"></div>
+      
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    
+
+
+<footer>
+  <div class="left">
+    <div class="copyright">
+      © 2025 c0np4nn4
+      
+      <span>|</span>
+      Built with <a href="https://www.getzola.org" rel="noreferrer" target="_blank">zola</a> and <a href="https://github.com/isunjn/serene" rel="noreferrer" target="_blank">serene</a>
+      
+    </div>
+  </div>
+
+  <div class="right">
+    
+    
+      
+    
+    
+    <a id="rss-btn" href="https://c0np4nn4.github.io/posts/feed.xml">RSS</a>
+    
+    
+
+    
+  </div>
+</footer>
+
+
+
+
+<dialog id="rss-mask">
+  <div>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml">https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml</a>
+    
+    
+    <button autofocus aria-label="copy" data-link="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z" fill="currentColor"></path></svg>
+
+    </button>
+  </div>
+</dialog>
+
+
+
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="https://c0np4nn4.github.io/js/main.js"></script>
+</body>
+
+</html>

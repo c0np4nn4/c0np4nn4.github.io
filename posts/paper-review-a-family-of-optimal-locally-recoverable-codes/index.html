@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+    
+  
+  <meta name="description" content="Tamo-Barg Code">
+
+  <title>Paper Review: A Family of Optimal Locally Recoverable Codes</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://c0np4nn4.github.io/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://c0np4nn4.github.io/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://c0np4nn4.github.io/img/apple-touch-icon.png">
+  <style>
+  /* nanum-gothic-regular - korean_latin */
+  @font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/nanum-gothic-v26-korean_latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+</style>
+
+  <style>
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a233;
+    --primary-decoration-color: #5871a210;
+    --bg-color: #ffffff;
+    --text-color: #2f3030;
+    --text-pale-color: #767676;
+    --text-decoration-color: #a9a9a9;
+    --highlight-mark-color: #5f75b020;
+
+    --callout-note-color: #5871a2;
+    --callout-tip-color: #268556;
+    --callout-important-color: #885fc9;
+    --callout-warning-color: #ab6632;
+    --callout-caution-color: #c64e4e;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #6f8fd1;
+    --primary-pale-color: #6f8fd166;
+    --primary-decoration-color: #6f8fd112;
+    --bg-color: #1c1c1c;
+    --text-color: #c1c1c1;
+    --text-pale-color: #848484;
+    --text-decoration-color: #5f5f5f;
+    --highlight-mark-color: #8296cb3b;
+
+    --callout-note-color: #6f8fd1;
+    --callout-tip-color: #47976f;
+    --callout-important-color: #9776cd;
+    --callout-warning-color: #ad7a52;
+    --callout-caution-color: #d06161;
+  }
+
+  /* typography */
+  body {
+    --main-font: 'Nanum Gothic', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --font-size: 16px;
+    --line-height: 1.75;
+    --img-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-decoration-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+  txtred {
+    color: tomato;
+  }
+
+  txtblu {
+    color: skyblue;
+  }
+
+  txtylw {
+    color: gold;
+  }
+
+  txtgrn {
+    color: lime;
+  }
+</style>
+
+  <link rel="stylesheet" href="https://c0np4nn4.github.io/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-dark.css" />
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+  <meta name="google-site-verification" content="3_fDSANQ1lZHsWb4hxyDgILfwMpL33vhlCIi37-BkDM" />
+
+</head>
+
+<body class="post dark">
+  
+  
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    <nav>
+      <ul>
+        
+        <li>
+          <a class="h2" href="#1-introduction">1. Introduction</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#2-preliminaries-of-lrc-codes">2. Preliminaries of LRC Codes</a>
+          
+          <ul>
+            
+            <li>
+              <a class="h3" href="#pushpin-definition">📌 Definition</a>
+            </li>
+            
+            <li>
+              <a class="h3" href="#pushpin-properties">📌 Properties</a>
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#3-code-construction">3. Code Construction</a>
+          
+          <ul>
+            
+            <li>
+              <a class="h3" href="#3-1-general-construction">3.1 General Construction</a>
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+      </ul>
+    </nav>
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+
+    </button>
+    
+  </aside>
+  <main>
+    
+<header>
+  <nav>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts">← Back</a>
+  </nav>
+</header>
+
+
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+"></div>
+      
+      <article class="prose">
+        <h1>Paper Review: A Family of Optimal Locally Recoverable Codes</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">May 26, 2025</span>
+            </div>
+
+          
+          <div id="tags">
+            <a class="instant" href="https://c0np4nn4.github.io//tags/information-theory"><span>#</span>Information Theory</a><a class="instant" href="https://c0np4nn4.github.io//tags/coding-theory"><span>#</span>Coding Theory</a><a class="instant" href="https://c0np4nn4.github.io//tags/lrc"><span>#</span>LRC</a><a class="instant" href="https://c0np4nn4.github.io//tags/reed-solomon-code"><span>#</span>Reed-Solomon Code</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        <h1 id="1-introduction">1. Introduction<a class="zola-anchor" href="#1-introduction" aria-label="Anchor link for: 1-introduction" style="visibility: hidden;"></a>
+</h1>
+<h1 id="2-preliminaries-of-lrc-codes">2. Preliminaries of LRC Codes<a class="zola-anchor" href="#2-preliminaries-of-lrc-codes" aria-label="Anchor link for: 2-preliminaries-of-lrc-codes" style="visibility: hidden;"></a>
+</h1>
+<h2 id="pushpin-definition">📌 Definition<a class="zola-anchor" href="#pushpin-definition" aria-label="Anchor link for: pushpin-definition" style="visibility: hidden;"></a>
+</h2>
+<p>어떤 코드 $\mathcal{C} \in \mathbb{F}^n_q$가 <span style="color: tomato"><em>locality</em></span> $r$ 을 갖는다는 것의 의미는,
+코드워드의 모든 심볼 $\forall x \in \mathcal{C}$이 $r$개의 서로 다른 심볼들로 이루어진 <span style="color: skyblue">부분집합</span>을 통해 복원될 수 있음을 의미한다.
+(다시 말해, $r$개의 서로 다른 심볼 $x_{i_1}, x_{i_2}, \dots, x_{i_r}$에 대한 함수 $f: (x_{i_1}, x_{i_2}, \dots, x_{i_r}) \rightarrow x$가 존재함을 의미한다.)</p>
+<p>좀 더 자세히 얘기하자면, $i$번째에 위치하는 코드워드의 심볼 $x_i$에 대하여, 아래 조건을 만족하는 <span style="color: skyblue">부분집합</span> $I_i$ 가 존재한다고 가정하자.</p>
+<p>$$
+\begin{aligned}
+I_i &amp;\in [n] \backslash i \newline
+|I_i| &amp;\le r
+\end{aligned}
+$$</p>
+<p>이 때, 코드 $\mathcal{C}$를 $I_i$의 위치로만 제한하면, $x_i$ 의 값을 복원할 수 있다.
+이러한 <span style="color: skyblue">부분집합</span> $I_i$를 <span style="color: skyblue"><em>recovering set</em></span>이라 한다.</p>
+<p><em><strong>LRC</strong></em>에 대한 보다 형식적인 정의는 다음과 같다.
+임의의 필드 위 원소 $a \in \mathbb{F}_q$에 대하여 다음의 코드워드 집합을 가정한다.</p>
+<p>$$
+C(i, a) = \lbrace x \in \mathcal{C}: x_i = a \rbrace, \quad i \in [n]
+$$</p>
+<p>$C(i, a)$는 코드 $\mathcal{C}$에 속하는 임의의 코드워드 $x$들 중, 임의의 위치 $i$에 대한 심볼 값이 $x_i = a$로 동일한 코드워드들의 집합을 의미한다.</p>
+<p>만약 모든 $i \in [n]$에 대하여 앞서 살펴본 <span style="color: skyblue">부분집합</span> $I_i$가 존재한다고 해보자.
+$I_i$가 있다는 것은, $x_i$를 복원할 때 필요한 $r$개의 서로 다른 심볼들의 위치가 존재함을 의미한다.</p>
+<p>$I_i$로 인덱스를 제한한 코드워드들이 <span style="color: gold"><em>다른 집합</em></span> $\mathcal{C}(i, a')$과 겹치는 부분이 없을 때(disjoint),
+코드 $\mathcal{C}$는 <span style="color: tomato"><em>locality</em></span> $r$ 을 갖는다고 할 수 있다. 즉, 아래 식을 만족함을 의미한다.</p>
+<p>$$
+C_{I_i}(i, a) \medspace \cap \medspace C_{I_i}(i, a') = \text{\O}, \quad a \neq a'
+$$</p>
+<p>결과적으로, 코드 $\mathcal{C}_{I_i \cup \lbrace i \rbrace}$를 코드 $\mathcal{C}$의 <span style="color: tomato"><em><strong>local code</strong></em></span>라 부른다.
+LRC 코드의 구성에서는 $(n, k, r)$ LRC 코드가 보통 $(r+1, r)$의 <span style="color: gold"><em>로컬 MDS 코드</em></span>로 나뉘어서 심볼의 <span style="color: skyblue"><em>recovering set</em></span> 역할을 한다.</p>
+<h2 id="pushpin-properties">📌 Properties<a class="zola-anchor" href="#pushpin-properties" aria-label="Anchor link for: pushpin-properties" style="visibility: hidden;"></a>
+</h2>
+<p>LRC 코드의 성질은 크게 두 가지로, <em>minimum distance</em>와 <em>rate</em>의 bound에 관한 것이다.</p>
+<p>LRC 코드 $\mathcal{C}$의 <span style="color: tomato">rate</span> 는 아래의 upper bound를 갖는다.</p>
+<p>$$
+\frac{k}{n} \le \frac{r}{r+1}
+$$</p>
+<p>그리고 $\mathcal{C}$의 <span style="color: tomato">minimum distance</span>는 아래의 upper bound를 갖는다.</p>
+<p>$$
+d \le n - k - \lceil\frac{k}{r}\rceil + 2
+$$</p>
+<p>그리고, <span style="color: tomato">distance</span>에서 $d = n - k - \lceil\frac{k}{r}\rceil + 2$를 만족하는 코드가 <span style="color: gold"><em>Optimal LRC code</em></span> 이다.</p>
+<p>기본적으로 <code>(n, k) linear code</code> 이므로, $k$ 개의 심볼로 어느 코드워드 심볼이든 복구 할 수 있음이 명확하다.
+따라서, 자연스레 $r = k$를 만족하고 $1 \le r \le k$ 범위로 <span style="color: tomato"><em>locality</em></span>를 가짐을 알 수 있다.</p>
+<ol>
+<li>$r=k$</li>
+</ol>
+<blockquote>
+<p>만약 $r=k$인 경우를 생각해보면, <span style="color: tomato">distance</span>는 아래와 같이 계산된다.
+$$
+\begin{aligned}
+d &amp;\le n - k - \lceil\frac{k}{k}\rceil + 2 \newline
+\therefore d &amp;\le n - k + 1
+\end{aligned}
+$$
+따라서, RS코드와 같은 MDS코드의 distance 로 귀결됨을 알 수 있다.</p>
+</blockquote>
+<ol start="2">
+<li>$r=1$</li>
+</ol>
+<blockquote>
+<p>반면에 $r=1$인 경우를 생각해보면, <span style="color: tomato">distance</span>가 아래와 같이 계산된다.
+$$
+\begin{aligned}
+d &amp;\le n - k - \lceil\frac{k}{1}\rceil +2 \newline
+\therefore d &amp;\le 2 \lparen \frac{n}{2} - k + 1 \rparen
+\end{aligned}
+$$
+따라서, $(n/2, k)$ MDS 코드의 심볼을 두 배로 복제한 코드워드와 같음을 알 수 있다.</p>
+</blockquote>
+<h1 id="3-code-construction">3. Code Construction<a class="zola-anchor" href="#3-code-construction" aria-label="Anchor link for: 3-code-construction" style="visibility: hidden;"></a>
+</h1>
+<p>이 장에서는 <span style="color: tomato"><em><strong>optimal linear $(n, k, r)$ LRC code</strong></em></span>을 구성한다.
+코드는 유한체 $\mathbb{F}_q$ 상에서 정의되며, $q$는 소수의 거듭제곱 또는 $n$이다.</p>
+<h2 id="3-1-general-construction">3.1 General Construction<a class="zola-anchor" href="#3-1-general-construction" aria-label="Anchor link for: 3-1-general-construction" style="visibility: hidden;"></a>
+</h2>
+
+      </article>
+
+      
+      
+      <div class="reaction right" data-endpoint="https:&#x2F;&#x2F;example.com&#x2F;api&#x2F;reaction"></div>
+      
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    
+
+
+<footer>
+  <div class="left">
+    <div class="copyright">
+      © 2025 c0np4nn4
+      
+      <span>|</span>
+      Built with <a href="https://www.getzola.org" rel="noreferrer" target="_blank">zola</a> and <a href="https://github.com/isunjn/serene" rel="noreferrer" target="_blank">serene</a>
+      
+    </div>
+  </div>
+
+  <div class="right">
+    
+    
+      
+    
+    
+    <a id="rss-btn" href="https://c0np4nn4.github.io/posts/feed.xml">RSS</a>
+    
+    
+
+    
+  </div>
+</footer>
+
+
+
+
+<dialog id="rss-mask">
+  <div>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml">https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml</a>
+    
+    
+    <button autofocus aria-label="copy" data-link="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z" fill="currentColor"></path></svg>
+
+    </button>
+  </div>
+</dialog>
+
+
+
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="https://c0np4nn4.github.io/js/main.js"></script>
+</body>
+
+</html>

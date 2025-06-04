@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+    
+  
+  <meta name="description" content="My blog site.">
+
+  <title>Modern Algebra (7-1) 군의 정의와 예</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://c0np4nn4.github.io/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://c0np4nn4.github.io/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://c0np4nn4.github.io/img/apple-touch-icon.png">
+  <style>
+  /* nanum-gothic-regular - korean_latin */
+  @font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/nanum-gothic-v26-korean_latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+</style>
+
+  <style>
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a233;
+    --primary-decoration-color: #5871a210;
+    --bg-color: #ffffff;
+    --text-color: #2f3030;
+    --text-pale-color: #767676;
+    --text-decoration-color: #a9a9a9;
+    --highlight-mark-color: #5f75b020;
+
+    --callout-note-color: #5871a2;
+    --callout-tip-color: #268556;
+    --callout-important-color: #885fc9;
+    --callout-warning-color: #ab6632;
+    --callout-caution-color: #c64e4e;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #6f8fd1;
+    --primary-pale-color: #6f8fd166;
+    --primary-decoration-color: #6f8fd112;
+    --bg-color: #1c1c1c;
+    --text-color: #c1c1c1;
+    --text-pale-color: #848484;
+    --text-decoration-color: #5f5f5f;
+    --highlight-mark-color: #8296cb3b;
+
+    --callout-note-color: #6f8fd1;
+    --callout-tip-color: #47976f;
+    --callout-important-color: #9776cd;
+    --callout-warning-color: #ad7a52;
+    --callout-caution-color: #d06161;
+  }
+
+  /* typography */
+  body {
+    --main-font: 'Nanum Gothic', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --font-size: 16px;
+    --line-height: 1.75;
+    --img-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-decoration-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+  txtred {
+    color: tomato;
+  }
+
+  txtblu {
+    color: skyblue;
+  }
+
+  txtylw {
+    color: gold;
+  }
+
+  txtgrn {
+    color: lime;
+  }
+</style>
+
+  <link rel="stylesheet" href="https://c0np4nn4.github.io/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-dark.css" />
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+  <meta name="google-site-verification" content="3_fDSANQ1lZHsWb4hxyDgILfwMpL33vhlCIi37-BkDM" />
+
+</head>
+
+<body class="post dark">
+  
+  
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    <nav>
+      <ul>
+        
+        <li>
+          <a class="h2" href="#example-permutation">(Example) permutation</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#def-group">(Def) Group</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#thm-cartesian-product-on-groups">(Thm) Cartesian product on Groups</a>
+          
+        </li>
+        
+      </ul>
+    </nav>
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+
+    </button>
+    
+  </aside>
+  <main>
+    
+<header>
+  <nav>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts">← Back</a>
+  </nav>
+</header>
+
+
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+"></div>
+      
+      <article class="prose">
+        <h1>Modern Algebra (7-1) 군의 정의와 예</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">Jun 4, 2025</span>
+            </div>
+
+          
+          <div id="tags">
+            <a class="instant" href="https://c0np4nn4.github.io//tags/math"><span>#</span>Math</a><a class="instant" href="https://c0np4nn4.github.io//tags/course"><span>#</span>Course</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        <blockquote>
+<p>현대대수학 (추상대수학) Hungerford 3판의 내용 중 일부를 정리했습니다.</p>
+</blockquote>
+<hr />
+<p>군은 하나의 연산을 갖는 대수체계이다.</p>
+<h3 id="example-permutation">(<txtgrn>Example</txtgrn>) permutation<a class="zola-anchor" href="#example-permutation" aria-label="Anchor link for: example-permutation" style="visibility: hidden;"></a>
+</h3>
+<p>집합 $T$의 치환(permutation)은 그 원소들의 순열을 의미한다.
+예를 들어, $T=\lbrace 1, 2, 3\rbrace$에는 아래와 같이 여섯 가지의 가능한 치환이 있다.</p>
+<p>$$
+\begin{aligned}
+123 &amp;&amp; 132 &amp;&amp; 213 &amp;&amp; 231 &amp;&amp; 312 &amp;&amp; 321
+\end{aligned}
+$$</p>
+<p>어떤 전단사(<em>bijective</em>)함수 $f: T \rightarrow T$를 이러한 치환을 나타내는 함수로 정의할 수 있다.
+예를 들어, $f(1) = 2, f(2) = 3, f(3) = 1$은 $(123) \rightarrow (231)$로의 치환을 나타낸다.</p>
+<p>이러한 치환을 두 행으로 나누어 표현하면 아래와 같다.</p>
+<p>$$
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \newline
+2 &amp; 3 &amp; 1
+\end{pmatrix}
+$$</p>
+<p>첫째 행이 원래 순열이고, 둘째 행이 치환된 순열이다.</p>
+<p>이와 같이 모든 치환을 나타내면 아래와 같다.</p>
+<p>$$
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \newline
+1 &amp; 2 &amp; 3
+\end{pmatrix}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \newline
+1 &amp; 3 &amp; 2
+\end{pmatrix}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \newline
+2 &amp; 1 &amp; 3
+\end{pmatrix}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \newline
+2 &amp; 1 &amp; 3
+\end{pmatrix}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \newline
+3 &amp; 1 &amp; 2
+\end{pmatrix}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \newline
+3 &amp; 2 &amp; 1
+\end{pmatrix}
+$$</p>
+<p>두 전단사 함수의 합성은 마찬가지로 전단사 함수가 되므로, 임의의 두 치환의 합성은 상기한 여섯 개의 치환 중 하나가 된다.
+예를 들어, $f = \begin{pmatrix} 1 &amp; 2 &amp; 3 \newline 3 &amp; 1 &amp; 2 \end{pmatrix}, \quad g = \begin{pmatrix} 1 &amp; 2 &amp; 3 \newline 1 &amp; 3 &amp; 2 \end{pmatrix}$에 대하여</p>
+<p>$$
+\begin{aligned}
+f \circ g = \begin{pmatrix} 1 &amp; 2 &amp; 3 \newline 3 &amp; 1 &amp; 2 \end{pmatrix} \circ \begin{pmatrix} 1 &amp; 2 &amp; 3 \newline 1 &amp; 3 &amp; 2 \end{pmatrix} \newline
+\newline
+(f \circ g)(1) = f(g(1)) = f(1) = 3 \newline
+(f \circ g)(2) = f(g(2)) = f(3) = 2 \newline
+(f \circ g)(3) = f(g(3)) = f(2) = 1
+\end{aligned}
+$$</p>
+<p>따라서, $f \circ g = \begin{pmatrix} 1 &amp; 2 &amp; 3 \newline 3 &amp; 2 &amp; 1 \end{pmatrix}$ 이다.</p>
+<p>위 여섯 가지의 치환 집합을 $S_3$로 나타낼 수 있고, 연산 $(\circ)$는 집합 $S_3$의 연산이다.
+그리고, 아래 두 성질들을 만족한다.</p>
+<ol>
+<li>(<txtylw>닫힘</txtylw>) $f, g \in S_3$ 이면 $f \circ g \in S_3$이다.</li>
+<li>(<txtylw>결합법칙</txtylw>) $f, g, h \in S_3$일 때, $f \circ (g \circ h) = (f \circ g) \circ h$</li>
+<li>(<txtylw>항등원</txtylw>) $I = \begin{pmatrix}1 &amp; 2 &amp; 3 \newline 1 &amp; 2 &amp; 3\end{pmatrix}$에 대하여, 모든 $f \in S_3$ 는 $f \circ I = I \circ f = f$를 만족한다.</li>
+<li>(<txtylw>역원</txtylw>) 임의의 전단사 함수는 <txtred>역원</txtred>을 갖는다. 따라서, $f \in S_3$ 이면 $f \circ g = g \circ f = I$인 $g \in S_3$가 존재한다.</li>
+</ol>
+
+<blockquote class="callout tip has-title">
+  
+  
+  <p class="title">
+    <span class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M9.97308 18H11V13H13V18H14.0269C14.1589 16.7984 14.7721 15.8065 15.7676 14.7226C15.8797 14.6006 16.5988 13.8564 16.6841 13.7501C17.5318 12.6931 18 11.385 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 11.3843 6.46774 12.6917 7.31462 13.7484C7.40004 13.855 8.12081 14.6012 8.23154 14.7218C9.22766 15.8064 9.84103 16.7984 9.97308 18ZM10 20V21H14V20H10ZM5.75395 14.9992C4.65645 13.6297 4 11.8915 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 11.8925 19.3428 13.6315 18.2443 15.0014C17.624 15.7748 16 17 16 18.5V21C16 22.1046 15.1046 23 14 23H10C8.89543 23 8 22.1046 8 21V18.5C8 17 6.37458 15.7736 5.75395 14.9992Z" fill="currentColor"></path></svg>
+
+    </span>
+    <strong>대칭군</strong>
+  </p>
+  <div class="content">
+    <p>에제에서 살펴본 이러한 군을 <code>n차 대칭군</code>(symmetric group of degree $n$)이라 한다.</p>
+
+  </div>
+  
+</blockquote>
+
+<hr />
+<blockquote>
+<p>위 예제를 토대로, 주요 성질을 추상화하여 군을 정의할 수 있다.</p>
+</blockquote>
+<h1 id="def-group">(<txtgrn>Def</txtgrn>) Group<a class="zola-anchor" href="#def-group" aria-label="Anchor link for: def-group" style="visibility: hidden;"></a>
+</h1>
+<p>다음 공리를 만족하는 이항연산 $\circ$ 를 갖는 공집합이 아닌 집합 $G$를 군(Group)이라 한다.</p>
+<ol>
+<li>(<txtylw>닫힘</txtylw>) $f, g \in G$ 이면 $f \circ g \in G$이다.</li>
+<li>(<txtylw>결합법칙</txtylw>) $f, g, h \in G$일 때, $f \circ (g \circ h) = (f \circ g) \circ h$</li>
+<li>(<txtylw>항등원</txtylw>) 모든 원소 $f \in G$에 대하여 $f \circ I = I \circ f = f$를 만족하는 $I \in G$가 존재한다.</li>
+<li>(<txtylw>역원</txtylw>) 각 원소 $f \in G$에 대하여  $f \circ g = g \circ f = I$인 $g \in G$가 존재한다.</li>
+</ol>
+<p>그리고 <txtylw>교환법칙</txtylw>도 성립하면 <code>Abelian Group</code>이라 부른다.</p>
+<p><code>5.</code> (<txtylw>교환법칙</txtylw>) 모든 $f, g \in G$에 대하여 $f \circ g = g \circ f$이다.</p>
+<hr />
+<p>이 밖에도 <em>dihedral group</em>, <em>general linear group</em> (e.g. $GL(2, \mathbb{Z}_2$) 등이 존재한다.</p>
+<hr />
+<h1 id="thm-cartesian-product-on-groups">(<txtred>Thm</txtred>) Cartesian product on Groups<a class="zola-anchor" href="#thm-cartesian-product-on-groups" aria-label="Anchor link for: thm-cartesian-product-on-groups" style="visibility: hidden;"></a>
+</h1>
+<p>$G$와 $H$를 각각 연산 $*$, $\circ$를 갖는 군이라 하자. $G \times H$의 연산자 $\triangle$을</p>
+<p>$$
+(g, h) \triangle (g', h') = (g * g', h \circ h')
+$$</p>
+<p>와 같이 정의하면 $G \times H$는 군이다.</p>
+<p>$G$, $H$가 Abelian group이면 $G \times H$도 abelian group이며, 두 군이 유한이면 $G\times H$도 유한군이 된다. 이 때 $|G \times H| = |G||H|$를 만족한다.</p>
+
+      </article>
+
+      
+      
+      <div class="reaction right" data-endpoint="https:&#x2F;&#x2F;example.com&#x2F;api&#x2F;reaction"></div>
+      
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    
+
+
+<footer>
+  <div class="left">
+    <div class="copyright">
+      © 2025 c0np4nn4
+      
+      <span>|</span>
+      Built with <a href="https://www.getzola.org" rel="noreferrer" target="_blank">zola</a> and <a href="https://github.com/isunjn/serene" rel="noreferrer" target="_blank">serene</a>
+      
+    </div>
+  </div>
+
+  <div class="right">
+    
+    
+      
+    
+    
+    <a id="rss-btn" href="https://c0np4nn4.github.io/posts/feed.xml">RSS</a>
+    
+    
+
+    
+  </div>
+</footer>
+
+
+
+
+<dialog id="rss-mask">
+  <div>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml">https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml</a>
+    
+    
+    <button autofocus aria-label="copy" data-link="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z" fill="currentColor"></path></svg>
+
+    </button>
+  </div>
+</dialog>
+
+
+
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="https://c0np4nn4.github.io/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+    
+  
+  <meta name="description" content="My blog site.">
+
+  <title>Modern Algebra (7-2) 군의 기본성질</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://c0np4nn4.github.io/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://c0np4nn4.github.io/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://c0np4nn4.github.io/img/apple-touch-icon.png">
+  <style>
+  /* nanum-gothic-regular - korean_latin */
+  @font-face {
+    font-display: swap;
+    /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Nanum Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/nanum-gothic-v26-korean_latin-regular.woff2') format('woff2');
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+</style>
+
+  <style>
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a233;
+    --primary-decoration-color: #5871a210;
+    --bg-color: #ffffff;
+    --text-color: #2f3030;
+    --text-pale-color: #767676;
+    --text-decoration-color: #a9a9a9;
+    --highlight-mark-color: #5f75b020;
+
+    --callout-note-color: #5871a2;
+    --callout-tip-color: #268556;
+    --callout-important-color: #885fc9;
+    --callout-warning-color: #ab6632;
+    --callout-caution-color: #c64e4e;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #6f8fd1;
+    --primary-pale-color: #6f8fd166;
+    --primary-decoration-color: #6f8fd112;
+    --bg-color: #1c1c1c;
+    --text-color: #c1c1c1;
+    --text-pale-color: #848484;
+    --text-decoration-color: #5f5f5f;
+    --highlight-mark-color: #8296cb3b;
+
+    --callout-note-color: #6f8fd1;
+    --callout-tip-color: #47976f;
+    --callout-important-color: #9776cd;
+    --callout-warning-color: #ad7a52;
+    --callout-caution-color: #d06161;
+  }
+
+  /* typography */
+  body {
+    --main-font: 'Nanum Gothic', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --font-size: 16px;
+    --line-height: 1.75;
+    --img-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-decoration-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+  txtred {
+    color: tomato;
+  }
+
+  txtblu {
+    color: skyblue;
+  }
+
+  txtylw {
+    color: gold;
+  }
+
+  txtgrn {
+    color: lime;
+  }
+</style>
+
+  <link rel="stylesheet" href="https://c0np4nn4.github.io/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-dark.css" />
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+  <meta name="google-site-verification" content="3_fDSANQ1lZHsWb4hxyDgILfwMpL33vhlCIi37-BkDM" />
+
+</head>
+
+<body class="post dark">
+  
+  
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    <nav>
+      <ul>
+        
+        <li>
+          <a class="h2" href="#thm-uniqueness-of-identity-and-inverse-element">(Thm) Uniqueness of Identity and Inverse element</a>
+          
+          <ul>
+            
+            <li>
+              <a class="h3" href="#thm-pf-uniqueness-of-identity-and-inverse-element">(Thm-pf) Uniqueness of Identity and Inverse element</a>
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#cor-inverse">(Cor) Inverse</a>
+          
+          <ul>
+            
+            <li>
+              <a class="h3" href="#cor-pf-inverse">(Cor-pf) Inverse</a>
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#thm-law-of-exponents-in-group">(Thm) Law of exponents in Group</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#thm-order-of-an-element">(Thm) Order of an element</a>
+          
+          <ul>
+            
+            <li>
+              <a class="h3" href="#thm-pf-order-of-an-element">(Thm-pf) Order of an element</a>
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#thm-finite-order-of-an-element">(Thm) Finite order of an element</a>
+          
+          <ul>
+            
+            <li>
+              <a class="h3" href="#thm-pf-finite-order-of-an-element">(Thm-pf) Finite order of an element</a>
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#cor-finite-order-of-an-element-in-abelian-group">(Cor) Finite order of an element in Abelian group</a>
+          
+          <ul>
+            
+            <li>
+              <a class="h3" href="#cor-pf-finite-order-of-an-element-in-abelian-group">(Cor-pf) Finite order of an element in Abelian group</a>
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+      </ul>
+    </nav>
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+
+    </button>
+    
+  </aside>
+  <main>
+    
+<header>
+  <nav>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts">← Back</a>
+  </nav>
+</header>
+
+
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+"></div>
+      
+      <article class="prose">
+        <h1>Modern Algebra (7-2) 군의 기본성질</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">Jun 4, 2025</span>
+            </div>
+
+          
+          <div id="tags">
+            <a class="instant" href="https://c0np4nn4.github.io//tags/math"><span>#</span>Math</a><a class="instant" href="https://c0np4nn4.github.io//tags/course"><span>#</span>Course</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        <blockquote>
+<p>현대대수학 (추상대수학) Hungerford 3판의 내용 중 일부를 정리했습니다.</p>
+</blockquote>
+<hr />
+<p><strong>군의 기본성질</strong></p>
+<hr />
+<h1 id="thm-uniqueness-of-identity-and-inverse-element">(<txtred>Thm</txtred>) Uniqueness of Identity and Inverse element<a class="zola-anchor" href="#thm-uniqueness-of-identity-and-inverse-element" aria-label="Anchor link for: thm-uniqueness-of-identity-and-inverse-element" style="visibility: hidden;"></a>
+</h1>
+<p>군 $G$에 대하여 $a, b ,c \in G$라 하자.</p>
+<ol>
+<li>$G$의 항등원 $e$는 유일하다.</li>
+<li>$G$에서 소거법칙이 성립한다. 즉,
+$$
+\begin{aligned}
+a \ b=a \ c \quad \Leftrightarrow \quad b=c \newline
+b \ a=c \ a \quad \Leftrightarrow \quad b=c
+\end{aligned}
+$$</li>
+<li>$G$의 각 원소 ($a \in G$)의 역원 $a^{-1} \in G$는 유일하다.</li>
+</ol>
+<hr />
+<h2 id="thm-pf-uniqueness-of-identity-and-inverse-element">(<txtblu>Thm-pf</txtblu>) Uniqueness of Identity and Inverse element<a class="zola-anchor" href="#thm-pf-uniqueness-of-identity-and-inverse-element" aria-label="Anchor link for: thm-pf-uniqueness-of-identity-and-inverse-element" style="visibility: hidden;"></a>
+</h2>
+<ol>
+<li>군의 정의에 따라 군 $G$는 적어도 하나의 항등원 $e$를 갖는다.
+만약 $e, e'$가 각각 군 $G$의 항등원이라 가정하면,
+$$
+\begin{aligned}
+e \ e' &amp;= e' \ e = e \newline
+e' \ e &amp;= e \ e' = e' \newline
+\end{aligned}
+$$
+두 식이 동일하므로, $e = e'$이다. 즉, 하나의 항등원만 존재한다.</li>
+<li>군의 정의에 따라 원소 $a$는 역원 $a^{-1}$를 갖는다.
+등식의 양 변에 역원을 곱해주면 쉽게 보일 수 있다.</li>
+<li>원소 $a \in G$의 역원을 $d, d'$라 가정하자. 즉,
+$$
+da = e = d'a
+$$
+를 만족하고, <code>2.</code>에서 증명한 것처럼 양 변에 $a^{-1}$을 오른쪽에 곱하면 $d=d'$임을 보일 수 있다.
+따라서 $a$의 역원은 하나만 존재한다. $\blacksquare$</li>
+</ol>
+<hr />
+<h1 id="cor-inverse">(<txtylw>Cor</txtylw>) Inverse<a class="zola-anchor" href="#cor-inverse" aria-label="Anchor link for: cor-inverse" style="visibility: hidden;"></a>
+</h1>
+<p>군 $G$에 대하여 $a, b \in G$이면</p>
+<ol>
+<li>$(ab)^{-1} = b^{-1}a^{-1}$</li>
+<li>$(a^{-1})^{-1} = a$</li>
+</ol>
+<hr />
+<h2 id="cor-pf-inverse">(<txtblu>Cor-pf</txtblu>) Inverse<a class="zola-anchor" href="#cor-pf-inverse" aria-label="Anchor link for: cor-pf-inverse" style="visibility: hidden;"></a>
+</h2>
+<ol>
+<li>역원 관계에 있는 두 원소의 곱은 항등원이다.
+$$
+(ab) \cdot (b^{-1}a^{-1}) \ = \ a(bb^{-1}) a^{-1} \ = \ aea^{-1} \ = \ aa^{-1} \ = \ e
+$$
+마찬가지로
+$$
+(b^{-1}a^{-1}) \cdot (ab)  \ = \ b^{-1}eb \ = \ b^{-1}b \ = \ e
+$$
+따라서, $b^{-1}a^{-1}$이 $ab$의 역원이고 상기한 정리에 따라 <txtred>유일</txtred>하다.</li>
+<li>$a$에 대한 역원으로 $a^{-1}$를 생각하면 아래 식이 성립한다.
+$$
+a \ a^{-1} = a^{-1} \ a = e
+$$
+또, $a^{-1}$에 대한 역원으로 $(a^{-1})^{-1}$을 생각하면 아래 식이 성립한다.
+$$
+a^{-1} \ (a^{-1})^{-1} = e
+$$
+따라서 식을 정리하면, $a^{-1} \ a = a^{-1} \ (a^{-1})^{-1}$이므로, 상기한 정리의 <code>2.</code> (소거 법칙)으로 증명할 수 있다.
+$\blacksquare$</li>
+</ol>
+<hr />
+<h1 id="thm-law-of-exponents-in-group">(<txtred>Thm</txtred>) Law of exponents in Group<a class="zola-anchor" href="#thm-law-of-exponents-in-group" aria-label="Anchor link for: thm-law-of-exponents-in-group" style="visibility: hidden;"></a>
+</h1>
+<p>군 $G$에 대하여 $a \in G$라 하자. 임의의 $m, n \in \mathbb{Z}$에 대하여
+$$
+a^m a^n = a^{m+n}, \quad (a^m)^n = a^{mn}
+$$</p>
+<hr />
+<p><strong>원소의 위수</strong></p>
+<hr />
+<h1 id="thm-order-of-an-element">(<txtred>Thm</txtred>) Order of an element<a class="zola-anchor" href="#thm-order-of-an-element" aria-label="Anchor link for: thm-order-of-an-element" style="visibility: hidden;"></a>
+</h1>
+<p>군 $G$에 대하여 $a \in G$일 때</p>
+<ol>
+<li>$a$가 무한위수를 가지면 $k \in \mathbb{Z}$인 모든 원소 $a^k$는 모두 다르다.</li>
+<li>$i \neq j$에 대하여 $a^i = a^j$이면 $a$는 유한위수를 갖는다.</li>
+</ol>
+<hr />
+<h2 id="thm-pf-order-of-an-element">(<txtblu>Thm-pf</txtblu>) Order of an element<a class="zola-anchor" href="#thm-pf-order-of-an-element" aria-label="Anchor link for: thm-pf-order-of-an-element" style="visibility: hidden;"></a>
+</h2>
+<p><code>1.</code>, <code>2.</code>가 서로 대우 관계임에 주목하여 <code>2.</code>만 증명한다.
+$i &gt; j$에 대하여 $a^i = a^j$라 가정하면, 양 변에 $a^{-j}$ ($a^j$의 역원)을 곱해 다음을 구할 수 있다.
+$$
+a^{i-j} = a^{j-j} = a^0 = e
+$$
+이 때 $i - j &gt; 0$ 이므로, $a$가 유한위수를 가짐을 알 수 있다.</p>
+<hr />
+<h1 id="thm-finite-order-of-an-element">(<txtred>Thm</txtred>) Finite order of an element<a class="zola-anchor" href="#thm-finite-order-of-an-element" aria-label="Anchor link for: thm-finite-order-of-an-element" style="visibility: hidden;"></a>
+</h1>
+<p>군 $G$에 대하여 $a \in G$가 유한위수 $n$을 갖는 원소라면,</p>
+<ol>
+<li>$a^k = e   \ \Leftrightarrow \ n | k$</li>
+<li>$a^i = a^j \ \Leftrightarrow \ i \equiv j ( \bmod n)$</li>
+<li>$d \ge 1, \ n = td \ \Rightarrow \ \textsf{ord}(a^t) = d$</li>
+</ol>
+<hr />
+<h2 id="thm-pf-finite-order-of-an-element">(<txtblu>Thm-pf</txtblu>) Finite order of an element<a class="zola-anchor" href="#thm-pf-finite-order-of-an-element" aria-label="Anchor link for: thm-pf-finite-order-of-an-element" style="visibility: hidden;"></a>
+</h2>
+<ol>
+<li>(<txtylw>$\Leftarrow$</txtylw>) $n|k \ \Leftrightarrow \ k = n \cdot t$이므로,
+$$
+a^k = a^{nt} = (a^n)^t = e^t = e
+$$
+(<txtylw>$\Rightarrow$</txtylw>) $a^k = e$ 일 때, 나눗셈 알고리즘에 따라 $k = n\cdot q + r$이고 $0 \le r &lt; n$이다. 즉,
+$$
+e = a^k = a^{n \cdot q + r} = (a^n)^q \cdot a^r = e \cdot a^r = a^r
+$$
+이를 만족하는 $r$은 <txtylw>영</txtylw>밖에 없으므로($\because$ 위수(order)의 정의: $n$이 항등원이 되는 최소의 양의 정수),
+$$
+k = n\cdot q + 0 = nq
+$$
+따라서, $n | k$이다.</li>
+<li>(<txtylw>$\Leftrightarrow$</txtylw>) $a^i = a^j$이면 $a^{i-j} = e$이다. 즉, <code>1.</code>의 정리에 의해
+$$
+a^{i-j} = e \ \Leftrightarrow \ n | (i-j)
+$$
+약수는 곧 $(i-j) = n \cdot t$임을 의미하므로, $i \equiv j (\bmod n)$ 이다. $\newline$
+필요충분조건임을 보이는 것은 어렵지 않다.</li>
+<li>$|a| = n$이므로, $a^t$에 대하여 $(a^t)^d = a^{td} = a^n = e$를 만족하는 정수 $d$가 있음을 보여야 한다.  $\newline$
+(<txtylw><em>가정</em></txtylw>) $(a^t)^k = e$를 만족시키는 양의 정수 $k$를 가정하자. $\newline$
+그러면 <code>1.</code>에 의해 $n | tk$이고, 정리하면 아래와 같다.
+$$
+t \ k = n \cdot \mathcal{r} = (td) \cdot \mathcal{r}
+$$
+따라서, $k=dr$이다. 다시 말해, $a^t$에 제곱승되는 $k$는 $d$를 약수로 가짐을 의미한다. $\newline$
+정리 자체는 원소의 유한위수 $n$이 $n = td$로 인수분해 될 때, $a^t$의 위수가 정확히 $d$임을 의미한다.</li>
+</ol>
+<hr />
+<h1 id="cor-finite-order-of-an-element-in-abelian-group">(<txtylw>Cor</txtylw>) Finite order of an element in Abelian group<a class="zola-anchor" href="#cor-finite-order-of-an-element-in-abelian-group" aria-label="Anchor link for: cor-finite-order-of-an-element-in-abelian-group" style="visibility: hidden;"></a>
+</h1>
+<p>군 $G$를 임의의 원소가 유한위수를 갖는 <txtred><strong>Abelian Group</strong></txtred>이라 하자.
+$c \in G$가 $G$에서 <txtgrn>최대위수</txtgrn>를 갖는 원소(즉, 모든 $a \in G$에 대하여 $|a| \le |c|$)이면 $G$의 임의의 원소의 위수는 $|c|$의 약수이다.</p>
+<hr />
+<h2 id="cor-pf-finite-order-of-an-element-in-abelian-group">(<txtblu>Cor-pf</txtblu>) Finite order of an element in Abelian group<a class="zola-anchor" href="#cor-pf-finite-order-of-an-element-in-abelian-group" aria-label="Anchor link for: cor-pf-finite-order-of-an-element-in-abelian-group" style="visibility: hidden;"></a>
+</h2>
+<p>(증명방법: <txtylw><strong>모순에 의한 증명</strong></txtylw>)</p>
+<p>임의의 $a \in G$가 $|a|\not{\mid} \ |c|$라고 가정해보자.
+그러면 $|c|$의 소인수분해에서 나타나는 소수 $p$의 거듭제곱보다 더 큰 $p$의 거듭제곱이 정수 $|a|$의 소인수분해에서 나타나는 소수 $p$가 존재해야한다.
+수식으로 쓰면 아래와 같다.
+$$
+\begin{aligned}
+|a| &amp;= p^r \cdot m \newline
+|c| &amp;= p^s \cdot n
+\end{aligned}
+$$
+이 때 $m, n$은 $\gcd(p, m) = \gcd(p, n) = 1$인 값이고 $r &gt; s$이다.</p>
+<p>상기한 정리의 <code>3.</code>으로 부터 또 아래 두 사실을 알 수 있다.
+$$
+\begin{aligned}
+\textsf{ord}(a^m)     &amp;= p^r \newline
+\textsf{ord}(c^{p^s}) &amp;= n \newline
+\end{aligned}
+$$</p>
+<p>(<txtylw><em><strong>증명 필요</strong></em></txtylw>) 위수가 서로소인 두 원소의 곱의 위수는 두 위수의 곱이므로,
+$$
+\textsf{ord}(a^m \cdot c^{p^s}) = p^r n
+$$</p>
+<p>따라서, $a^m \cdot c^{p^s} \in G$의 위수 <txtgrn>$p^r n$</txtgrn>이 $c$의 위수인 <txtblu>$p^s n$</txtblu>보다 크기 때문에($\because r &gt; s$) $|c|$에 대한 가정에 모순이다 $\newline$
+(<txtred>$\Rightarrow \Leftarrow$</txtred>)</p>
+<p>따라서, $|a| \mid |c|$ 이다. $\blacksquare$</p>
+
+      </article>
+
+      
+      
+      <div class="reaction right" data-endpoint="https:&#x2F;&#x2F;example.com&#x2F;api&#x2F;reaction"></div>
+      
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    
+
+
+<footer>
+  <div class="left">
+    <div class="copyright">
+      © 2025 c0np4nn4
+      
+      <span>|</span>
+      Built with <a href="https://www.getzola.org" rel="noreferrer" target="_blank">zola</a> and <a href="https://github.com/isunjn/serene" rel="noreferrer" target="_blank">serene</a>
+      
+    </div>
+  </div>
+
+  <div class="right">
+    
+    
+      
+    
+    
+    <a id="rss-btn" href="https://c0np4nn4.github.io/posts/feed.xml">RSS</a>
+    
+    
+
+    
+  </div>
+</footer>
+
+
+
+
+<dialog id="rss-mask">
+  <div>
+    <a href="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml">https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml</a>
+    
+    
+    <button autofocus aria-label="copy" data-link="https:&#x2F;&#x2F;c0np4nn4.github.io&#x2F;posts&#x2F;feed.xml" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;
+" >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z" fill="currentColor"></path></svg>
+
+    </button>
+  </div>
+</dialog>
+
+
+
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="https://c0np4nn4.github.io/js/main.js"></script>
+</body>
+
+</html>

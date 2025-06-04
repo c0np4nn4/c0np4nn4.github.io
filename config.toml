@@ -29,7 +29,7 @@ theme = "serene"
 output_dir = "public"
 compile_sass = true
 minify_html = false # Keep this false, as it may cause issues with some styles
-build_search_index =  false # Keep this false, search is temporarily unsupported
+build_search_index = true # Keep this false, search is temporarily unsupported
 generate_feeds = true # Whether to generate a feed file in root, read docs for more info about rss feed
 feed_filenames = ["feed.xml"] # "feed.xml" | "atom.xml" | "rss.xml", read docs for more info
 taxonomies = [{ name = "tags" }, { name = "categories" }]
@@ -68,7 +68,7 @@ sections = [
 blog_section_path = "/posts"
 
 back_link_text = "Back" # Text of the back button
-force_theme = false # false | "light" | "dark"
+force_theme = "dark" # false | "light" | "dark"
 
 footer_copyright = "© 2025 c0np4nn4"
 footer_credits = true # Whether to show "Built with zola and serene" in footer

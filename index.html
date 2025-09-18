@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>seunghyun cho</title>
+  <style>
+    body {
+      font-family: "Helvetica", sans-serif;
+      text-align: center;
+      margin: 2em;
+    }
+    h1 {
+      font-style: italic;
+    }
+    img {
+      max-width: 700px;
+      width: 100%;
+      margin: 1em 0;
+    }
+    .links {
+      margin-top: 1em;
+    }
+    .links a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #3333aa;
+    }
+    .time {
+      color: #3333aa;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>seunghyun cho</h1>
+
+  <div class="links">
+    <a href="whoami.html">whoami</a> //
+    <a href="blog/">blog</a> //
+    <a href="cv.pdf">cv</a> //
+    <a href="contact.html">contact</a>
+  </div>
+
+<figure style="text-align: center;">
+<img src="assets/main_photo.jpg" alt="main image" style="width:32%">
+<figcaption>Somewhere near my grad school <em>(Daegu, Korea)</em> </figcaption>
+</figure>
+
+  <p class="time">
+    Time in Korea – <span id="clock"></span> KST
+  </p>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("clock").textContent = now.toLocaleTimeString('en-US', { hour12: false });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>

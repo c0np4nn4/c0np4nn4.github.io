@@ -50,8 +50,32 @@
   <p class="time">
     Time in Korea – <span id="clock"></span> KST
   </p>
+<div id="mini-calendar" style="margin-top:1em; font-family: monospace; font-size: 1.1em;"></div>
 
-  <script>
+<script>
+  function buildMiniCalendar() {
+    const now = new Date();
+    const today = now.getDate();
+    const monthName = now.toLocaleString('en-US', { month: 'short' }); // Sep, Oct ...
+
+    let html = `<span style="margin-right:10px; font-weight:bold">${monthName}</span>`;
+
+    for (let i = -2; i <= 2; i++) {
+      const day = today + i;
+      if (i === 0) {
+        html += `<span style="font-weight:bold; color:black; margin:0 9px;">${day}</span>`;
+      } else if (i < 0) {
+        html += `<span style="color:#777; margin:0 7px;">${day}</span>`;
+      } else {
+        html += `<span style="color:#aaa; margin:0 7px;">${day}</span>`;
+      }
+    }
+
+    document.getElementById("mini-calendar").innerHTML = html.trim();
+  }
+
+  buildMiniCalendar();
+
     function updateClock() {
       const now = new Date();
       document.getElementById("clock").textContent = now.toLocaleTimeString('en-US', { hour12: false });

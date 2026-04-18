@@ -43,3 +43,7 @@ main_menu = [
 
 [extra.content_security_policy]
 enable = false
+
+[extra.responsive_images]
+widths = [640, 784, 1280, 1920, 2560]
+fallback_width = 1280

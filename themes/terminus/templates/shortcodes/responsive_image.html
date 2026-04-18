@@ -1,4 +1,14 @@
-{%- set source_image_path = page.colocated_path ~ src -%}
+{%- if page is defined -%}
+  {%- set source_image_path = page.colocated_path ~ src -%}
+{%- elif section is defined -%}
+  {%- set colocated_path = section.relative_path | replace(from="_index.md", to="") -%}
+  {%- set source_image_path = colocated_path ~ src -%}
+{%- else -%}
+  {%- set source_image_path = src -%}
+{%- endif -%}
+
+
+
 {%- set alt_text = alt -%}
 {%- set caption = caption | default(value="") -%}
 {%- set lazy_load = lazy | default(value=true) -%}

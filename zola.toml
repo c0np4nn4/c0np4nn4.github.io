@@ -1,0 +1,45 @@
+title = "shcho"
+
+# The URL the site will be built for
+base_url = "https://shcho.me/"
+
+# theme
+theme = "terminus"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+taxonomies = [
+    { name = "tags", feed = true },
+    { name = "categories", feed = true, paginate_by = 5 },
+]
+
+[markdown]
+render_emoji = true
+bottom_footnotes = true
+github_alerts = true
+
+[markdown.highlighting]
+style = "inline"
+# theme = "catppuccin-latte"
+theme = "monokai"
+
+[extra]
+close_responsive_menu_on_resize = true
+layout = "center"
+show_default_author = false
+katex = true
+
+main_menu = [
+    { name = "misc", url = "misc", trailing_slash = true },
+]
+
+# socials = [
+#     { name = "github", url = "https://github.com/c0np4nn4" },
+# ]
+
+[extra.content_security_policy]
+enable = false

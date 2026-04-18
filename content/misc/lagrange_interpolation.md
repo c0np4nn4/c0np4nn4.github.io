@@ -1,6 +1,6 @@
 +++
 title = "(KOR) Lagrange Interpolation"
-date = 2026-04-18 # 원하는 날짜로 수정하세요.
+date = 2026-01-27
 description = "Simple note on the Lagrange Interpolation"
 
 [taxonomies]

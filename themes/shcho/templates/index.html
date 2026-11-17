@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+<article class="content">
+    {{ section.content | safe }}
+</article>
+
+{%- if section.pages %}
+<h2 class="list-heading">Posts</h2>
+<ul class="post-list">
+    {%- for page in section.pages %}
+    {{ post_macros::item(page=page) }}
+    {%- endfor %}
+</ul>
+{%- endif %}
+{% endblock %}

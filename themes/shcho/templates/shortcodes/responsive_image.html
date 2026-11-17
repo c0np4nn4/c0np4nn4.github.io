@@ -1,0 +1,41 @@
+{#- Responsive image with srcset. Usage:
+    {{ responsive_image(src="photo.jpg", alt="...", caption="...") }}
+#}
+{%- if page is defined -%}
+{%- set source_image_path = page.colocated_path ~ src -%}
+{%- elif section is defined -%}
+{%- set colocated_path = section.relative_path | trim_end_matches(pat='_index.md') -%}
+{%- set source_image_path = colocated_path ~ src -%}
+{%- else -%}
+{%- set source_image_path = src -%}
+{%- endif -%}
+
+{%- set alt_text = alt -%}
+{%- set caption = caption | default(value="") -%}
+{%- set lazy_load = lazy | default(value=true) -%}
+
+{%- set metadata = get_image_metadata(path=source_image_path) -%}
+{%- set source_width = metadata.width -%}
+
+{%- set image_candidates = [] -%}
+{%- for width in config.extra.responsive_images.widths -%}
+{%- if source_width >= width -%}
+{%- set resized_image = resize_image(path=source_image_path, width=width, op="fit_width", quality=80) -%}
+{%- set_global image_candidates = image_candidates | concat(with=resized_image.url ~ " " ~ width ~ "w") -%}
+{%- endif -%}
+{%- endfor -%}
+
+{%- set fallback_width = config.extra.responsive_images.fallback_width -%}
+{%- set fallback_image = resize_image(path=source_image_path, width=fallback_width, height=fallback_width, op="fit") -%}
+
+{%- if caption %}<figure>{% endif -%}
+<img src="{{ fallback_image.url | safe }}" alt="{{ alt_text }}"
+    width="{{ fallback_image.width }}"
+    height="{{ fallback_image.width / (metadata.width / metadata.height) | round(method='floor') }}"
+    sizes="(min-width: 800px) 720px, calc(100vw - 40px)"
+    srcset="{{ image_candidates | join(sep=', ') | safe }}"
+    {%- if lazy_load %} loading="lazy" {% else %} fetchpriority="high" {%- endif %}>
+{%- if caption %}
+    <figcaption>{{ caption | markdown(inline=true) | safe }}</figcaption>
+</figure>
+{%- endif %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{%- block title -%}
+{{ page.title }} | {{ config.title }}
+{%- endblock -%}
+
+{%- block description -%}
+{%- if page.description %}
+<meta name="description" content="{{ page.description | markdown(inline=true) | striptags }}">
+{%- elif page.summary %}
+<meta name="description" content="{{ page.summary | striptags | truncate(value=160) }}">
+{%- endif %}
+{%- endblock %}
+
+{% block main %}
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+            {%- if page.date %}
+            <time datetime="{{ page.date }}">{{ page.date | date(format='%Y.%m.%d') }}</time>
+            {%- endif %}
+            <span aria-hidden="true">·</span>
+            <span>{{ page.reading_time }} min read</span>
+            {%- for tag in page.taxonomies.tags | default(value=[]) -%}
+            {%- set tag_url = get_taxonomy_url(kind='tags', name=tag, lang=page.lang) -%}
+            <a class="tag" href="{{ tag_url | safe }}">#{{ tag }}</a>
+            {%- endfor %}
+        </div>
+    </header>
+
+    <div class="post-content">
+        {{ page.content | safe }}
+    </div>
+</article>
+
+{%- if page.higher or page.lower %}
+<nav class="post-nav" aria-label="Post navigation">
+    {%- if page.higher %}
+    <a rel="prev" href="{{ page.higher.permalink | safe }}">&larr; {{ page.higher.title | truncate(value=42, end='…') }}</a>
+    {%- endif %}
+    {%- if page.lower %}
+    <a class="post-nav-next" rel="next" href="{{ page.lower.permalink | safe }}">{{ page.lower.title | truncate(value=42, end='…') }} &rarr;</a>
+    {%- endif %}
+</nav>
+{%- endif %}
+{% endblock %}

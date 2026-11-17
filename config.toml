@@ -4,13 +4,13 @@ title = "shcho"
 base_url = "https://shcho.me/"
 
 # theme
-theme = "terminus"
+theme = "shcho"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
 # Whether to build a search index to be used later on by a JavaScript library
-build_search_index = true
+build_search_index = false
 
 taxonomies = [
     { name = "tags", feed = true },
@@ -24,16 +24,18 @@ github_alerts = true
 
 [markdown.highlighting]
 style = "inline"
-theme = "monokai"
+theme = "github-light"
 
 [extra]
-close_responsive_menu_on_resize = true
-layout = "center"
 show_default_author = false
 katex = true
 
+# Single light theme (black & white with a blue accent).
+# The body's data-theme attribute is unused; variables live on :root in
+# _themes.scss.
+
 main_menu = [
-    { name = "About", url = "about", trailing_slash = true },
+    { name = "CV", url = "cv", trailing_slash = true },
     { name = "Note", url = "note", trailing_slash = true },
 ]
 

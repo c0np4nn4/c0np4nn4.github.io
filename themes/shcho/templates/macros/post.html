@@ -1,0 +1,13 @@
+{%- macro item(page) -%}
+<li class="post-item">
+    <time class="post-date" datetime="{{ page.date }}">{{ page.date | date(format='%Y.%m.%d') }}</time>
+    <h3 class="post-item-title">
+        <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+    </h3>
+    {%- if page.description %}
+    <p class="post-item-desc">{{ page.description | markdown(inline=true) | safe }}</p>
+    {%- elif page.summary %}
+    <p class="post-item-desc">{{ page.summary | striptags | truncate(value=160) }}</p>
+    {%- endif %}
+</li>
+{%- endmacro -%}

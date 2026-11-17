@@ -1,0 +1,113 @@
+{%- import "macros/post.html" as post_macros -%}
+
+<!doctype html>
+<html lang="{{ lang }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{%- block title -%}{{ config.title }}{%- endblock -%}</title>
+
+    <meta name="theme-color" content="#ffffff">
+    <meta name="color-scheme" content="light">
+
+    {%- block description -%}
+    {%- set desc = config.description | default(value='') -%}
+    {%- if page is defined and page.description -%}
+    {%- set desc = page.description -%}
+    {%- elif page is defined and page.summary -%}
+    {%- set desc = page.summary | striptags | truncate(value=160) -%}
+    {%- elif section is defined and section.description -%}
+    {%- set desc = section.description -%}
+    {%- endif -%}
+    {%- if desc %}
+    <meta name="description" content="{{ desc | markdown(inline=true) | striptags }}">
+    {%- endif %}
+    {%- endblock %}
+
+    {%- if config.generate_feeds %}
+    {%- for feed in config.feed_filenames %}
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path=feed, cachebust=true) | safe }}">
+    {% endfor -%}
+    {%- endif %}
+
+    <link rel="preload" href="{{ get_url(path='fonts/FiraCode-Regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ get_url(path='fonts/FiraCode-Bold.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ get_url(path='shcho.css', cachebust=true) }}">
+
+    {%- if config.extra.katex %}
+    <link rel="stylesheet" href="{{ get_url(path='css/katex.min.css', cachebust=true) }}">
+    <script src="{{ get_url(path='js/katex.min.js', cachebust=true) }}" defer></script>
+    {%- endif %}
+
+    {%- if page.extra.copy_button or section.extra.copy_button %}
+    <script src="{{ get_url(path='js/copy-code-to-clipboard.js', cachebust=true) }}" defer></script>
+    {%- endif %}
+
+    {% if current_url -%}
+    <link rel="canonical" href="{{ current_url | safe }}">
+    {%- endif %}
+
+    {#- Open Graph -#}
+    {%- set og_title = config.title -%}
+    {%- if page is defined and page.title -%}
+    {%- set og_title = page.title -%}
+    {%- elif section is defined and section.title -%}
+    {%- set og_title = section.title -%}
+    {%- endif -%}
+    <meta property="og:title" content="{{ og_title | replace(from='"', to='&quot;') | safe }}">
+    <meta property="og:type" content="{% if page is defined %}article{% else %}website{% endif %}">
+    <meta property="og:site_name" content="{{ config.title }}">
+    {%- if current_url %}
+    <meta property="og:url" content="{{ current_url | safe }}">
+    {%- endif %}
+    {%- if section is defined and section.extra.social_media_image.path %}
+    {%- set img_base = section.relative_path | trim_end_matches(pat='_index.md') -%}
+    {%- set img_path = img_base ~ section.extra.social_media_image.path -%}
+    {%- set resized_image = resize_image(path=img_path, width=1200, height=675, op='fit') -%}
+    <meta property="og:image" content="{{ resized_image.url | safe }}">
+    <meta property="og:image:width" content="{{ resized_image.width }}">
+    <meta property="og:image:height" content="{{ resized_image.height }}">
+    {%- if section.extra.social_media_image.alt_text %}
+    <meta property="og:image:alt" content="{{ section.extra.social_media_image.alt_text }}">
+    {%- endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    {%- endif %}
+
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="site-title" href="{{ config.base_url | safe }}">{{ config.title }}</a>
+            <nav class="site-nav" aria-label="Main menu">
+                {%- for item in config.extra.main_menu | default(value=[]) -%}
+                {%- if item.url is starting_with('http') %}
+                <a href="{{ item.url | safe }}" {% if item.new_tab %}target="_blank" {% endif %}>{{ item.name }}</a>
+                {%- else %}
+                <a href="{{ get_url(path=item.url, trailing_slash=true) | safe }}"
+                    {%- if current_path and current_path is starting_with('/' ~ item.url) %} class="active" {%- endif %}>{{ item.name }}</a>
+                {%- endif %}
+                {%- endfor %}
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span>© <time>{{ now() | date(format='%Y') }}</time> {{ config.author | default(value=config.title) }}</span>
+            <span>
+                {%- if config.generate_feeds %}
+                <a href="{{ get_url(path=config.feed_filenames | first, cachebust=true) | safe }}">rss</a> ·
+                {%- endif %}
+                <a href="https://www.getzola.org" target="_blank" rel="noopener">zola</a>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>

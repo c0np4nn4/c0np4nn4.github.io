@@ -13,13 +13,7 @@ alt_text = "A high-resolution photo of a partially disassembled mini PC"
 
 I am Seunghyun Cho, pursuing my master's degree in cryptography @ [DGIST](https://www.dgist.ac.kr/).
 
-{{ responsive_image(src="main_photo.jpg", alt="main_photo") }}
-
-<center>
-    <font color="lightgray">
-Somewhere near my grad school <span style="font-style: italic">(Daegu, South Korea)</span>
-        </font>
-</center>
+{{ responsive_image(src="main_photo.jpg", alt="main_photo", caption="Somewhere near my grad school *(Daegu, South Korea)*") }}
 
 
 <!-- <p class="time"> -->
